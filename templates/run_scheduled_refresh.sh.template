@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Non-interactive refresh runner. Used by Task Scheduler / cron.
+# Exits non-zero on failure so the scheduler can detect problems.
+set -euo pipefail
+
+# --- Locate skill root (this script lives in scripts/) ---
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SKILL_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$SKILL_ROOT"
+
+# --- Auth: prefer existing env, else read from gh keyring ---
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  if command -v gh >/dev/null 2>&1; then
+    export GITHUB_TOKEN="$(gh auth token 2>/dev/null || true)"
+  fi
+fi
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  echo "ERROR: no GITHUB_TOKEN and gh not authenticated — aborting scheduled run" >&2
+  exit 2
+fi
+
+# --- Run discovery ---
+echo "[$(date -Iseconds)] starting scheduled refresh"
+python scripts/discover_repos.py \
+  --categories web-scraper dynamic-scraper api-collector agent-skill dataset \
+  --max-per-category 30 \
+  --catalog references/tool-catalog.json
+
+# --- Regenerate markdown view ---
+python scripts/build_catalog_md.py \
+  --json references/tool-catalog.json \
+  --out references/tool-catalog.md
+
+# --- Append discovery log entry (templated) ---
+# The discover script itself writes a structured line; we just timestamp it here
+# for the scheduled-trigger marker. See templates/discovery-log-entry.md.
+echo "[$(date -Iseconds)] scheduled refresh complete"
