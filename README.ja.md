@@ -74,6 +74,22 @@
 | 📚 dataset | 30 | | HTML · Markdown |
 | **合計** | **183** | | **Python(89)** が最多 |
 
+## 🎴 カテゴリカード
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper カード"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper カード"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39ツール</a></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector カード"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill カード"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31ツール</a></sub></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset カード"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30ツール</a></sub></td>
+  </tr>
+</table>
+
 ## 🚀 使い方
 
 スキルを呼び出したら、自然な言葉で指示:

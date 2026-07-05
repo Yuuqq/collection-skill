@@ -74,6 +74,22 @@ menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirm
 | 📚 dataset | 30 | | HTML · Markdown |
 | **Total** | **183** | | **Python (89)** lidera |
 
+## 🎴 Tarjetas por categoría
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39 herramientas</a></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="tarjeta api-collector"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31 herramientas</a></sub></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="tarjeta dataset"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30 herramientas</a></sub></td>
+  </tr>
+</table>
+
 ## 🚀 Uso
 
 Invoca la skill y habla con naturalidad:

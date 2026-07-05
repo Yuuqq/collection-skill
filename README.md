@@ -74,6 +74,22 @@ category menu  →  tool card  →  load workflow  →  confirm scope  →  craw
 | 📚 dataset | 30 | | HTML · Markdown |
 | **Total** | **183** | | **Python (89)** leads |
 
+## 🎴 Category cards
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper card"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper card"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39 tools</a></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector card"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill card"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31 tools</a></sub></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset card"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30 tools</a></sub></td>
+  </tr>
+</table>
+
 ## 🚀 Usage
 
 Invoke the skill, then speak naturally:

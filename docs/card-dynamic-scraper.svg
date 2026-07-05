@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="380" viewBox="0 0 600 380" role="img" aria-label="dynamic-scraper category card">
+  <defs>
+    <linearGradient id="ds-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+    <linearGradient id="ds-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#faf5ff"/>
+      <stop offset="100%" stop-color="#f3e8ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" rx="18" fill="url(#ds-bg)" stroke="#e9d5ff"/>
+  <rect x="0" y="0" width="600" height="8" rx="4" fill="url(#ds-accent)"/>
+
+  <g transform="translate(40,46)">
+    <circle cx="26" cy="26" r="26" fill="#a855f7"/>
+    <text x="26" y="35" text-anchor="middle" font-size="28">⚡</text>
+    <text x="70" y="24" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#581c87">dynamic-scraper</text>
+    <text x="70" y="46" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#7e22ce">JS-rendered pages · SPAs</text>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="600">
+    <g transform="translate(40,108)">
+      <rect width="116" height="34" rx="17" fill="#fff" stroke="#d8b4fe"/>
+      <text x="58" y="22" text-anchor="middle" fill="#581c87">📦 39 tools</text>
+    </g>
+    <g transform="translate(164,108)">
+      <rect width="148" height="34" rx="17" fill="#fff" stroke="#d8b4fe"/>
+      <text x="74" y="22" text-anchor="middle" fill="#581c87">🐍 Python 23</text>
+    </g>
+    <g transform="translate(320,108)">
+      <rect width="170" height="34" rx="17" fill="#fff" stroke="#d8b4fe"/>
+      <text x="85" y="22" text-anchor="middle" fill="#581c87">TS / JS browsers</text>
+    </g>
+  </g>
+
+  <text x="40" y="172" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#581c87" letter-spacing="0.5">STARRED EXAMPLES</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14">
+    <g transform="translate(40,188)">
+      <rect width="520" height="40" rx="8" fill="#fff" stroke="#f3e8ff"/>
+      <text x="14" y="25" fill="#581c87" font-weight="600">unclecode/crawl4ai</text>
+      <text x="506" y="25" text-anchor="end" fill="#7e22ce" font-size="12">⭐ 71.0k</text>
+    </g>
+    <g transform="translate(40,234)">
+      <rect width="520" height="40" rx="8" fill="#fff" stroke="#f3e8ff"/>
+      <text x="14" y="25" fill="#581c87" font-weight="600">microsoft/playwright</text>
+      <text x="506" y="25" text-anchor="end" fill="#7e22ce" font-size="12">⭐ 70.0k</text>
+    </g>
+    <g transform="translate(40,280)">
+      <rect width="520" height="40" rx="8" fill="#fff" stroke="#f3e8ff"/>
+      <text x="14" y="25" fill="#581c87" font-weight="600">NanmiCoder/MediaCrawler</text>
+      <text x="506" y="25" text-anchor="end" fill="#7e22ce" font-size="12">⭐ 55.4k</text>
+    </g>
+  </g>
+
+  <text x="300" y="356" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" fill="#64748b">Playwright · Selenium · Crawl4AI · Puppeteer</text>
+</svg>

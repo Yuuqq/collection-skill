@@ -74,6 +74,22 @@
 | 📚 dataset | 30 | | HTML · Markdown |
 | **合计** | **183** | | **Python(89)** 居首 |
 
+## 🎴 类目卡片
+
+<table>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper 卡片"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39 个工具</a></sub></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector 卡片"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill 卡片"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31 个工具</a></sub></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset 卡片"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30 个工具</a></sub></td>
+  </tr>
+</table>
+
 ## 🚀 用法
 
 唤起该技能后,自然语言即可:
