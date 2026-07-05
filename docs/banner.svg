@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-label="collection-skill">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="280" fill="url(#bg)"/>
+
+  <!-- decorative grid -->
+  <g stroke="#334155" stroke-opacity="0.25" stroke-width="1">
+    <path d="M0 70 H1200 M0 140 H1200 M0 210 H1200"/>
+    <path d="M300 0 V280 M600 0 V280 M900 0 V280"/>
+  </g>
+
+  <!-- glow blob -->
+  <circle cx="980" cy="70" r="160" fill="url(#glow)"/>
+
+  <!-- spider / collector motif -->
+  <g transform="translate(1010,150)" fill="none" stroke="url(#accent)" stroke-width="2.4" stroke-linecap="round">
+    <circle cx="0" cy="0" r="26" fill="#0b1220"/>
+    <circle cx="0" cy="0" r="9" fill="url(#accent)" stroke="none"/>
+    <g stroke-opacity="0.9">
+      <path d="M0 -26 L0 -78"/>
+      <path d="M18 -18 L64 -52"/>
+      <path d="M26 0 L82 0"/>
+      <path d="M18 18 L64 52"/>
+      <path d="M-18 18 L-64 52"/>
+      <path d="M-26 0 L-82 0"/>
+      <path d="M-18 -18 L-64 -52"/>
+    </g>
+    <g fill="#22d3ee" stroke="none">
+      <circle cx="0" cy="-82" r="3.4"/>
+      <circle cx="68" cy="-55" r="3.4"/>
+      <circle cx="86" cy="0" r="3.4"/>
+      <circle cx="68" cy="55" r="3.4"/>
+      <circle cx="-68" cy="55" r="3.4"/>
+      <circle cx="-86" cy="0" r="3.4"/>
+      <circle cx="-68" cy="-55" r="3.4"/>
+    </g>
+  </g>
+
+  <!-- accent bar -->
+  <rect x="80" y="78" width="6" height="120" rx="3" fill="url(#accent)"/>
+
+  <!-- title -->
+  <text x="110" y="118" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="58" font-weight="700" fill="#f8fafc" letter-spacing="-1">
+    collection<tspan fill="url(#accent)">-skill</tspan>
+  </text>
+
+  <!-- subtitle -->
+  <text x="112" y="158" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" font-weight="400" fill="#cbd5e1">
+    Discover · Catalog · Match · Crawl
+  </text>
+
+  <!-- tag chips -->
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">
+    <g transform="translate(112,188)">
+      <rect width="150" height="30" rx="15" fill="#0ea5e9" fill-opacity="0.14" stroke="#0ea5e9" stroke-opacity="0.5"/>
+      <text x="75" y="20" fill="#7dd3fc" text-anchor="middle">🕸️ web-scraper</text>
+    </g>
+    <g transform="translate(272,188)">
+      <rect width="178" height="30" rx="15" fill="#a855f7" fill-opacity="0.14" stroke="#a855f7" stroke-opacity="0.5"/>
+      <text x="89" y="20" fill="#d8b4fe" text-anchor="middle">⚡ dynamic-scraper</text>
+    </g>
+    <g transform="translate(460,188)">
+      <rect width="158" height="30" rx="15" fill="#f59e0b" fill-opacity="0.14" stroke="#f59e0b" stroke-opacity="0.5"/>
+      <text x="79" y="20" fill="#fcd34d" text-anchor="middle">🔌 api-collector</text>
+    </g>
+    <g transform="translate(628,188)">
+      <rect width="142" height="30" rx="15" fill="#ec4899" fill-opacity="0.14" stroke="#ec4899" stroke-opacity="0.5"/>
+      <text x="71" y="20" fill="#f9a8d4" text-anchor="middle">🤖 agent-skill</text>
+    </g>
+    <g transform="translate(780,188)">
+      <rect width="118" height="30" rx="15" fill="#22c55e" fill-opacity="0.14" stroke="#22c55e" stroke-opacity="0.5"/>
+      <text x="59" y="20" fill="#86efac" text-anchor="middle">📚 dataset</text>
+    </g>
+  </g>
+</svg>

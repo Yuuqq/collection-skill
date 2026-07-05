@@ -1,32 +1,104 @@
-# collection-skill
+<p align="center">
+  <img src="docs/banner.svg" alt="collection-skill banner" width="100%"/>
+</p>
 
-A skill that **discovers and catalogs collection/scraping-related skills and repos on GitHub**, then **progressively recommends the right tool and begins crawling** when you want to fetch data.
+<h3 align="center">
+  Discover · Catalog · Match · Crawl
+</h3>
 
-## What it does
+<p align="center">
+  <a href="https://github.com/Yuuqq/collection-skill/blob/main/README.md">English</a> ·
+  <a href="README.zh-CN.md">简体中文</a> ·
+  <a href="README.ja.md">日本語</a> ·
+  <a href="README.es.md">Español</a>
+</p>
 
-Two halves sharing one knowledge base (`references/tool-catalog.json`):
+<p align="center">
+  <img alt="status" src="https://img.shields.io/badge/status-active-22c55e?style=flat-square">
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square">
+  <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-183-8b5cf6?style=flat-square">
+  <img alt="language" src="https://img.shields.io/badge/top%20lang-Python-3776AB?style=flat-square">
+  <img alt="platform" src="https://img.shields.io/badge/platform-cross--platform-475569?style=flat-square">
+</p>
 
-1. **Discover & catalog** — periodically scans GitHub for collection-class repos across five categories:
-   - 🕸️  `web-scraper` — static HTML (BeautifulSoup, httpx, Scrapy)
-   - ⚡  `dynamic-scraper` — JS-rendered / SPA (Playwright, Crawl4AI)
-   - 🔌  `api-collector` — REST/GraphQL, SDK pulls, ETL
-   - 🤖  `agent-skill` — Claude/GPT agent skills, MCP servers
-   - 📚  `dataset` — public datasets, awesome-lists
+---
 
-2. **Match & crawl** — when you say "I want to scrape X", shows a **category menu** → tool cards → loads a workflow → confirms scope → crawls.
+> A skill that **discovers and catalogs collection/scraping-related skills and repos on GitHub**, then **progressively recommends the right tool and begins crawling** when you want to fetch data.
 
-## Usage
+## ✨ Highlights
 
-Invoke the skill, then:
+| | |
+|:--|:--|
+| 🗂️ **Curated catalog** | Auto-discovers GitHub repos into **five canonical categories**, deduped and score-ranked. |
+| 🧭 **Progressive disclosure** | Never dumps the whole catalog — category menu → tool card → workflow → crawl. |
+| 🗃️ **JSON is canonical** | `tool-catalog.json` is the single source of truth; the markdown view is generated. |
+| 🔐 **Safe by default** | Reads tokens from `gh` keyring / env — no credentials in the repo. |
+| ⏱️ **Schedulable** | Install a periodic refresh via cron / Task Scheduler. |
+
+## 📦 What it does
+
+Two halves sharing **one knowledge base**:
+
+<p align="center">
+  <img src="docs/flow.svg" alt="How collection-skill works" width="92%"/>
+</p>
+
+### ① Discover & Catalog
+Periodically scans GitHub for *collection-class* repos across five categories:
+
+| Tag | Means | Examples |
+|-----|-------|----------|
+| 🕸️ `web-scraper` | Static HTML / simple HTTP fetch | BeautifulSoup, httpx, Selectolax, Scrapy |
+| ⚡ `dynamic-scraper` | JS-rendered pages, SPAs | Playwright, Selenium, Crawl4AI |
+| 🔌 `api-collector` | REST/GraphQL, SDK pulls, ETL | SDK-driven collectors, pipelines |
+| 🤖 `agent-skill` | Claude/GPT skills, MCP servers | tool-use frameworks |
+| 📚 `dataset` | Public datasets, awesome-lists | curated resource repos |
+
+### ② Match & Crawl
+When you say *"I want to scrape X"*, it walks a short funnel:
+
+```
+category menu  →  tool card  →  load workflow  →  confirm scope  →  crawl
+```
+
+## 📊 Catalog snapshot
+
+> Auto-generated from `tool-catalog.json` · last refreshed `2026-07-05`
+
+| Category | Count | | Top languages |
+|----------|------:|---|---------------|
+| 🕸️ web-scraper | 42 | | Python · Go · JS |
+| 🔌 api-collector | 41 | | Python · TypeScript |
+| ⚡ dynamic-scraper | 39 | | Python · TypeScript |
+| 🤖 agent-skill | 31 | | JavaScript · Python |
+| 📚 dataset | 30 | | HTML · Markdown |
+| **Total** | **183** | | **Python (89)** leads |
+
+## 🚀 Usage
+
+Invoke the skill, then speak naturally:
 
 | You say | What happens |
 |---------|--------------|
-| "refresh" / "discover" | Runs `scripts/discover_repos.py`, updates catalog |
-| "I want to scrape X" / "抓 X 数据" | Progressive disclosure: category menu → tool card → crawl |
-| "browse" / "show catalog" | Read-only category/card view |
-| "schedule" / "定时" | Installs a periodic refresh via Task Scheduler / cron |
+| `refresh` / `discover` | Runs `scripts/discover_repos.py`, updates the catalog |
+| `I want to scrape X` / `抓 X 数据` | Progressive disclosure → category menu → card → crawl |
+| `browse` / `show catalog` | Read-only category/card view |
+| `schedule` / `定时` | Installs a periodic refresh (cron / Task Scheduler) |
 
-## Structure
+## 🛠️ Quick start
+
+```bash
+# 1. (recommended) authenticate — 30 search req/min vs 10 unauthenticated
+gh auth login
+
+# 2. first refresh
+python scripts/discover_repos.py
+python scripts/build_catalog_md.py
+
+# 3. (optional) schedule a weekly refresh — invoke the skill and say "schedule"
+```
+
+## 🗺️ Project structure
 
 ```
 collection-skill/
@@ -47,24 +119,30 @@ collection-skill/
 │   ├── crawl-template.md          # Generic crawl workflow
 │   ├── discovery-log-entry.md
 │   └── run_scheduled_refresh.sh.template
-└── scripts/
-    ├── discover_repos.py          # GitHub search → catalog
-    └── build_catalog_md.py        # JSON → markdown
+├── scripts/
+│   ├── discover_repos.py          # GitHub search → catalog
+│   ├── build_catalog_md.py        # JSON → markdown
+│   └── add_repo.py                # Manually add an entry
+└── docs/                          # README banners & diagrams
 ```
 
-## Setup
-
-1. **Auth (recommended):** `gh auth login` — gives 30 search req/min vs 10 unauthenticated.
-2. **First refresh:** invoke the skill and say "discover", or directly:
-   ```bash
-   python scripts/discover_repos.py
-   python scripts/build_catalog_md.py
-   ```
-3. **Schedule (optional):** invoke the skill and say "schedule weekly refresh".
-
-## Design rules
+## ⚖️ Design rules
 
 - **JSON is canonical.** `tool-catalog.md` is regenerated by `build_catalog_md.py` — never hand-edit it.
-- **Progressive disclosure.** Show categories first, tool cards next, workflow only after a tool is picked.
+- **Progressive disclosure.** Categories first, tool cards next, workflow only after a tool is picked.
 - **No credentials in repo.** Tokens come from `$GITHUB_TOKEN` or `gh auth token`.
 - **User fields preserved.** Re-discovery never overwrites `notes`, `verified`, `favorite`, `workflow_file`.
+- **Respect boundaries.** Honor `robots.txt`, rate limits, and Terms of Service; confirm scope before crawling a new domain.
+
+## 🌍 Translations
+
+| Language | File |
+|----------|------|
+| English | [`README.md`](README.md) |
+| 简体中文 | [`README.zh-CN.md`](README.zh-CN.md) |
+| 日本語 | [`README.ja.md`](README.ja.md) |
+| Español | [`README.es.md`](README.es.md) |
+
+## 📄 License
+
+MIT
