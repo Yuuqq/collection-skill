@@ -10,15 +10,24 @@ Usage:
                                      [--max-per-category N]
                                      [--catalog PATH]
                                      [--min-stars N] [--dry-run]
+                                     [--llm | --no-llm]
+                                     [--llm-base-url URL] [--llm-model M]
+                                     [--llm-api-key KEY]
 
 Auth: tries $GITHUB_TOKEN, then `gh auth token`. Falls back to unauthenticated
 with a warning (much lower rate limit).
+
+LLM judging (optional): when LLM_API_KEY is set, every candidate is sent to an
+OpenAI-compatible endpoint to confirm inclusion and (re)assign its category.
+Disable with --no-llm. Endpoint defaults to the Sensenova OpenAI-compatible API;
+override with LLM_BASE_URL / LLM_MODEL env vars or the CLI flags above.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import os
+import random
 import re
 import sys
 import time
@@ -192,6 +201,136 @@ class GH:
 
 
 # ---------------------------------------------------------------------------
+# LLM judging (OpenAI-compatible)
+# ---------------------------------------------------------------------------
+# Default to the Sensenova OpenAI-compatible endpoint. Override via
+# LLM_BASE_URL / LLM_MODEL / LLM_API_KEY env vars or CLI flags.
+LLM_DEFAULT_BASE_URL = "https://token.sensenova.cn/v1"
+LLM_DEFAULT_MODEL = "sensenova-6.7-flash-lite"
+
+_JUDGE_SYSTEM = """你是一个技术策展人，负责维护一个 GitHub「数据采集 / 爬虫」工具目录。本目录只收录与「采集、抓取、爬取、数据获取」直接相关的工具、框架、SDK、agent 技能或数据集。
+目录只有以下 5 个互斥分类：
+- web-scraper：静态 HTML / 简单 HTTP 抓取（BeautifulSoup、httpx、Selectolax）
+- dynamic-scraper：JS 动态渲染页面、SPA（Playwright、Selenium、Crawl4AI）
+- api-collector：REST/GraphQL、SDK 拉取、ETL 管道
+- agent-skill：Claude/GPT agent skills、MCP server、tool-use 框架
+- dataset：采集/爬虫直接可用的公开数据集、或以采集/爬虫为核心主题的 awesome-list / 资源汇总
+
+精度优先（宁可漏、不要错）。对给定的候选仓库逐个判断：
+1) 是否应纳入本目录。仅当该仓库的核心用途是采集/抓取/爬取/数据获取，或其数据集/资源汇总明确服务于采集场景时才 include=true。
+   以下一律 include=false（ false positives ）：
+   - 与采集无关的通用 awesome-list / 资源汇总（例如猫图、游戏、通用编程清单、面试题库）；
+   - 纯教程、课程、示例代码、脚手架模板、boilerplate、starter；
+   - 个人博客、简历、文档站、纯文档仓库；
+   - 与数据采集无关的普通应用、库或工具。
+2) 若纳入，归入上述最贴切的一个分类；若都不贴切则 category 填 "none"。
+3) 给出 1-3 个简短适用场景 use_cases（每条 ≤ 20 字，中文或英文均可）。
+
+只输出一个 JSON 数组，不要任何解释文字。数组每个元素格式：
+{"full_name": "owner/name", "url": "https://github.com/owner/name", "include": true/false, "category": "分类或 none", "reason": "简短理由", "use_cases": ["场景1","场景2"]}"""
+
+
+def _chunks(seq, n):
+    for i in range(0, len(seq), n):
+        yield seq[i:i + n]
+
+
+def _url_from_fullname(fn):
+    return f"https://github.com/{fn}" if fn else ""
+
+
+def _parse_judge_array(text):
+    try:
+        s = (text or "").strip()
+        if s.startswith("```"):
+            parts = s.split("```")
+            s = parts[1] if len(parts) > 1 else s
+            if s.lstrip().startswith("json"):
+                s = s.lstrip()[4:]
+        start, end = s.find("["), s.rfind("]")
+        if start == -1 or end == -1:
+            return []
+        arr = json.loads(s[start:end + 1])
+        return arr if isinstance(arr, list) else []
+    except Exception:
+        return []
+
+
+class LLM:
+    """Minimal OpenAI-compatible chat client (stdlib only).
+
+    `api_key` may be a ';'-separated pool; a key is chosen per request so the
+    pool shares rate-limit budget. Falls back to heuristic if no key is set.
+    """
+
+    def __init__(self, base_url, api_key, model):
+        self.base_url = (base_url or LLM_DEFAULT_BASE_URL).rstrip("/")
+        self.api_keys = [k.strip() for k in (api_key or "").split(";") if k.strip()]
+        self.model = model or LLM_DEFAULT_MODEL
+
+    def chat(self, messages, temperature=0, max_retries=3):
+        if not self.api_keys:
+            raise RuntimeError("no LLM API key configured")
+        payload = {"model": self.model, "messages": messages, "temperature": temperature}
+        data = json.dumps(payload).encode("utf-8")
+        url = f"{self.base_url}/chat/completions"
+        for attempt in range(max_retries):
+            key = random.choice(self.api_keys)
+            try:
+                req = urllib.request.Request(
+                    url, data=data,
+                    headers={"Content-Type": "application/json",
+                             "Authorization": f"Bearer {key}"})
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    return json.loads(resp.read().decode("utf-8"))
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 503):
+                    wait = 5 * (2 ** attempt)
+                    sys.stderr.write(f"[llm] http {e.code}, wait {wait}s\n")
+                    time.sleep(wait)
+                    continue
+                sys.stderr.write(f"[llm] http {e.code} {e.reason}\n")
+                raise
+            except Exception as e:
+                wait = 5 * (2 ** attempt)
+                sys.stderr.write(f"[llm] {e}, wait {wait}s\n")
+                time.sleep(wait)
+                continue
+        raise RuntimeError("llm chat failed after retries")
+
+    def judge(self, repos, categories):
+        tasks = [{
+            "full_name": r.get("full_name", ""),
+            "url": r.get("repo_url", ""),
+            "name": r.get("name", ""),
+            "description": r.get("one_line_description", "") or "",
+            "topics": r.get("topics", []) or [],
+            "language": r.get("language"),
+            "stars": r.get("stars", 0),
+        } for r in repos]
+        if not tasks:
+            return {}
+        out: dict[str, dict] = {}
+        for chunk in _chunks(tasks, 20):
+            try:
+                resp = self.chat([
+                    {"role": "system", "content": _JUDGE_SYSTEM},
+                    {"role": "user", "content": json.dumps(chunk, ensure_ascii=False)},
+                ])
+                content = resp["choices"][0]["message"]["content"]
+            except Exception as e:
+                sys.stderr.write(f"[llm] chunk judge failed: {e}\n")
+                continue
+            for row in _parse_judge_array(content):
+                if not isinstance(row, dict):
+                    continue
+                key = row.get("url") or _url_from_fullname(row.get("full_name", ""))
+                if key:
+                    out[key] = row
+        return out
+
+
+# ---------------------------------------------------------------------------
 # Repo -> entry mapping
 # ---------------------------------------------------------------------------
 def repo_to_entry(repo: dict, category: str) -> dict:
@@ -315,7 +454,16 @@ def main() -> int:
     p.add_argument("--min-stars", type=int, default=50)
     p.add_argument("--dry-run", action="store_true",
                    help="Run without writing the catalog file")
+    p.add_argument("--llm", dest="llm", action="store_true", default=None,
+                   help="Enable LLM judging (auto-enabled if LLM_API_KEY is set)")
+    p.add_argument("--no-llm", dest="llm", action="store_false",
+                   help="Disable LLM judging even if LLM_API_KEY is set")
+    p.add_argument("--llm-base-url", default=os.environ.get("LLM_BASE_URL", LLM_DEFAULT_BASE_URL))
+    p.add_argument("--llm-model", default=os.environ.get("LLM_MODEL", LLM_DEFAULT_MODEL))
+    p.add_argument("--llm-api-key", default=os.environ.get("LLM_API_KEY"))
     args = p.parse_args()
+
+    triggered_by = "scheduled (GitHub Actions)" if os.environ.get("GITHUB_ACTIONS") else "manual"
 
     # --- Auth ---
     token = os.environ.get("GITHUB_TOKEN")
@@ -336,6 +484,20 @@ def main() -> int:
             "[warn] no token — unauthenticated mode (10 search req/min).\n"
             "       Run `gh auth login` or set GITHUB_TOKEN.\n")
 
+    # --- LLM (optional) ---
+    llm_key = args.llm_api_key or os.environ.get("LLM_API_KEY")
+    use_llm = args.llm if args.llm is not None else bool(llm_key)
+    llm = None
+    if use_llm:
+        if not llm_key:
+            sys.stderr.write(
+                "[warn] LLM judging enabled but no LLM_API_KEY — "
+                "falling back to heuristic.\n")
+        else:
+            llm = LLM(args.llm_base_url, llm_key, args.llm_model)
+            sys.stderr.write(
+                f"[llm] judging enabled ({args.llm_model} @ {args.llm_base_url})\n")
+
     # --- Load catalog ---
     catalog_doc = json.loads(args.catalog.read_text(encoding="utf-8"))
     by_url = {e["repo_url"]: e for e in catalog_doc.get("entries", [])}
@@ -348,6 +510,7 @@ def main() -> int:
 
     gh = GH(token)
     stats = {c: {"new": 0, "updated": 0, "skipped": 0} for c in args.categories}
+    run_entries: list[dict] = []
 
     for cat in args.categories:
         kw = keywords.get(cat, {"queries": [], "topics": [], "exclude": []})
@@ -378,7 +541,7 @@ def main() -> int:
                     continue
                 collected.append(entry)
 
-        # keep top-N by stars
+        # keep top-N by stars (per search category)
         collected.sort(key=lambda e: e["stars"], reverse=True)
         collected = collected[: args.max_per_category]
 
@@ -390,6 +553,33 @@ def main() -> int:
             else:
                 by_url[url] = entry
                 stats[cat]["new"] += 1
+            run_entries.append(by_url[url])
+
+    # --- LLM judging (optional): confirm inclusion + reassign category ---
+    llm_excluded = 0
+    if llm is not None and run_entries:
+        try:
+            decisions = llm.judge(run_entries, ALL_CATEGORIES)
+        except Exception as e:
+            sys.stderr.write(f"[llm] judge failed, keeping heuristic: {e}\n")
+            decisions = {}
+        for entry in run_entries:
+            d = decisions.get(entry["repo_url"])
+            if not d:
+                continue
+            if not d.get("include", True):
+                by_url.pop(entry["repo_url"], None)
+                llm_excluded += 1
+                continue
+            cat = d.get("category")
+            if isinstance(cat, str) and cat in ALL_CATEGORIES:
+                entry["category"] = cat
+            uc = d.get("use_cases") or []
+            if uc:
+                entry["use_cases"] = [str(u) for u in uc][:3]
+            tags = entry.setdefault("tags", [])
+            if "llm-reviewed" not in tags:
+                tags.append("llm-reviewed")
 
     # --- Write back ---
     catalog_doc["entries"] = list(by_url.values())
@@ -412,12 +602,15 @@ def main() -> int:
           f"(+{new_total} new, ~{upd_total} updated, {skip_total} filtered)")
 
     # --- Append discovery log ---
-    _append_log(stats, auth_mode, new_total, upd_total, skip_total)
+    _append_log(stats, auth_mode, new_total, upd_total, skip_total,
+                llm_excluded=llm_excluded, triggered_by=triggered_by)
     return 0
 
 
 def _append_log(stats: dict, auth_mode: str, new_total: int,
-                upd_total: int, skip_total: int) -> None:
+                upd_total: int, skip_total: int,
+                llm_excluded: int = 0,
+                triggered_by: str = "manual") -> None:
     now = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M (%Z)")
     lines = [
         f"\n## {now}\n",
@@ -425,9 +618,10 @@ def _append_log(stats: dict, auth_mode: str, new_total: int,
         f"- **New entries:** {new_total}",
         f"- **Updated entries:** {upd_total}",
         f"- **Skipped (dedupe / filtered):** {skip_total}",
+        f"- **LLM excluded:** {llm_excluded}",
         f"- **Errors:** see stderr above",
         f"- **Auth mode:** {auth_mode}",
-        f"- **Triggered by:** manual (`scripts/discover_repos.py`)\n",
+        f"- **Triggered by:** {triggered_by}\n",
     ]
     per_cat = ["- **Per category:**"]
     for cat, s in stats.items():

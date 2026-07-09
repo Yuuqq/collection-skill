@@ -1,0 +1,61 @@
+name: Discover & Catalog
+
+on:
+  schedule:
+    # 每周一 03:17 UTC 自动检索热门采集类仓库并刷新目录
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      llm:
+        description: "Enable LLM judging (include + category)"
+        type: boolean
+        default: true
+      categories:
+        description: "Categories to refresh (space-separated)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Discover repos (GitHub search + LLM judging)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL || 'https://token.sensenova.cn/v1' }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL || 'sensenova-6.7-flash-lite' }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.llm }}" = "false" ]; then
+            ARGS="$ARGS --no-llm"
+          fi
+          if [ -n "${{ github.event.inputs.categories }}" ]; then
+            ARGS="$ARGS --categories ${{ github.event.inputs.categories }}"
+          fi
+          python scripts/discover_repos.py $ARGS
+
+      - name: Build markdown catalog (JSON -> MD)
+        run: python scripts/build_catalog_md.py
+
+      - name: Commit changes
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add references/tool-catalog.json references/tool-catalog.md references/discovery-log.md
+          git commit -m "chore: scheduled catalog refresh (LLM-judged)" || echo "no changes"
+          git push "https://${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}

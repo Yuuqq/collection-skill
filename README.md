@@ -114,6 +114,18 @@ python scripts/build_catalog_md.py
 # 3. (optional) schedule a weekly refresh — invoke the skill and say "schedule"
 ```
 
+## 🤖 LLM 智能判级（可选）
+
+设置 `LLM_API_KEY` 后，发现流程会把每个候选仓库发给 **OpenAI 兼容接口**，
+由其判断 **是否纳入** 并 **归入哪个分类**（覆盖搜索关键词推测的分类），
+同时补全 1–3 条适用场景。默认端点为 Sensenova 兼容 API，可用
+`LLM_BASE_URL` / `LLM_MODEL` 覆盖；未设置 key 时自动退回基于星标与关键词的启发式逻辑。
+Key 支持 `;` 分隔的密钥池，按请求随机选取以摊匀限流。
+
+仓库已内置 GitHub Action（`.github/workflows/discover.yml`），按 `cron` 每周自动检索并刷新目录；
+在仓库 **Settings → Secrets** 中配置 `GH_PAT`、`LLM_API_KEY`（及可选的 `LLM_BASE_URL` / `LLM_MODEL`）即可启用，
+也可在 Actions 页面手动 `workflow_dispatch` 触发并勾选是否启用 LLM。
+
 ## 🗺️ Project structure
 
 ```
