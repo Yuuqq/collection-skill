@@ -9,6 +9,25 @@ Append-only history of catalog refresh runs. Newest at top.
 ---
 
 
+## 2026-07-09 13:39 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 4
+- **Updated entries:** 146
+- **Skipped (dedupe / filtered):** 1426
+- **LLM excluded:** 48
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +0 new, ~30 updated, 136 filtered
+  - `dynamic-scraper`: +3 new, ~27 updated, 705 filtered
+  - `api-collector`: +0 new, ~30 updated, 513 filtered
+  - `agent-skill`: +1 new, ~29 updated, 12 filtered
+  - `dataset`: +0 new, ~30 updated, 60 filtered
+
+
 ## 2026-07-06 00:45 (中国标准时间)
 
 - **Manual add:** `NanmiCoder/MediaCrawler` ⭐55,351 → `dynamic-scraper`
