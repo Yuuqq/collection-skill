@@ -123,15 +123,23 @@ Tune these freely — they directly control discovery quality. After editing, ru
 - `tool use agent`
 - `llm agent tools`
 - `agentic scraping`
+- `mcp server scraper`
+- `playwright mcp`
+- `browser mcp`
+- `web automation agent`
+- `ai web agent`
+- `agent browser`
+- `mcp crawl`
+- `claude skill scraping`
 
 **Topics:**
-- `mcp`, `claude-skills`, `agent`, `tool-use`, `mcp-server`, `llm-agent`
+- `mcp`, `claude-skills`, `agent`, `tool-use`, `mcp-server`, `llm-agent`, `browser-automation`, `web-automation`
 
-**Description hints:**
-- `skill|mcp|agent|tool|model context protocol`
+**Description hints (regex, case-insensitive):**
+- `skill|mcp|agent|tool|model context protocol|scrap|crawl|browser automation`
 
 **Exclude:**
-- `awesome`, `list of`
+- `awesome`, `list of`, `marketing`, `career`, `resume`, `interview`, `ui ux`, `obsidian`, `tutorial`, `course`, `blog`, `personal`
 
 ---
 

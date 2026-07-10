@@ -96,6 +96,71 @@
       "match_score": 85
     },
     {
+      "repo_url": "https://github.com/anthropics/skills",
+      "full_name": "anthropics/skills",
+      "name": "skills",
+      "category": "agent-skill",
+      "one_line_description": "Public repository for Agent Skills",
+      "stars": 159874,
+      "language": "Python",
+      "topics": [
+        "agent-skills"
+      ],
+      "last_updated": "2026-07-01",
+      "discovered_at": "2026-07-10",
+      "license": null,
+      "homepage": null,
+      "verified": false,
+      "use_cases": [
+        "LLM agent 工具调用",
+        "MCP 接入"
+      ],
+      "caveats": [],
+      "tags": [
+        "preset"
+      ],
+      "favorite": false,
+      "notes": "Curated preset: agent-skill / MCP / collection-agent.",
+      "workflow_file": null,
+      "match_score": 83
+    },
+    {
+      "repo_url": "https://github.com/browser-use/browser-use",
+      "full_name": "browser-use/browser-use",
+      "name": "browser-use",
+      "category": "agent-skill",
+      "one_line_description": "🌐 Make websites accessible for AI agents. Automate tasks online with ease.",
+      "stars": 104006,
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "ai-tools",
+        "browser-automation",
+        "browser-use",
+        "llm",
+        "playwright",
+        "python"
+      ],
+      "last_updated": "2026-07-09",
+      "discovered_at": "2026-07-10",
+      "license": "MIT",
+      "homepage": "https://browser-use.com",
+      "verified": false,
+      "use_cases": [
+        "LLM agent 工具调用",
+        "MCP 接入",
+        "LLM/RAG 数据准备"
+      ],
+      "caveats": [],
+      "tags": [
+        "preset"
+      ],
+      "favorite": false,
+      "notes": "Curated preset: agent-skill / MCP / collection-agent.",
+      "workflow_file": null,
+      "match_score": 100
+    },
+    {
       "repo_url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "full_name": "nextlevelbuilder/ui-ux-pro-max-skill",
       "name": "ui-ux-pro-max-skill",
@@ -579,6 +644,36 @@
       "match_score": 100
     },
     {
+      "repo_url": "https://github.com/microsoft/playwright-mcp",
+      "full_name": "microsoft/playwright-mcp",
+      "name": "playwright-mcp",
+      "category": "agent-skill",
+      "one_line_description": "Playwright MCP server",
+      "stars": 34897,
+      "language": "TypeScript",
+      "topics": [
+        "mcp",
+        "playwright"
+      ],
+      "last_updated": "2026-07-09",
+      "discovered_at": "2026-07-10",
+      "license": "Apache-2.0",
+      "homepage": "https://www.npmjs.com/package/@playwright/mcp",
+      "verified": false,
+      "use_cases": [
+        "LLM agent 工具调用",
+        "MCP 接入"
+      ],
+      "caveats": [],
+      "tags": [
+        "preset"
+      ],
+      "favorite": false,
+      "notes": "Curated preset: agent-skill / MCP / collection-agent.",
+      "workflow_file": null,
+      "match_score": 91
+    },
+    {
       "repo_url": "https://github.com/blader/humanizer",
       "full_name": "blader/humanizer",
       "name": "humanizer",
@@ -923,6 +1018,45 @@
       "match_score": 100
     },
     {
+      "repo_url": "https://github.com/nanobrowser/nanobrowser",
+      "full_name": "nanobrowser/nanobrowser",
+      "name": "nanobrowser",
+      "category": "agent-skill",
+      "one_line_description": "Open-Source Chrome extension for AI-powered web automation. Run multi-agent workflows using your own LLM API key. Alternative to OpenAI Operator.",
+      "stars": 13442,
+      "language": "TypeScript",
+      "topics": [
+        "agent",
+        "ai",
+        "ai-agents",
+        "ai-tools",
+        "automation",
+        "browser",
+        "browser-automation",
+        "browser-use",
+        "chrome-extension",
+        "comet"
+      ],
+      "last_updated": "2025-11-24",
+      "discovered_at": "2026-07-10",
+      "license": "Apache-2.0",
+      "homepage": "https://nanobrowser.ai",
+      "verified": false,
+      "use_cases": [
+        "LLM agent 工具调用",
+        "MCP 接入",
+        "LLM/RAG 数据准备"
+      ],
+      "caveats": [],
+      "tags": [
+        "preset"
+      ],
+      "favorite": false,
+      "notes": "Curated preset: agent-skill / MCP / collection-agent.",
+      "workflow_file": null,
+      "match_score": 95
+    },
+    {
       "repo_url": "https://github.com/lsdefine/GenericAgent",
       "full_name": "lsdefine/GenericAgent",
       "name": "GenericAgent",
@@ -1091,6 +1225,33 @@
       "notes": "",
       "workflow_file": null,
       "match_score": 100
+    },
+    {
+      "repo_url": "https://github.com/executeautomation/mcp-playwright",
+      "full_name": "executeautomation/mcp-playwright",
+      "name": "mcp-playwright",
+      "category": "agent-skill",
+      "one_line_description": "Playwright Model Context Protocol Server - Tool to automate Browsers and APIs in Claude Desktop, Cline, Cursor IDE and More 🔌",
+      "stars": 5573,
+      "language": "TypeScript",
+      "topics": [],
+      "last_updated": "2025-12-13",
+      "discovered_at": "2026-07-10",
+      "license": "MIT",
+      "homepage": "https://executeautomation.github.io/mcp-playwright/",
+      "verified": false,
+      "use_cases": [
+        "LLM agent 工具调用",
+        "MCP 接入"
+      ],
+      "caveats": [],
+      "tags": [
+        "preset"
+      ],
+      "favorite": false,
+      "notes": "Curated preset: agent-skill / MCP / collection-agent.",
+      "workflow_file": null,
+      "match_score": 75
     },
     {
       "repo_url": "https://github.com/oxylabs/oxylabs-ai-studio-py",
