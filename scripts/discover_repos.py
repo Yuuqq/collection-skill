@@ -442,6 +442,16 @@ def merge(existing: dict, fresh: dict) -> dict:
     return merged
 
 
+def _is_protected(entry: dict) -> bool:
+    """Human-curated entries are never dropped or re-categorized by the LLM."""
+    if entry.get("favorite") or entry.get("verified"):
+        return True
+    tags = entry.get("tags") or []
+    if "manually-added" in tags or "preset" in tags:
+        return True
+    return False
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -461,6 +471,11 @@ def main() -> int:
     p.add_argument("--llm-base-url", default=os.environ.get("LLM_BASE_URL", LLM_DEFAULT_BASE_URL))
     p.add_argument("--llm-model", default=os.environ.get("LLM_MODEL", LLM_DEFAULT_MODEL))
     p.add_argument("--llm-api-key", default=os.environ.get("LLM_API_KEY"))
+    p.add_argument("--rescan", dest="rescan", action="store_true", default=None,
+                   help="Re-judge the ENTIRE catalog with the LLM and prune "
+                        "irrelevant entries (default when LLM is enabled)")
+    p.add_argument("--no-rescan", dest="rescan", action="store_false",
+                   help="Only judge entries discovered/updated in this run")
     args = p.parse_args()
 
     triggered_by = "scheduled (GitHub Actions)" if os.environ.get("GITHUB_ACTIONS") else "manual"
@@ -556,30 +571,39 @@ def main() -> int:
             run_entries.append(by_url[url])
 
     # --- LLM judging (optional): confirm inclusion + reassign category ---
+    # When LLM is on, re-scan the WHOLE catalog (default) so stale/off-topic
+    # entries from earlier (pre-judge) runs get pruned. Human-curated entries
+    # (favorite / verified / manually-added / preset) are never dropped or
+    # re-categorized.
     llm_excluded = 0
-    if llm is not None and run_entries:
-        try:
-            decisions = llm.judge(run_entries, ALL_CATEGORIES)
-        except Exception as e:
-            sys.stderr.write(f"[llm] judge failed, keeping heuristic: {e}\n")
-            decisions = {}
-        for entry in run_entries:
-            d = decisions.get(entry["repo_url"])
-            if not d:
-                continue
-            if not d.get("include", True):
-                by_url.pop(entry["repo_url"], None)
-                llm_excluded += 1
-                continue
-            cat = d.get("category")
-            if isinstance(cat, str) and cat in ALL_CATEGORIES:
-                entry["category"] = cat
-            uc = d.get("use_cases") or []
-            if uc:
-                entry["use_cases"] = [str(u) for u in uc][:3]
-            tags = entry.setdefault("tags", [])
-            if "llm-reviewed" not in tags:
-                tags.append("llm-reviewed")
+    if llm is not None:
+        rescan = args.rescan if args.rescan is not None else True
+        to_judge = list(by_url.values()) if rescan else run_entries
+        if to_judge:
+            try:
+                decisions = llm.judge(to_judge, ALL_CATEGORIES)
+            except Exception as e:
+                sys.stderr.write(f"[llm] judge failed, keeping heuristic: {e}\n")
+                decisions = {}
+            for entry in to_judge:
+                if _is_protected(entry):
+                    continue
+                d = decisions.get(entry["repo_url"])
+                if not d:
+                    continue
+                if not d.get("include", True):
+                    by_url.pop(entry["repo_url"], None)
+                    llm_excluded += 1
+                    continue
+                cat = d.get("category")
+                if isinstance(cat, str) and cat in ALL_CATEGORIES:
+                    entry["category"] = cat
+                uc = d.get("use_cases") or []
+                if uc:
+                    entry["use_cases"] = [str(u) for u in uc][:3]
+                tags = entry.setdefault("tags", [])
+                if "llm-reviewed" not in tags:
+                    tags.append("llm-reviewed")
 
     # --- Write back ---
     catalog_doc["entries"] = list(by_url.values())
