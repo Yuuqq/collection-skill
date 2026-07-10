@@ -88,6 +88,34 @@ names a specific platform.
 - `manually-added` — set by `scripts/add_repo.py` on all manual additions
 - `framework`, `production`, `llm-ready`, `modern`, `reverse-engineering`, etc. — free-form, used only for filtering
 
+## LLM Judging & Safe Pruning
+
+`scripts/discover_repos.py` can call an OpenAI-compatible model (env `LLM_API_KEY`,
+default Sensenova `https://token.sensenova.cn/v1`) to judge every candidate:
+include or not, and which category. The model is unreliable at *excluding*
+off-topic entries, so pruning is defended deterministically:
+
+1. **Collection-signal protection** (`COLLECTION_SIGNALS` in `discover_repos.py`)
+   — any entry whose `name` / `one_line_description` / `topics` contain a
+   collection term (`scrap`, `crawl`, `mcp`, `browser`, `parser`, `agentql`,
+   `knowledge-graph`, `爬虫`, `采集`, `抓取`, `爬取`, `数据`, …) is never
+   auto-removed, even if the model says exclude.
+2. **Deterministic `agent-skill` cleanup** — inside `agent-skill`, any entry with
+   no collection signal and no human curation (`favorite` / `verified` /
+   `manually-added` / `preset` tag) is pruned. This keeps generic "skills" repos
+   out of the catalog.
+
+Human-curated entries are always preserved. Rules:
+
+- An `agent-skill` entry **must** carry a collection signal, or it will be pruned
+  on the next re-scan. Seed genuinely-collection MCP servers / agent frameworks
+  with a `preset` or `manually-added` tag (or a description containing a signal)
+  to keep them.
+- When `LLM_API_KEY` is unset, discovery falls back to the star/keyword heuristic
+  and **never prunes**.
+- Full re-scan (judging the whole catalog each run) is on by default when the LLM
+  is enabled; `--no-rescan` limits judging to this run's new/updated entries.
+
 ## Schema Versioning
 
 If we add fields, bump `schema_version`. The discovery script runs a migrator forward; old fields are kept for one version then dropped.

@@ -41,6 +41,29 @@ Categories drive both discovery keywords and the matching menu.
 - Never store credentials in the repo. Read tokens from env vars (`GITHUB_TOKEN`) or the `gh` CLI keyring.
 - Always confirm scope with the user before the first network request against a new target domain.
 </principle>
+
+<principle name="LLM Judging &amp; Safe Pruning">
+Discovery can call an OpenAI-compatible LLM (env `LLM_API_KEY`, default Sensenova
+`https://token.sensenova.cn/v1`) to judge every candidate: *should it be
+included*, and *which of the five categories fits*. The model is **unreliable at
+excluding** off-topic entries (it tends to keep generic "skills" repos), so
+pruning is defended by two deterministic guards — never by the model alone:
+
+- **Collection-signal protection** — any entry whose name / description / topics
+  contain a collection term (`scrap`, `crawl`, `mcp`, `browser`, `parser`,
+  `agentql`, `knowledge-graph`, `爬虫`, `采集`, `抓取`, `爬取`, `数据`, …) is
+  **never** auto-removed, even if the model mislabels it.
+- **Deterministic `agent-skill` cleanup** — inside `agent-skill`, any entry with
+  no collection signal and no human curation (`favorite` / `verified` /
+  `manually-added` / `preset` tag) is pruned. This is what keeps generic
+  "skills" repos (career, marketing, ui-ux, obsidian, tutorials, …) out.
+
+Human-curated entries are always preserved. When `LLM_API_KEY` is unset the
+pipeline falls back to the star/keyword heuristic and never prunes anything.
+The full re-scan (judging the *entire* catalog each run, not just fresh hits)
+is enabled by default when the LLM is on; use `--no-rescan` to limit judging to
+this run's new/updated entries.
+</principle>
 </essential_principles>
 
 <intake>
