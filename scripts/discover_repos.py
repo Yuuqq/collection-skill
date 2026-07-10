@@ -460,8 +460,8 @@ COLLECTION_SIGNALS = (
     "scrap", "crawl", "collect", "fetch", "playwright", "selenium", "puppeteer",
     "browser", "mcp", "api client", "dataset", "rss", "extract", "parser",
     "spider", "scraper", "爬虫", "采集", "抓取", "爬取", "数据", "web agent",
-    "web automation", "agentql", "etl", "sdk", "knowledge graph", "open data",
-    "llm",
+    "web automation", "agentql", "etl", "sdk", "knowledge graph",
+    "knowledge-graph", "graphrag", "open data",
 )
 
 
