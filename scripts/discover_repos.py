@@ -452,6 +452,28 @@ def _is_protected(entry: dict) -> bool:
     return False
 
 
+# Substrings that mark a repo as clearly about data collection / scraping.
+# An entry matching one of these is NEVER auto-removed by the LLM re-scan,
+# even if the model mistakenly labels it off-topic (guards against an
+# unreliable judge nuking legitimate tools).
+COLLECTION_SIGNALS = (
+    "scrap", "crawl", "collect", "fetch", "playwright", "selenium", "puppeteer",
+    "browser", "mcp", "api client", "dataset", "rss", "extract", "parser",
+    "spider", "scraper", "爬虫", "采集", "抓取", "爬取", "数据", "web agent",
+    "web automation", "agentql", "etl", "sdk", "knowledge graph", "open data",
+    "llm",
+)
+
+
+def _has_collection_signal(entry: dict) -> bool:
+    hay = " ".join([
+        entry.get("name", ""),
+        entry.get("one_line_description", "") or "",
+        " ".join(entry.get("topics", []) or []),
+    ]).lower()
+    return any(s in hay for s in COLLECTION_SIGNALS)
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -592,6 +614,12 @@ def main() -> int:
                 if not d:
                     continue
                 if not d.get("include", True):
+                    if _has_collection_signal(entry):
+                        # LLM misjudged a clearly collection-related repo;
+                        # keep it regardless.
+                        sys.stderr.write(
+                            f"[llm] kept (collection signal) {entry['full_name']}\n")
+                        continue
                     by_url.pop(entry["repo_url"], None)
                     llm_excluded += 1
                     continue
