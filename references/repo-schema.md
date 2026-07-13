@@ -90,31 +90,7 @@ names a specific platform.
 
 ## LLM Judging & Safe Pruning
 
-`scripts/discover_repos.py` can call an OpenAI-compatible model (env `LLM_API_KEY`,
-default Sensenova `https://token.sensenova.cn/v1`) to judge every candidate:
-include or not, and which category. The model is unreliable at *excluding*
-off-topic entries, so pruning is defended deterministically:
-
-1. **Collection-signal protection** (`COLLECTION_SIGNALS` in `discover_repos.py`)
-   — any entry whose `name` / `one_line_description` / `topics` contain a
-   collection term (`scrap`, `crawl`, `mcp`, `browser`, `parser`, `agentql`,
-   `knowledge-graph`, `爬虫`, `采集`, `抓取`, `爬取`, `数据`, …) is never
-   auto-removed, even if the model says exclude.
-2. **Deterministic `agent-skill` cleanup** — inside `agent-skill`, any entry with
-   no collection signal and no human curation (`favorite` / `verified` /
-   `manually-added` / `preset` tag) is pruned. This keeps generic "skills" repos
-   out of the catalog.
-
-Human-curated entries are always preserved. Rules:
-
-- An `agent-skill` entry **must** carry a collection signal, or it will be pruned
-  on the next re-scan. Seed genuinely-collection MCP servers / agent frameworks
-  with a `preset` or `manually-added` tag (or a description containing a signal)
-  to keep them.
-- When `LLM_API_KEY` is unset, discovery falls back to the star/keyword heuristic
-  and **never prunes**.
-- Full re-scan (judging the whole catalog each run) is on by default when the LLM
-  is enabled; `--no-rescan` limits judging to this run's new/updated entries.
+The LLM judge can reassign an entry's `category` and rewrite its `use_cases`; **pruning is never the model's call alone**. The two deterministic guards (collection-signal protection + `agent-skill` cleanup) and the full CLI/endpoint config are documented in **`references/llm-judging.md`** — load that when tuning discovery. Schema-relevant rule: an `agent-skill` entry with no collection signal and no human-curation tag will be pruned on the next re-scan.
 
 ## Schema Versioning
 

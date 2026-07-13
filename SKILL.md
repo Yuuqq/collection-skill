@@ -1,6 +1,6 @@
 ---
 name: collection-skill
-description: Discovers and catalogs collection/scraping related skills and repos on GitHub, then progressively recommends the right tool and begins crawling when the user wants to fetch data. Use when the user wants to find scraping tools, browse a curated catalog of crawlers/collectors, or actually scrape/fetch specific data.
+description: Recommends the right data-collection / scraping / crawling tool and actually fetches the data you need. Use whenever the user wants to collect, scrape, crawl, fetch, or pull data from a website, an API, or a platform (抓取 / 采集 / 爬取 / 爬虫 / 抓数据 / 获取数据 / 数据采集 / 数据抓取). Also use to browse a curated catalog of scrapers, crawlers, API collectors, MCP/agent skills, and public datasets, or to discover/refresh that catalog from GitHub.
 ---
 
 <essential_principles>
@@ -42,27 +42,8 @@ Categories drive both discovery keywords and the matching menu.
 - Always confirm scope with the user before the first network request against a new target domain.
 </principle>
 
-<principle name="LLM Judging &amp; Safe Pruning">
-Discovery can call an OpenAI-compatible LLM (env `LLM_API_KEY`, default Sensenova
-`https://token.sensenova.cn/v1`) to judge every candidate: *should it be
-included*, and *which of the five categories fits*. The model is **unreliable at
-excluding** off-topic entries (it tends to keep generic "skills" repos), so
-pruning is defended by two deterministic guards — never by the model alone:
-
-- **Collection-signal protection** — any entry whose name / description / topics
-  contain a collection term (`scrap`, `crawl`, `mcp`, `browser`, `parser`,
-  `agentql`, `knowledge-graph`, `爬虫`, `采集`, `抓取`, `爬取`, `数据`, …) is
-  **never** auto-removed, even if the model mislabels it.
-- **Deterministic `agent-skill` cleanup** — inside `agent-skill`, any entry with
-  no collection signal and no human curation (`favorite` / `verified` /
-  `manually-added` / `preset` tag) is pruned. This is what keeps generic
-  "skills" repos (career, marketing, ui-ux, obsidian, tutorials, …) out.
-
-Human-curated entries are always preserved. When `LLM_API_KEY` is unset the
-pipeline falls back to the star/keyword heuristic and never prunes anything.
-The full re-scan (judging the *entire* catalog each run, not just fresh hits)
-is enabled by default when the LLM is on; use `--no-rescan` to limit judging to
-this run's new/updated entries.
+<principle name="LLM Judging Is Optional &amp; Safely Guarded">
+Discovery *can* use an LLM (`LLM_API_KEY`) to judge candidates and reassign categories, but **pruning is never the model's call alone** — deterministic collection-signal and human-curation guards defend it. Full mechanism in `references/llm-judging.md`. Not needed for the match-and-crawl path.
 </principle>
 </essential_principles>
 
@@ -99,6 +80,7 @@ All in `references/`:
 - `category-keywords.md` — search keywords + GitHub topic mapping per category
 - `repo-schema.md` — the JSON schema every catalog entry must satisfy
 - `rate-limit-guide.md` — GitHub API quota, pagination, retry/backoff patterns
+- `llm-judging.md` — optional LLM judge mechanism + safe-pruning guards (load only when running/tuning discovery)
 </reference_index>
 
 <workflows_index>
@@ -110,11 +92,14 @@ All in `workflows/`:
 | `match-and-crawl.md` | Progressive-disclosure matching → tool selection → crawl |
 | `browse-catalog.md` | Read-only category/card view, no network crawling |
 | `schedule-refresh.md` | Install a periodic refresh hook (cron / Task Scheduler) |
+| `tools/*.md` | **Per-tool crawl workflows** — loaded by `match-and-crawl.md` Step 5 when a catalog entry's `workflow_file` points here. Each is a concrete crawl recipe (spec → skeleton → pre-flight → run → validate → report). See `tools/mediacrawler.md` for the compliance-gated pattern. |
+
+Existing per-tool workflows: `tools/scrapy.md`, `tools/playwright.md`, `tools/crawl4ai.md`, `tools/mediacrawler.md`.
 </workflows_index>
 
 <success_criteria>
 This skill works when:
-- The catalog contains real, recently-verified entries across all four categories.
+- The catalog contains real, recently-verified entries across all five categories.
 - `tool-catalog.md` and `tool-catalog.json` stay in sync (MD regenerated from JSON).
 - A user asking "I want to scrape X" gets a category menu → tool card → workflow in ≤ 2 turns.
 - Discovery runs are idempotent and logged in `discovery-log.md`.
