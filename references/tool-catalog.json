@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_refreshed": "2026-07-10T05:11:46.609155+00:00",
+  "last_refreshed": "2026-07-13T01:00:33.406696+00:00",
   "entries": [
     {
       "repo_url": "https://github.com/affaan-m/ECC",
@@ -2717,7 +2717,7 @@
       ],
       "favorite": false,
       "notes": "",
-      "workflow_file": null,
+      "workflow_file": "workflows/tools/crawl4ai.md",
       "match_score": 85
     },
     {
@@ -2754,7 +2754,7 @@
       ],
       "favorite": false,
       "notes": "",
-      "workflow_file": null,
+      "workflow_file": "workflows/tools/playwright.md",
       "match_score": 90
     },
     {
@@ -2787,7 +2787,7 @@
       ],
       "favorite": true,
       "notes": "中文社交平台采集首选，覆盖最全。逆向实现，需自行承担合规责任。",
-      "workflow_file": null,
+      "workflow_file": "workflows/tools/mediacrawler.md",
       "match_score": 90
     },
     {
@@ -4316,7 +4316,7 @@
       ],
       "favorite": false,
       "notes": "",
-      "workflow_file": null,
+      "workflow_file": "workflows/tools/scrapy.md",
       "match_score": 100
     },
     {
