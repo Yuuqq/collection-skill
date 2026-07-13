@@ -1,0 +1,10 @@
+{
+  "effective_mode": "dry-run",
+  "auth_mode": "token",
+  "triggered_by": "scheduled (GitHub Actions)",
+  "dry_run": true,
+  "new": 0,
+  "updated": 2,
+  "skipped": 137,
+  "finished_at": "2026-07-13T01:26:50.603139+00:00"
+}

@@ -109,12 +109,24 @@ def parse_keywords(path: Path) -> dict[str, dict]:
             continue
 
         # Collect bullets or backticked code lines. A single bullet may carry
-        # multiple comma-separated values (topics/exclude are written that way).
+        # multiple comma-separated values (topics/exclude are written that way),
+        # and may carry a trailing `(annotation)` comment we must discard before
+        # it leaks into the GitHub search query.
         item = line.lstrip("- ").strip()
-        # split on commas, then strip backticks/quotes from each piece
-        pieces = [p.strip().strip("`").strip("'\"").strip()
-                  for p in item.split(",")]
-        pieces = [p for p in pieces if p and p != "---"]
+        # split on commas, then strip backticks/quotes/parenthetical notes
+        pieces = []
+        for p in item.split(","):
+            p = p.strip()
+            # prefer a backticked span when present:  `value` (note)  ->  value
+            m = re.search(r"`([^`]+)`", p)
+            if m:
+                p = m.group(1)
+            else:
+                # drop a trailing parenthetical: value (note)  ->  value
+                p = re.sub(r"\s*\([^)]*\)\s*$", "", p).strip()
+            p = p.strip("`").strip("'\"").strip()
+            if p and p != "---":
+                pieces.append(p)
         result[current_cat][current_list].extend(pieces)
 
     return result
@@ -535,6 +547,16 @@ def main() -> int:
             sys.stderr.write(
                 f"[llm] judging enabled ({args.llm_model} @ {args.llm_base_url})\n")
 
+    # Effective judging mode — what *actually* ran, not what was requested.
+    # Written to references/.last-run.json so CI/logs/commits report the truth
+    # (prevents "LLM-judged" commit messages when LLM_API_KEY was unset).
+    if args.dry_run:
+        effective_mode = "dry-run"
+    elif llm is not None:
+        effective_mode = "llm"
+    else:
+        effective_mode = "heuristic"
+
     # --- Load catalog ---
     catalog_doc = json.loads(args.catalog.read_text(encoding="utf-8"))
     by_url = {e["repo_url"]: e for e in catalog_doc.get("entries", [])}
@@ -645,6 +667,8 @@ def main() -> int:
     if args.dry_run:
         sys.stderr.write(f"[dry-run] would write {len(catalog_doc['entries'])} entries "
                          f"(+{new_total} new, ~{upd_total} updated)\n")
+        _write_last_run(effective_mode, auth_mode, triggered_by,
+                        new_total, upd_total, skip_total, dry_run=True)
         return 0
 
     args.catalog.write_text(
@@ -653,16 +677,47 @@ def main() -> int:
     print(f"Catalog updated: {len(catalog_doc['entries'])} entries "
           f"(+{new_total} new, ~{upd_total} updated, {skip_total} filtered)")
 
+    # --- Record effective run mode (read by CI for the commit message) ---
+    _write_last_run(effective_mode, auth_mode, triggered_by,
+                    new_total, upd_total, skip_total, dry_run=False)
+
     # --- Append discovery log ---
     _append_log(stats, auth_mode, new_total, upd_total, skip_total,
-                llm_excluded=llm_excluded, triggered_by=triggered_by)
+                llm_excluded=llm_excluded, triggered_by=triggered_by,
+                effective_mode=effective_mode)
     return 0
+
+
+def _write_last_run(mode: str, auth_mode: str, triggered_by: str,
+                    new_total: int, upd_total: int, skip_total: int,
+                    dry_run: bool) -> None:
+    """Record the effective judging mode for this run.
+
+    `references/.last-run.json` is read by `.github/workflows/discover.yml` to
+    build an honest commit message (e.g. 'LLM-judged' only when the LLM actually
+    ran). This prevents the CI commit message from lying about how the catalog
+    was produced when LLM_API_KEY is unset and the run silently fell back.
+    """
+    LAST_RUN = SKILL_ROOT / "references" / ".last-run.json"
+    payload = {
+        "effective_mode": mode,          # llm | heuristic | dry-run
+        "auth_mode": auth_mode,          # token | unauthenticated
+        "triggered_by": triggered_by,    # manual | scheduled (GitHub Actions)
+        "dry_run": dry_run,
+        "new": new_total,
+        "updated": upd_total,
+        "skipped": skip_total,
+        "finished_at": datetime.now(timezone.utc).isoformat(),
+    }
+    LAST_RUN.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def _append_log(stats: dict, auth_mode: str, new_total: int,
                 upd_total: int, skip_total: int,
                 llm_excluded: int = 0,
-                triggered_by: str = "manual") -> None:
+                triggered_by: str = "manual",
+                effective_mode: str = "heuristic") -> None:
     now = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M (%Z)")
     lines = [
         f"\n## {now}\n",
@@ -671,6 +726,7 @@ def _append_log(stats: dict, auth_mode: str, new_total: int,
         f"- **Updated entries:** {upd_total}",
         f"- **Skipped (dedupe / filtered):** {skip_total}",
         f"- **LLM excluded:** {llm_excluded}",
+        f"- **Effective judging mode:** {effective_mode}",
         f"- **Errors:** see stderr above",
         f"- **Auth mode:** {auth_mode}",
         f"- **Triggered by:** {triggered_by}\n",

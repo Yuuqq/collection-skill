@@ -56,6 +56,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add references/tool-catalog.json references/tool-catalog.md references/discovery-log.md
-          git commit -m "chore: scheduled catalog refresh (LLM-judged)" || echo "no changes"
+          git add references/tool-catalog.json references/tool-catalog.md references/discovery-log.md references/.last-run.json
+          # Build an HONEST commit message from what actually ran, not what was requested.
+          # .last-run.json is written by discover_repos.py with the effective judging mode
+          # (llm | heuristic | dry-run), so the message can't claim "LLM-judged" when the
+          # key was unset and the run fell back to the heuristic.
+          MODE=$(python -c "import json;print(json.load(open('references/.last-run.json'))['effective_mode'])" 2>/dev/null || echo "unknown")
+          case "$MODE" in
+            llm)        LABEL="LLM-judged" ;;
+            heuristic)  LABEL="heuristic (LLM_API_KEY unset)" ;;
+            dry-run)    LABEL="dry-run (no changes expected)" ;;
+            *)          LABEL="mode-unknown" ;;
+          esac
+          git commit -m "chore: scheduled catalog refresh ($LABEL)" || echo "no changes"
           git push "https://${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
