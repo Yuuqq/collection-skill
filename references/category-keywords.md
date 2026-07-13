@@ -92,27 +92,6 @@ Tune these freely — they directly control discovery quality. After editing, ru
 
 ---
 
-## api-collector
-
-**Search queries:**
-- `api client collector`
-- `rest api sdk scraper`
-- `graphql client fetcher`
-- `etl pipeline python`
-- `data ingestion`
-- `api pagination collector`
-
-**Topics:**
-- `api-client`, `sdk`, `graphql`, `etl`, `data-ingestion`, `api-collector`
-
-**Description hints:**
-- `api|endpoint|sdk|graphql|etl|ingest`
-
-**Exclude:**
-- `awesome`, `boilerplate`, `starter`
-
----
-
 ## agent-skill
 
 **Search queries:**

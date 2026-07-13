@@ -5,6 +5,7 @@ Load these references before proceeding:
 1. `references/category-keywords.md` — search terms per category
 2. `references/repo-schema.md` — required fields per entry
 3. `references/rate-limit-guide.md` — quota / pagination rules
+4. `references/llm-judging.md` — optional LLM judge + safe-pruning guards (load when `LLM_API_KEY` is set or you are tuning discovery)
 </required_reading>
 
 <process>
@@ -17,7 +18,7 @@ Check that one of these is available for authenticated GitHub calls (much higher
 If neither, fall back to unauthenticated search (10 req/min, search limit 10/min) and warn the user. Recommend setting up `gh auth login`.
 
 Ask the user (only if not obvious from context):
-- Refresh all four categories, or just one?
+- Refresh all five categories, or just one?
 - Any new keywords/topics to add this run? (optional)
 - Max repos per category this run? (default 30)
 
