@@ -63,30 +63,30 @@
 
 ## 📊 编目概览
 
-> 由 `tool-catalog.json` 自动生成 · 最近刷新 `2026-07-05`
+> 由 `tool-catalog.json` 自动生成 · 最近刷新 `2026-07-13`
 
 | 类目 | 数量 | | 主要语言 |
 |------|----:|---|----------|
-| 🕸️ web-scraper | 42 | | Python · Go · JS |
-| 🔌 api-collector | 41 | | Python · TypeScript |
-| ⚡ dynamic-scraper | 39 | | Python · TypeScript |
-| 🤖 agent-skill | 31 | | JavaScript · Python |
-| 📚 dataset | 30 | | HTML · Markdown |
-| **合计** | **183** | | **Python(89)** 居首 |
+| 🕸️ web-scraper | 37 | | Python · Java · TypeScript |
+| 🔌 api-collector | 31 | | Python · TypeScript · Java |
+| ⚡ dynamic-scraper | 42 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 16 | | Python · TypeScript · JavaScript |
+| 📚 dataset | 28 | | Python · HTML · JavaScript |
+| **合计** | **154** | | **Python(80)** 居首 |
 
 ## 🎴 类目卡片
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42 个工具</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper 卡片"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper 卡片"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 42 个工具</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector 卡片"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41 个工具</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill 卡片"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector 卡片"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 31 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill 卡片"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 16 个工具</a></sub></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset 卡片"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30 个工具</a></sub></td>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset 卡片"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28 个工具</a></sub></td>
   </tr>
 </table>
 

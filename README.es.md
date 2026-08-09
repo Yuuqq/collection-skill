@@ -63,30 +63,30 @@ menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirm
 
 ## 📊 Estado del catálogo
 
-> Generado desde `tool-catalog.json` · última actualización `2026-07-05`
+> Generado desde `tool-catalog.json` · última actualización `2026-07-13`
 
 | Categoría | Cuenta | | Lenguajes principales |
 |-----------|-------:|---|------------------------|
-| 🕸️ web-scraper | 42 | | Python · Go · JS |
-| 🔌 api-collector | 41 | | Python · TypeScript |
-| ⚡ dynamic-scraper | 39 | | Python · TypeScript |
-| 🤖 agent-skill | 31 | | JavaScript · Python |
-| 📚 dataset | 30 | | HTML · Markdown |
-| **Total** | **183** | | **Python (89)** lidera |
+| 🕸️ web-scraper | 37 | | Python · Java · TypeScript |
+| 🔌 api-collector | 31 | | Python · TypeScript · Java |
+| ⚡ dynamic-scraper | 42 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 16 | | Python · TypeScript · JavaScript |
+| 📚 dataset | 28 | | Python · HTML · JavaScript |
+| **Total** | **154** | | **Python (80)** lidera |
 
 ## 🎴 Tarjetas por categoría
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42 herramientas</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 42 herramientas</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="tarjeta api-collector"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41 herramientas</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="tarjeta api-collector"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 31 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 16 herramientas</a></sub></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="tarjeta dataset"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30 herramientas</a></sub></td>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="tarjeta dataset"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28 herramientas</a></sub></td>
   </tr>
 </table>
 

@@ -63,30 +63,30 @@
 
 ## 📊 カタログ概況
 
-> `tool-catalog.json` から自動生成 · 最終更新 `2026-07-05`
+> `tool-catalog.json` から自動生成 · 最終更新 `2026-07-13`
 
 | カテゴリ | 件数 | | 主要言語 |
 |----------|----:|---|----------|
-| 🕸️ web-scraper | 42 | | Python · Go · JS |
-| 🔌 api-collector | 41 | | Python · TypeScript |
-| ⚡ dynamic-scraper | 39 | | Python · TypeScript |
-| 🤖 agent-skill | 31 | | JavaScript · Python |
-| 📚 dataset | 30 | | HTML · Markdown |
-| **合計** | **183** | | **Python(89)** が最多 |
+| 🕸️ web-scraper | 37 | | Python · Java · TypeScript |
+| 🔌 api-collector | 31 | | Python · TypeScript · Java |
+| ⚡ dynamic-scraper | 42 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 16 | | Python · TypeScript · JavaScript |
+| 📚 dataset | 28 | | Python · HTML · JavaScript |
+| **合計** | **154** | | **Python(80)** が最多 |
 
 ## 🎴 カテゴリカード
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper カード"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 42ツール</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper カード"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 39ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper カード"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper カード"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 42ツール</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector カード"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 41ツール</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill カード"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 31ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector カード"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 31ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill カード"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 16ツール</a></sub></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset カード"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 30ツール</a></sub></td>
+    <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset カード"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28ツール</a></sub></td>
   </tr>
 </table>
 
