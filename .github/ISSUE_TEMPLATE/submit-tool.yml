@@ -1,0 +1,46 @@
+name: "🧰 Submit a tool to the catalog"
+description: "Suggest a scraper / collector / agent skill / dataset for the catalog"
+title: "[tool] owner/repo"
+labels: ["catalog", "tool-submission"]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository URL
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: Exactly one primary category per entry
+      options:
+        - web-scraper
+        - dynamic-scraper
+        - api-collector
+        - agent-skill
+        - dataset
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it belong in the catalog?
+      description: What does it collect, and what makes it worth recommending?
+    validations:
+      required: true
+  - type: textarea
+    id: scenarios
+    attributes:
+      label: Typical use cases (1–3)
+      placeholder: "e.g. scraping Xiaohongshu notes with saved login state"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: The repo is public and actively maintained (commits within ~1 year)
+          required: true
+        - label: I am not aware of it violating any platform's Terms of Service by design
+          required: true
