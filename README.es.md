@@ -10,13 +10,13 @@
   <a href="README.md">English</a> ·
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="README.ja.md">日本語</a> ·
-  <a href="https://github.com/Yuuqq/collection-skill/blob/main/README.es.md">Español</a>
+  <a href="README.es.md">Español</a>
 </p>
 
 <p align="center">
   <img alt="estado" src="https://img.shields.io/badge/estado-activo-22c55e?style=flat-square">
   <img alt="licencia" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square">
-  <img alt="catálogo" src="https://img.shields.io/badge/herramientas-183-8b5cf6?style=flat-square">
+  <img alt="catálogo" src="https://img.shields.io/badge/herramientas-154-8b5cf6?style=flat-square">
   <img alt="lenguaje" src="https://img.shields.io/badge/lenguaje%20principal-Python-3776AB?style=flat-square">
   <img alt="plataforma" src="https://img.shields.io/badge/plataforma-multiplataforma-475569?style=flat-square">
 </p>
@@ -34,6 +34,36 @@
 | 🗃️ **JSON como fuente** | `tool-catalog.json` es la única fuente de verdad; la vista Markdown se genera. |
 | 🔐 **Seguro por defecto** | Lee tokens desde el llavero de `gh` / variables de entorno — sin credenciales en el repo. |
 | ⏱️ **Programable** | Instala una actualización periódica vía cron / Programador de tareas. |
+
+## 📥 Instalación
+
+Funciona con cualquier agente que soporte el formato abierto [Agent Skills](https://agentskills.io) — Claude Code, Cursor, Codex y más:
+
+```bash
+npx skills add Yuuqq/collection-skill
+```
+
+<details>
+<summary>Instalación manual (git clone)</summary>
+
+Clona en el directorio de skills de tu agente:
+
+```bash
+# Claude Code (personal)
+git clone https://github.com/Yuuqq/collection-skill.git ~/.claude/skills/collection-skill
+
+# Cursor
+git clone https://github.com/Yuuqq/collection-skill.git ~/.cursor/skills/collection-skill
+
+# Codex
+git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collection-skill
+
+# o por proyecto: .claude/skills/ · .cursor/skills/ · .codex/skills/
+```
+
+</details>
+
+> Los scripts de descubrimiento requieren Python 3.10+; autentícate con [`gh` CLI](https://cli.github.com/) o `GITHUB_TOKEN` para límites más altos de la API de GitHub.
 
 ## 📦 Qué hace
 
@@ -114,6 +144,12 @@ python scripts/build_catalog_md.py
 # 3. (opcional) programar actualización semanal — invoca la skill y di "programar"
 ```
 
+## 🤖 Evaluación con LLM (opcional)
+
+Con `LLM_API_KEY` configurada, el descubrimiento envía cada repositorio candidato a un **endpoint compatible con OpenAI**, que decide **si se incluye** y **en qué categoría** (sobrescribiendo la estimación por palabras clave), y completa 1–3 escenarios de uso. El endpoint por defecto es una API compatible con Sensenova; cámbialo con `LLM_BASE_URL` / `LLM_MODEL`. Sin clave, recurre a la heurística de estrellas y palabras clave. La clave admite un pool separado por `;`, elegido al azar por petición para repartir los límites de tasa.
+
+El repo incluye una GitHub Action (`.github/workflows/discover.yml`) que refresca el catálogo cada semana vía `cron`; configura `GH_PAT` y `LLM_API_KEY` (y opcionalmente `LLM_BASE_URL` / `LLM_MODEL`) en **Settings → Secrets** para activarla, o lánzala manualmente con `workflow_dispatch` desde la pestaña Actions.
+
 ## 🗺️ Estructura del proyecto
 
 ```
@@ -161,4 +197,4 @@ collection-skill/
 
 ## 📄 Licencia
 
-MIT
+MIT — ver [LICENSE](LICENSE).

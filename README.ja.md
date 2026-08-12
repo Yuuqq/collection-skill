@@ -9,14 +9,14 @@
 <p align="center">
   <a href="README.md">English</a> ·
   <a href="README.zh-CN.md">简体中文</a> ·
-  <a href="https://github.com/Yuuqq/collection-skill/blob/main/README.ja.md">日本語</a> ·
+  <a href="README.ja.md">日本語</a> ·
   <a href="README.es.md">Español</a>
 </p>
 
 <p align="center">
   <img alt="状態" src="https://img.shields.io/badge/状態-稼働中-22c55e?style=flat-square">
   <img alt="ライセンス" src="https://img.shields.io/badge/ライセンス-MIT-blue?style=flat-square">
-  <img alt="カタログ数" src="https://img.shields.io/badge/収録ツール-183-8b5cf6?style=flat-square">
+  <img alt="カタログ数" src="https://img.shields.io/badge/収録ツール-154-8b5cf6?style=flat-square">
   <img alt="主要言語" src="https://img.shields.io/badge/主要言語-Python-3776AB?style=flat-square">
   <img alt="プラットフォーム" src="https://img.shields.io/badge/プラットフォーム-クロスプラットフォーム-475569?style=flat-square">
 </p>
@@ -34,6 +34,36 @@
 | 🗃️ **JSON が正** | `tool-catalog.json` が唯一の信頼源、Markdown ビューは自動生成。 |
 | 🔐 **デフォルトで安全** | トークンは `gh` キーリング / 環境変数から —— リポジトリに資格情報は置かない。 |
 | ⏱️ **スケジュール対応** | cron / タスクスケジューラで定期更新をインストール可能。 |
+
+## 📥 インストール
+
+オープンな [Agent Skills](https://agentskills.io) 仕様に対応する任意のエージェントで動作します —— Claude Code、Cursor、Codex など:
+
+```bash
+npx skills add Yuuqq/collection-skill
+```
+
+<details>
+<summary>手動インストール(git clone)</summary>
+
+エージェントの skills ディレクトリへクローン:
+
+```bash
+# Claude Code(個人)
+git clone https://github.com/Yuuqq/collection-skill.git ~/.claude/skills/collection-skill
+
+# Cursor
+git clone https://github.com/Yuuqq/collection-skill.git ~/.cursor/skills/collection-skill
+
+# Codex
+git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collection-skill
+
+# プロジェクト単位: .claude/skills/ · .cursor/skills/ · .codex/skills/
+```
+
+</details>
+
+> 発見スクリプトには Python 3.10+ が必要。[`gh` CLI](https://cli.github.com/) または `GITHUB_TOKEN` で認証すると GitHub API の制限が緩和されます。
 
 ## 📦 何をするか
 
@@ -114,6 +144,12 @@ python scripts/build_catalog_md.py
 # 3.(任意)毎週の更新を予約 —— スキルを呼び出して「定期更新」と発話
 ```
 
+## 🤖 LLM ジャッジ(オプション)
+
+`LLM_API_KEY` を設定すると、発見パイプラインは各候補リポジトリを **OpenAI 互換エンドポイント**に送り、**採否**と**カテゴリ**(キーワード推定を上書き)を判定し、適用シナリオを 1–3 件補完します。既定は Sensenova 互換 API で、`LLM_BASE_URL` / `LLM_MODEL` で変更可能。キー未設定時はスター数とキーワードのヒューリスティックにフォールバックします。キーは `;` 区切りのプールに対応し、リクエストごとにランダム選択してレート制限を分散します。
+
+同梱の GitHub Action(`.github/workflows/discover.yml`)が `cron` で毎週カタログを自動更新します。**Settings → Secrets** に `GH_PAT`、`LLM_API_KEY`(任意で `LLM_BASE_URL` / `LLM_MODEL`)を設定すると有効化され、Actions ページから `workflow_dispatch` で手動実行もできます。
+
 ## 🗺️ プロジェクト構成
 
 ```
@@ -161,4 +197,4 @@ collection-skill/
 
 ## 📄 ライセンス
 
-MIT
+MIT —— [LICENSE](LICENSE) を参照。

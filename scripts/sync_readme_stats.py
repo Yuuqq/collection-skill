@@ -79,8 +79,9 @@ def compute_stats(doc: dict) -> dict:
 
 
 def _patch_badge(text: str, total: int) -> tuple[str, bool]:
-    """tools%20cataloged-<N> -> tools%20cataloged-<total>"""
-    new = re.sub(r"(tools%20cataloged-)\d+", lambda m: m.group(1) + str(total), text)
+    """Catalog badge is the only one colored 8b5cf6; its value slot is `-<N>-8b5cf6`
+    in every locale (labels are localized, so don't match on them)."""
+    new = re.sub(r"-\d+-8b5cf6", f"-{total}-8b5cf6", text)
     return new, new != text
 
 

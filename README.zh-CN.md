@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="README.md">English</a> ·
-  <a href="https://github.com/Yuuqq/collection-skill/blob/main/README.zh-CN.md">简体中文</a> ·
+  <a href="README.zh-CN.md">简体中文</a> ·
   <a href="README.ja.md">日本語</a> ·
   <a href="README.es.md">Español</a>
 </p>
@@ -16,7 +16,7 @@
 <p align="center">
   <img alt="状态" src="https://img.shields.io/badge/状态-运行中-22c55e?style=flat-square">
   <img alt="许可证" src="https://img.shields.io/badge/许可证-MIT-blue?style=flat-square">
-  <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-183-8b5cf6?style=flat-square">
+  <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-154-8b5cf6?style=flat-square">
   <img alt="主要语言" src="https://img.shields.io/badge/主要语言-Python-3776AB?style=flat-square">
   <img alt="平台" src="https://img.shields.io/badge/平台-跨平台-475569?style=flat-square">
 </p>
@@ -34,6 +34,36 @@
 | 🗃️ **JSON 为本** | `tool-catalog.json` 是唯一权威数据源,Markdown 视图由脚本生成。 |
 | 🔐 **默认安全** | 令牌从 `gh` 密钥环 / 环境变量读取 —— 仓库内不留任何凭据。 |
 | ⏱️ **可定时** | 通过 cron / 任务计划程序安装周期性刷新。 |
+
+## 📥 安装
+
+兼容所有支持开放 [Agent Skills](https://agentskills.io) 规范的智能体 —— Claude Code、Cursor、Codex 等:
+
+```bash
+npx skills add Yuuqq/collection-skill
+```
+
+<details>
+<summary>手动安装(git clone)</summary>
+
+克隆到你的智能体 skills 目录:
+
+```bash
+# Claude Code(个人级)
+git clone https://github.com/Yuuqq/collection-skill.git ~/.claude/skills/collection-skill
+
+# Cursor
+git clone https://github.com/Yuuqq/collection-skill.git ~/.cursor/skills/collection-skill
+
+# Codex
+git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collection-skill
+
+# 或项目级: .claude/skills/ · .cursor/skills/ · .codex/skills/
+```
+
+</details>
+
+> 发现脚本需要 Python 3.10+;建议用 [`gh` CLI](https://cli.github.com/) 或 `GITHUB_TOKEN` 认证以获得更高的 GitHub API 限额。
 
 ## 📦 它做什么
 
@@ -114,6 +144,12 @@ python scripts/build_catalog_md.py
 # 3.(可选)安排每周刷新 —— 唤起技能并说 "定时刷新"
 ```
 
+## 🤖 LLM 智能判级(可选)
+
+设置 `LLM_API_KEY` 后,发现流程会把每个候选仓库发给 **OpenAI 兼容接口**,由其判断**是否纳入**并**归入哪个分类**(覆盖搜索关键词推测的分类),同时补全 1–3 条适用场景。默认端点为 Sensenova 兼容 API,可用 `LLM_BASE_URL` / `LLM_MODEL` 覆盖;未设置 key 时自动退回基于星标与关键词的启发式逻辑。Key 支持 `;` 分隔的密钥池,按请求随机选取以摊匀限流。
+
+仓库已内置 GitHub Action(`.github/workflows/discover.yml`),按 `cron` 每周自动检索并刷新目录;在仓库 **Settings → Secrets** 中配置 `GH_PAT`、`LLM_API_KEY`(及可选的 `LLM_BASE_URL` / `LLM_MODEL`)即可启用,也可在 Actions 页面手动 `workflow_dispatch` 触发。
+
 ## 🗺️ 项目结构
 
 ```
@@ -161,4 +197,4 @@ collection-skill/
 
 ## 📄 许可证
 
-MIT
+MIT —— 见 [LICENSE](LICENSE)。

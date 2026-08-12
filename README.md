@@ -7,7 +7,7 @@
 </h3>
 
 <p align="center">
-  <a href="https://github.com/Yuuqq/collection-skill/blob/main/README.md">English</a> ·
+  <a href="README.md">English</a> ·
   <a href="README.zh-CN.md">简体中文</a> ·
   <a href="README.ja.md">日本語</a> ·
   <a href="README.es.md">Español</a>
@@ -34,6 +34,36 @@
 | 🗃️ **JSON is canonical** | `tool-catalog.json` is the single source of truth; the markdown view is generated. |
 | 🔐 **Safe by default** | Reads tokens from `gh` keyring / env — no credentials in the repo. |
 | ⏱️ **Schedulable** | Install a periodic refresh via cron / Task Scheduler. |
+
+## 📥 Install
+
+Works with any agent that speaks the open [Agent Skills](https://agentskills.io) format — Claude Code, Cursor, Codex, and friends:
+
+```bash
+npx skills add Yuuqq/collection-skill
+```
+
+<details>
+<summary>Manual install (git clone)</summary>
+
+Clone into your agent's skills directory:
+
+```bash
+# Claude Code (personal)
+git clone https://github.com/Yuuqq/collection-skill.git ~/.claude/skills/collection-skill
+
+# Cursor
+git clone https://github.com/Yuuqq/collection-skill.git ~/.cursor/skills/collection-skill
+
+# Codex
+git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collection-skill
+
+# or per-project: .claude/skills/ · .cursor/skills/ · .codex/skills/
+```
+
+</details>
+
+> Discovery scripts need Python 3.10+; authenticate via the [`gh` CLI](https://cli.github.com/) or `GITHUB_TOKEN` for higher GitHub API limits.
 
 ## 📦 What it does
 
@@ -114,17 +144,20 @@ python scripts/build_catalog_md.py
 # 3. (optional) schedule a weekly refresh — invoke the skill and say "schedule"
 ```
 
-## 🤖 LLM 智能判级（可选）
+## 🤖 LLM judging (optional)
 
-设置 `LLM_API_KEY` 后，发现流程会把每个候选仓库发给 **OpenAI 兼容接口**，
-由其判断 **是否纳入** 并 **归入哪个分类**（覆盖搜索关键词推测的分类），
-同时补全 1–3 条适用场景。默认端点为 Sensenova 兼容 API，可用
-`LLM_BASE_URL` / `LLM_MODEL` 覆盖；未设置 key 时自动退回基于星标与关键词的启发式逻辑。
-Key 支持 `;` 分隔的密钥池，按请求随机选取以摊匀限流。
+Set `LLM_API_KEY` and the discovery pipeline sends every candidate repo to an
+**OpenAI-compatible endpoint**, which decides **whether to include it** and
+**which category it belongs to** (overriding the keyword-based guess), and fills
+in 1–3 usage scenarios. The default endpoint is a Sensenova-compatible API;
+override with `LLM_BASE_URL` / `LLM_MODEL`. Without a key it falls back to
+star/keyword heuristics. The key accepts a `;`-separated pool, picked at random
+per request to spread rate limits.
 
-仓库已内置 GitHub Action（`.github/workflows/discover.yml`），按 `cron` 每周自动检索并刷新目录；
-在仓库 **Settings → Secrets** 中配置 `GH_PAT`、`LLM_API_KEY`（及可选的 `LLM_BASE_URL` / `LLM_MODEL`）即可启用，
-也可在 Actions 页面手动 `workflow_dispatch` 触发并勾选是否启用 LLM。
+A bundled GitHub Action (`.github/workflows/discover.yml`) refreshes the catalog
+weekly on `cron`; set `GH_PAT` and `LLM_API_KEY` (plus optional `LLM_BASE_URL` /
+`LLM_MODEL`) under **Settings → Secrets** to enable it, or trigger it manually
+via `workflow_dispatch` from the Actions tab.
 
 ## 🗺️ Project structure
 
@@ -173,4 +206,4 @@ collection-skill/
 
 ## 📄 License
 
-MIT
+MIT — see [LICENSE](LICENSE).
