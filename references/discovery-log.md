@@ -9,6 +9,101 @@ Append-only history of catalog refresh runs. Newest at top.
 ---
 
 
+## 2026-08-10 05:03 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 22
+- **Updated entries:** 128
+- **Skipped (dedupe / filtered):** 1451
+- **LLM excluded:** 43
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +1 new, ~29 updated, 137 filtered
+  - `dynamic-scraper`: +0 new, ~30 updated, 720 filtered
+  - `api-collector`: +4 new, ~26 updated, 516 filtered
+  - `agent-skill`: +14 new, ~16 updated, 22 filtered
+  - `dataset`: +3 new, ~27 updated, 56 filtered
+
+
+## 2026-08-03 06:58 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 40
+- **Updated entries:** 110
+- **Skipped (dedupe / filtered):** 1450
+- **LLM excluded:** 21
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +1 new, ~29 updated, 136 filtered
+  - `dynamic-scraper`: +0 new, ~30 updated, 716 filtered
+  - `api-collector`: +15 new, ~15 updated, 518 filtered
+  - `agent-skill`: +20 new, ~10 updated, 23 filtered
+  - `dataset`: +4 new, ~26 updated, 57 filtered
+
+
+## 2026-07-27 06:54 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 23
+- **Updated entries:** 127
+- **Skipped (dedupe / filtered):** 1448
+- **LLM excluded:** 40
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +2 new, ~28 updated, 136 filtered
+  - `dynamic-scraper`: +1 new, ~29 updated, 715 filtered
+  - `api-collector`: +5 new, ~25 updated, 515 filtered
+  - `agent-skill`: +12 new, ~18 updated, 24 filtered
+  - `dataset`: +3 new, ~27 updated, 58 filtered
+
+
+## 2026-07-20 06:40 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 20
+- **Updated entries:** 130
+- **Skipped (dedupe / filtered):** 1446
+- **LLM excluded:** 20
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +1 new, ~29 updated, 137 filtered
+  - `dynamic-scraper`: +0 new, ~30 updated, 711 filtered
+  - `api-collector`: +6 new, ~24 updated, 513 filtered
+  - `agent-skill`: +10 new, ~20 updated, 25 filtered
+  - `dataset`: +3 new, ~27 updated, 60 filtered
+
+
+## 2026-07-13 06:42 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 37
+- **Updated entries:** 113
+- **Skipped (dedupe / filtered):** 1441
+- **LLM excluded:** 19
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +1 new, ~29 updated, 137 filtered
+  - `dynamic-scraper`: +0 new, ~30 updated, 705 filtered
+  - `api-collector`: +10 new, ~20 updated, 513 filtered
+  - `agent-skill`: +24 new, ~6 updated, 26 filtered
+  - `dataset`: +2 new, ~28 updated, 60 filtered
+
+
 ## 2026-07-10 05:11 (UTC)
 
 - **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
