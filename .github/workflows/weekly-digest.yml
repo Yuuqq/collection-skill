@@ -1,0 +1,58 @@
+name: Weekly Digest
+
+# Publishes a GitHub Release listing the tools newly cataloged by the weekly
+# "Discover & Catalog" run. Releases are what notify watchers, so this turns the
+# catalog's auto-refresh into a retention loop: Watch the repo → get a "what's
+# new" ping every week. Freshness is keyed off each entry's `discovered_at`.
+
+on:
+  workflow_run:
+    workflows: ["Discover & Catalog"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Look-back window (days) for 'newly discovered'"
+        type: string
+        default: "7"
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    # Manual dispatch always runs; a scheduled trigger only publishes when the
+    # discovery run actually succeeded.
+    if: >-
+      ${{ github.event_name == 'workflow_dispatch' ||
+          github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build digest from newly-discovered entries
+        id: digest
+        run: |
+          DAYS="${{ github.event.inputs.days || '7' }}"
+          OUT=$(python scripts/make_digest.py --days "$DAYS" --out digest.md)
+          echo "count=${OUT#count=}" >> "$GITHUB_OUTPUT"
+          cat digest.md
+
+      - name: Publish digest release
+        if: steps.digest.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="digest-$(date +%G-W%V)"
+          TITLE="📦 Catalog digest — week of $(date +%Y-%m-%d)"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release edit "$TAG" --title "$TITLE" --notes-file digest.md
+          else
+            # --latest=false keeps weekly digests off the repo's "Latest" slot.
+            gh release create "$TAG" --title "$TITLE" --notes-file digest.md --latest=false
+          fi

@@ -19,6 +19,7 @@
   <img alt="catálogo" src="https://img.shields.io/badge/herramientas-155-8b5cf6?style=flat-square">
   <img alt="lenguaje" src="https://img.shields.io/badge/lenguaje%20principal-Python-3776AB?style=flat-square">
   <img alt="plataforma" src="https://img.shields.io/badge/plataforma-multiplataforma-475569?style=flat-square">
+  <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
 </p>
 
 ---
@@ -104,6 +105,8 @@ menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirm
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
 | **Total** | **155** | | **Python (83)** lidera |
 
+> 🆕 **Cada semana entran herramientas nuevas.** El catálogo se actualiza semanalmente — mira las novedades en cada [resumen semanal](../../releases). Marca el repo con **Watch** para recibir avisos.
+
 ## 🎴 Tarjetas por categoría
 
 <table>
@@ -185,6 +188,15 @@ collection-skill/
 - **Sin credenciales en el repo.** Los tokens provienen de `$GITHUB_TOKEN` o `gh auth token`.
 - **Campos de usuario preservados.** El redescubrimiento nunca sobrescribe `notes`, `verified`, `favorite`, `workflow_file`.
 - **Respeta los límites.** Honra `robots.txt`, los límites de tasa y los términos; confirma el alcance antes de recolectar en un dominio nuevo.
+
+## 🤝 Aporta una herramienta
+
+¿Conoces un scraper, colector, agent skill o dataset que falte? Solo toma 30 segundos:
+
+- **Abre un [issue de propuesta](../../issues/new?template=submit-tool.yml)** — lo revisamos y lo añadimos (la ejecución semanal también lo recoge).
+- **O envía un PR** — consulta [CONTRIBUTING.md](CONTRIBUTING.md) para las reglas del catálogo y el patrón de workflows por herramienta.
+
+Cada propuesta mejora el catálogo para todos. 🙌
 
 ## 🌍 Traducciones
 

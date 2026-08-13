@@ -19,6 +19,7 @@
   <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-155-8b5cf6?style=flat-square">
   <img alt="主要语言" src="https://img.shields.io/badge/主要语言-Python-3776AB?style=flat-square">
   <img alt="平台" src="https://img.shields.io/badge/平台-跨平台-475569?style=flat-square">
+  <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
 </p>
 
 ---
@@ -104,6 +105,8 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
 | **合计** | **155** | | **Python(83)** 居首 |
 
+> 🆕 **每周都有新工具入库。** 目录每周自动刷新 —— 在[每周 digest](../../releases) 中查看本周新增。Watch 本仓库即可收到通知。
+
 ## 🎴 类目卡片
 
 <table>
@@ -185,6 +188,15 @@ collection-skill/
 - **仓库不留凭据。** 令牌来自 `$GITHUB_TOKEN` 或 `gh auth token`。
 - **保留用户字段。** 重新发现时永不覆盖 `notes`、`verified`、`favorite`、`workflow_file`。
 - **尊重边界。** 遵守 `robots.txt`、速率限制与服务条款;抓取新域名前先确认范围。
+
+## 🤝 贡献一个工具
+
+知道某个好用但还没收录的爬虫、采集器、agent skill 或数据集？30 秒即可提交：
+
+- **开一个[工具收录 issue](../../issues/new?template=submit-tool.yml)** —— 我们会审核并收录（每周自动刷新也会顺带收入）。
+- **或直接提 PR** —— 编目规则与单工具 workflow 的写法见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+每一次提交都让目录对所有人更有用。🙌
 
 ## 🌍 多语言版本
 

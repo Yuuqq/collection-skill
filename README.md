@@ -19,6 +19,7 @@
   <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-155-8b5cf6?style=flat-square">
   <img alt="language" src="https://img.shields.io/badge/top%20lang-Python-3776AB?style=flat-square">
   <img alt="platform" src="https://img.shields.io/badge/platform-cross--platform-475569?style=flat-square">
+  <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
 </p>
 
 ---
@@ -103,6 +104,8 @@ category menu  →  tool card  →  load workflow  →  confirm scope  →  craw
 | 🤖 agent-skill | 17 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
 | **Total** | **155** | | **Python (83)** leads |
+
+> 🆕 **New tools land every week.** The catalog auto-refreshes weekly — see what's newly added in each [weekly digest](../../releases). **Watch** the repo to get notified.
 
 ## 🎴 Category cards
 
@@ -194,6 +197,15 @@ collection-skill/
 - **No credentials in repo.** Tokens come from `$GITHUB_TOKEN` or `gh auth token`.
 - **User fields preserved.** Re-discovery never overwrites `notes`, `verified`, `favorite`, `workflow_file`.
 - **Respect boundaries.** Honor `robots.txt`, rate limits, and Terms of Service; confirm scope before crawling a new domain.
+
+## 🤝 Contribute a tool
+
+Know a great scraper, collector, agent skill, or dataset that's missing? It takes 30 seconds:
+
+- **Open a [tool submission](../../issues/new?template=submit-tool.yml)** — we vet and add it (the weekly run picks it up too).
+- **Or send a PR** — see [CONTRIBUTING.md](CONTRIBUTING.md) for the catalog rules and the per-tool workflow pattern.
+
+Every submission makes the catalog better for everyone. 🙌
 
 ## 🌍 Translations
 

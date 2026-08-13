@@ -19,6 +19,7 @@
   <img alt="カタログ数" src="https://img.shields.io/badge/収録ツール-155-8b5cf6?style=flat-square">
   <img alt="主要言語" src="https://img.shields.io/badge/主要言語-Python-3776AB?style=flat-square">
   <img alt="プラットフォーム" src="https://img.shields.io/badge/プラットフォーム-クロスプラットフォーム-475569?style=flat-square">
+  <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
 </p>
 
 ---
@@ -104,6 +105,8 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
 | **合計** | **155** | | **Python(83)** が最多 |
 
+> 🆕 **毎週新しいツールが追加されます。** カタログは毎週自動更新されます。新規追加は[週次ダイジェスト](../../releases)で確認できます。Watch すると通知が届きます。
+
 ## 🎴 カテゴリカード
 
 <table>
@@ -185,6 +188,15 @@ collection-skill/
 - **資格情報は置かない。** トークンは `$GITHUB_TOKEN` または `gh auth token` から取得。
 - **ユーザーフィールドは保持。** 再発見時にも `notes`、`verified`、`favorite`、`workflow_file` は上書きしない。
 - **境界を尊重。** `robots.txt`、レート制限、利用規約を遵守。新ドメインのクロール前に範囲を確認。
+
+## 🤝 ツールを提案する
+
+まだ載っていない優れたスクレイパー・コレクター・agent skill・データセットをご存知ですか？30 秒で提案できます：
+
+- **[ツール提案 issue](../../issues/new?template=submit-tool.yml)を開く** —— 確認のうえ追加します（毎週の自動更新でも拾われます）。
+- **または PR を送る** —— カタログのルールとツール別 workflow のパターンは [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
+
+提案ひとつひとつが、カタログをみんなにとって便利にします。🙌
 
 ## 🌍 多言語版
 
