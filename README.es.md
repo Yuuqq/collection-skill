@@ -16,7 +16,7 @@
 <p align="center">
   <img alt="estado" src="https://img.shields.io/badge/estado-activo-22c55e?style=flat-square">
   <img alt="licencia" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square">
-  <img alt="catálogo" src="https://img.shields.io/badge/herramientas-154-8b5cf6?style=flat-square">
+  <img alt="catálogo" src="https://img.shields.io/badge/herramientas-155-8b5cf6?style=flat-square">
   <img alt="lenguaje" src="https://img.shields.io/badge/lenguaje%20principal-Python-3776AB?style=flat-square">
   <img alt="plataforma" src="https://img.shields.io/badge/plataforma-multiplataforma-475569?style=flat-square">
 </p>
@@ -93,27 +93,27 @@ menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirm
 
 ## 📊 Estado del catálogo
 
-> Generado desde `tool-catalog.json` · última actualización `2026-07-13`
+> Generado desde `tool-catalog.json` · última actualización `2026-08-13`
 
 | Categoría | Cuenta | | Lenguajes principales |
 |-----------|-------:|---|------------------------|
-| 🕸️ web-scraper | 37 | | Python · Java · TypeScript |
-| 🔌 api-collector | 31 | | Python · TypeScript · Java |
-| ⚡ dynamic-scraper | 42 | | Python · TypeScript · HTML |
-| 🤖 agent-skill | 16 | | Python · TypeScript · JavaScript |
+| 🕸️ web-scraper | 36 | | Python · Java · Jupyter Notebook |
+| 🔌 api-collector | 27 | | Python · TypeScript · Go |
+| ⚡ dynamic-scraper | 47 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 17 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
-| **Total** | **154** | | **Python (80)** lidera |
+| **Total** | **155** | | **Python (83)** lidera |
 
 ## 🎴 Tarjetas por categoría
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37 herramientas</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 42 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 36 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 47 herramientas</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="tarjeta api-collector"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 31 herramientas</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 16 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="tarjeta api-collector"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 27 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 17 herramientas</a></sub></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="tarjeta dataset"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28 herramientas</a></sub></td>

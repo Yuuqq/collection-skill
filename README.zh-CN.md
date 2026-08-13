@@ -16,7 +16,7 @@
 <p align="center">
   <img alt="状态" src="https://img.shields.io/badge/状态-运行中-22c55e?style=flat-square">
   <img alt="许可证" src="https://img.shields.io/badge/许可证-MIT-blue?style=flat-square">
-  <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-154-8b5cf6?style=flat-square">
+  <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-155-8b5cf6?style=flat-square">
   <img alt="主要语言" src="https://img.shields.io/badge/主要语言-Python-3776AB?style=flat-square">
   <img alt="平台" src="https://img.shields.io/badge/平台-跨平台-475569?style=flat-square">
 </p>
@@ -93,27 +93,27 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 ## 📊 编目概览
 
-> 由 `tool-catalog.json` 自动生成 · 最近刷新 `2026-07-13`
+> 由 `tool-catalog.json` 自动生成 · 最近刷新 `2026-08-13`
 
 | 类目 | 数量 | | 主要语言 |
 |------|----:|---|----------|
-| 🕸️ web-scraper | 37 | | Python · Java · TypeScript |
-| 🔌 api-collector | 31 | | Python · TypeScript · Java |
-| ⚡ dynamic-scraper | 42 | | Python · TypeScript · HTML |
-| 🤖 agent-skill | 16 | | Python · TypeScript · JavaScript |
+| 🕸️ web-scraper | 36 | | Python · Java · Jupyter Notebook |
+| 🔌 api-collector | 27 | | Python · TypeScript · Go |
+| ⚡ dynamic-scraper | 47 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 17 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
-| **合计** | **154** | | **Python(80)** 居首 |
+| **合计** | **155** | | **Python(83)** 居首 |
 
 ## 🎴 类目卡片
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37 个工具</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper 卡片"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 42 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 36 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper 卡片"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 47 个工具</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector 卡片"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 31 个工具</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill 卡片"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 16 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector 卡片"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 27 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill 卡片"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 17 个工具</a></sub></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset 卡片"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28 个工具</a></sub></td>
