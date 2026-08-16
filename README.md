@@ -2,6 +2,12 @@
   <img src="docs/banner.svg" alt="collection-skill banner" width="100%"/>
 </p>
 
+<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
+<p align="center">
+  <img src="docs/demo.gif" alt="Ask for data → get a tool → it crawls" width="92%"/>
+</p>
+-->
+
 <h3 align="center">
   Discover · Catalog · Match · Crawl
 </h3>

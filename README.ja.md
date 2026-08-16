@@ -2,6 +2,12 @@
   <img src="docs/banner.svg" alt="collection-skill バナー" width="100%"/>
 </p>
 
+<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
+<p align="center">
+  <img src="docs/demo.gif" alt="欲しいデータを言う → ツール選定 → クロール開始" width="92%"/>
+</p>
+-->
+
 <h3 align="center">
   発見 · カタログ化 · 選定 · クロール
 </h3>

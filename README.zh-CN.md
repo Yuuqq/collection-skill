@@ -2,6 +2,12 @@
   <img src="docs/banner.svg" alt="collection-skill 横幅" width="100%"/>
 </p>
 
+<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
+<p align="center">
+  <img src="docs/demo.gif" alt="说一句要抓什么 → 推荐工具 → 开始抓取" width="92%"/>
+</p>
+-->
+
 <h3 align="center">
   发现 · 编目 · 匹配 · 抓取
 </h3>

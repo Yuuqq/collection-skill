@@ -2,6 +2,12 @@
   <img src="docs/banner.svg" alt="banner de collection-skill" width="100%"/>
 </p>
 
+<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
+<p align="center">
+  <img src="docs/demo.gif" alt="Pide los datos → elige la herramienta → empieza a recolectar" width="92%"/>
+</p>
+-->
+
 <h3 align="center">
   Descubrir · Catalogar · Elegir · Recolectar
 </h3>
