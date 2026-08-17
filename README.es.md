@@ -100,14 +100,14 @@ menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirm
 
 ## 📊 Estado del catálogo
 
-> Generado desde `tool-catalog.json` · última actualización `2026-08-13`
+> Generado desde `tool-catalog.json` · última actualización `2026-08-17`
 
 | Categoría | Cuenta | | Lenguajes principales |
 |-----------|-------:|---|------------------------|
-| 🕸️ web-scraper | 36 | | Python · Java · Jupyter Notebook |
+| 🕸️ web-scraper | 37 | | Python · Java · Jupyter Notebook |
 | 🔌 api-collector | 27 | | Python · TypeScript · Go |
-| ⚡ dynamic-scraper | 47 | | Python · TypeScript · HTML |
-| 🤖 agent-skill | 17 | | Python · TypeScript · JavaScript |
+| ⚡ dynamic-scraper | 41 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 22 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
 | **Total** | **155** | | **Python (83)** lidera |
 
@@ -117,12 +117,12 @@ menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirm
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 36 herramientas</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 47 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="tarjeta web-scraper"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="tarjeta dynamic-scraper"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 41 herramientas</a></sub></td>
   </tr>
   <tr>
     <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="tarjeta api-collector"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 27 herramientas</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 17 herramientas</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="tarjeta agent-skill"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 22 herramientas</a></sub></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="tarjeta dataset"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28 herramientas</a></sub></td>
