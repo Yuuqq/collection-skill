@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_refreshed": "2026-08-17T04:14:05.002852+00:00",
+  "last_refreshed": "2026-08-24T04:22:29.599431+00:00",
   "entries": [
     {
       "repo_url": "https://github.com/affaan-m/ECC",
@@ -8,7 +8,7 @@
       "name": "ECC",
       "category": "agent-skill",
       "one_line_description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
-      "stars": 240530,
+      "stars": 242632,
       "language": "JavaScript",
       "topics": [
         "ai-agents",
@@ -20,7 +20,7 @@
         "mcp",
         "productivity"
       ],
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://ecc.tools",
@@ -74,7 +74,7 @@
       "name": "graphify",
       "category": "agent-skill",
       "one_line_description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing...",
-      "stars": 107176,
+      "stars": 109873,
       "language": "Python",
       "topics": [
         "ai-agents",
@@ -88,7 +88,7 @@
         "developer-tools",
         "gemini"
       ],
-      "last_updated": "2026-08-16",
+      "last_updated": "2026-08-20",
       "discovered_at": "2026-07-05",
       "license": "Apache-2.0",
       "homepage": "https://www.graphify.com",
@@ -149,7 +149,7 @@
       "name": "last30days-skill",
       "category": "agent-skill",
       "one_line_description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
-      "stars": 58415,
+      "stars": 59108,
       "language": "Python",
       "topics": [
         "ai-prompts",
@@ -163,15 +163,15 @@
         "instagram",
         "openclaw"
       ],
-      "last_updated": "2026-08-16",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-08-13",
       "license": "MIT",
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "多平台舆情采集",
-        "社交媒体数据汇总",
-        "跨源信息聚合研究"
+        "跨平台舆情调研",
+        "社交媒体趋势分析",
+        "多源信息聚合摘要"
       ],
       "caveats": [],
       "tags": [
@@ -227,7 +227,7 @@
       "name": "LibreChat",
       "category": "agent-skill",
       "one_line_description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching,...",
-      "stars": 42111,
+      "stars": 42380,
       "language": "TypeScript",
       "topics": [
         "ai",
@@ -241,7 +241,7 @@
         "clone",
         "deepseek"
       ],
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-08-24",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://librechat.ai/",
@@ -293,7 +293,7 @@
       "name": "ai-guide",
       "category": "agent-skill",
       "one_line_description": "程序员鱼皮的 AI 资源大全 + Vibe Coding 零基础教程，分享 OpenClaw 保姆级教程、大模型玩法（DeepSeek / GPT / Gemini / Claude / GLM）、最新 AI 资讯、Prompt 提示词大全、AI 知识百科（Agent Skills / RAG / MCP / A2A）、AI 编程教程（Harness Engineering）、AI 工具用法...",
-      "stars": 18638,
+      "stars": 19089,
       "language": "JavaScript",
       "topics": [
         "ai",
@@ -307,7 +307,7 @@
         "gemini",
         "generative-ai"
       ],
-      "last_updated": "2026-08-07",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": null,
       "homepage": "https://ai.codefather.cn",
@@ -325,12 +325,48 @@
       "match_score": 95
     },
     {
+      "repo_url": "https://github.com/NVIDIA/SkillSpector",
+      "full_name": "NVIDIA/SkillSpector",
+      "name": "SkillSpector",
+      "category": "agent-skill",
+      "one_line_description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills b...",
+      "stars": 14917,
+      "language": "Python",
+      "topics": [
+        "agent-security",
+        "agent-skills",
+        "agentic-ai",
+        "ai-security",
+        "claude-code",
+        "mcp",
+        "prompt-injection",
+        "security-scanner",
+        "security-tools",
+        "security-workflow"
+      ],
+      "last_updated": "2026-08-22",
+      "discovered_at": "2026-08-13",
+      "license": "Apache-2.0",
+      "homepage": "https://docs.nvidia.com/skills/scanning-agent-skills",
+      "verified": false,
+      "use_cases": [
+        "LLM agent 工具调用",
+        "MCP 接入"
+      ],
+      "caveats": [],
+      "tags": [],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 100
+    },
+    {
       "repo_url": "https://github.com/yusufkaraaslan/Skill_Seekers",
       "full_name": "yusufkaraaslan/Skill_Seekers",
       "name": "Skill_Seekers",
       "category": "agent-skill",
       "one_line_description": "Convert documentation websites, GitHub repositories, and PDFs into Claude AI skills with automatic conflict detection",
-      "stars": 14772,
+      "stars": 14810,
       "language": "Python",
       "topics": [
         "ai-tools",
@@ -358,42 +394,6 @@
       "tags": [
         "llm-reviewed"
       ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 100
-    },
-    {
-      "repo_url": "https://github.com/NVIDIA/SkillSpector",
-      "full_name": "NVIDIA/SkillSpector",
-      "name": "SkillSpector",
-      "category": "agent-skill",
-      "one_line_description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills b...",
-      "stars": 14686,
-      "language": "Python",
-      "topics": [
-        "agent-security",
-        "agent-skills",
-        "agentic-ai",
-        "ai-security",
-        "claude-code",
-        "mcp",
-        "prompt-injection",
-        "security-scanner",
-        "security-tools",
-        "security-workflow"
-      ],
-      "last_updated": "2026-08-16",
-      "discovered_at": "2026-08-13",
-      "license": "Apache-2.0",
-      "homepage": "https://docs.nvidia.com/skills/scanning-agent-skills",
-      "verified": false,
-      "use_cases": [
-        "LLM agent 工具调用",
-        "MCP 接入"
-      ],
-      "caveats": [],
-      "tags": [],
       "favorite": false,
       "notes": "",
       "workflow_file": null,
@@ -508,7 +508,7 @@
       "name": "Automated-AI-Web-Researcher-Ollama",
       "category": "agent-skill",
       "one_line_description": "A python program that turns an LLM, running on Ollama, into an automated researcher, which will with a single query determine focus areas to investigate, do websearches and scrape content from vari...",
-      "stars": 3007,
+      "stars": 3011,
       "language": "Python",
       "topics": [],
       "last_updated": "2024-12-14",
@@ -517,9 +517,9 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "本地 LLM 网络研究",
-        "自动搜索与内容抓取",
-        "多源网页信息采集"
+        "本地LLM自动网络调研",
+        "多源网页内容抓取",
+        "自动化研究助手"
       ],
       "caveats": [],
       "tags": [
@@ -536,7 +536,7 @@
       "name": "mcp-crawl4ai-rag",
       "category": "agent-skill",
       "one_line_description": "Web Crawling and RAG Capabilities for AI Agents and AI Coding Assistants",
-      "stars": 2239,
+      "stars": 2243,
       "language": "Python",
       "topics": [],
       "last_updated": "2025-07-25",
@@ -545,9 +545,9 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "Agent 网页爬取",
-        "MCP 爬虫集成",
-        "RAG 数据源构建"
+        "AI Agent网页爬取",
+        "MCP服务器网页抓取",
+        "RAG数据源构建"
       ],
       "caveats": [],
       "tags": [
@@ -564,7 +564,7 @@
       "name": "DevDocs",
       "category": "agent-skill",
       "one_line_description": "Completely free, private, UI based Tech Documentation MCP server. Designed for coders and software developers in mind. Easily integrate into Cursor, Windsurf, Cline, Roo Code, Claude Desktop App",
-      "stars": 2101,
+      "stars": 2105,
       "language": "TypeScript",
       "topics": [
         "cline",
@@ -584,9 +584,9 @@
       "homepage": "https://www.cyberagi.ai",
       "verified": false,
       "use_cases": [
-        "Agent 文档检索",
-        "MCP 文档数据源",
-        "Cursor/Claude 集成"
+        "技术文档自动爬取",
+        "MCP文档检索服务",
+        "开发者文档聚合"
       ],
       "caveats": [],
       "tags": [
@@ -596,123 +596,6 @@
       "notes": "",
       "workflow_file": null,
       "match_score": 56
-    },
-    {
-      "repo_url": "https://github.com/ScrapeGraphAI/scrapecraft",
-      "full_name": "ScrapeGraphAI/scrapecraft",
-      "name": "scrapecraft",
-      "category": "agent-skill",
-      "one_line_description": "🤖 AI-powered web scraping editor with visual workflow builder. Build, test & deploy web scrapers using natural language. Powered by ScrapeGraphAI & LangGraph.",
-      "stars": 681,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "automation",
-        "data-extraction",
-        "docker",
-        "fastapi",
-        "hacktoberfest",
-        "langgraph",
-        "python",
-        "react",
-        "scrapegraphai"
-      ],
-      "last_updated": "2025-12-26",
-      "discovered_at": "2026-07-05",
-      "license": "MIT",
-      "homepage": null,
-      "verified": false,
-      "use_cases": [
-        "自然语言生成爬虫",
-        "可视化工作流编排",
-        "AI 辅助数据提取"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 41
-    },
-    {
-      "repo_url": "https://github.com/freddy-schuetz/n8n-claw",
-      "full_name": "freddy-schuetz/n8n-claw",
-      "name": "n8n-claw",
-      "category": "agent-skill",
-      "one_line_description": "OpenClaw-inspired autonomous AI agent built entirely in n8n. Adaptive RAG-powered memory, Skills via MCP templates, Expert Agents with delegated sub-agents, proactive task management, media underst...",
-      "stars": 547,
-      "language": "Shell",
-      "topics": [
-        "agent",
-        "ai",
-        "ai-agent",
-        "ai-agent-framework",
-        "ai-agents",
-        "ai-agents-framework",
-        "crawl4ai",
-        "crawl4ai-scraper",
-        "framework",
-        "mcp"
-      ],
-      "last_updated": "2026-08-13",
-      "discovered_at": "2026-07-05",
-      "license": null,
-      "homepage": "https://n8n-claw.com",
-      "verified": false,
-      "use_cases": [
-        "自主数据采集 agent",
-        "MCP 技能编排",
-        "RAG 驱动信息获取"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 40
-    },
-    {
-      "repo_url": "https://github.com/scraperai/scraperai",
-      "full_name": "scraperai/scraperai",
-      "name": "scraperai",
-      "category": "agent-skill",
-      "one_line_description": "ScraperAI is an open-source, AI-powered tool designed to simplify web scraping for users of all skill levels.",
-      "stars": 467,
-      "language": "HTML",
-      "topics": [
-        "crawler",
-        "langchain",
-        "linkedin",
-        "openai",
-        "parser",
-        "parsing",
-        "python",
-        "requests",
-        "scraper",
-        "scraping"
-      ],
-      "last_updated": "2025-09-18",
-      "discovered_at": "2026-07-05",
-      "license": "GPL-3.0",
-      "homepage": "https://docs.scraper-ai.com",
-      "verified": false,
-      "use_cases": [
-        "AI 辅助网页抓取",
-        "LinkedIn 数据采集",
-        "零代码数据提取"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 39
     },
     {
       "repo_url": "https://github.com/dendrite-systems/dendrite-python-sdk",
@@ -737,9 +620,9 @@
       "homepage": "https://dendrite.systems",
       "verified": false,
       "use_cases": [
-        "Web AI agent 开发",
-        "网站数据自动提取",
-        "RPA 数据获取"
+        "构建网页AI代理",
+        "自动登录并提取数据",
+        "多步骤网页交互"
       ],
       "caveats": [],
       "tags": [
@@ -751,51 +634,12 @@
       "match_score": 33
     },
     {
-      "repo_url": "https://github.com/carlosplanchon/spidercreator",
-      "full_name": "carlosplanchon/spidercreator",
-      "name": "spidercreator",
-      "category": "agent-skill",
-      "one_line_description": "Automated web scraping spider generation using Browser Use and LLMs. Streamline the creation of Playwright-based spiders with minimal manual coding. Ideal for large enterprises with recurring data ...",
-      "stars": 223,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "automation",
-        "browser-use",
-        "crawling",
-        "llm",
-        "low-code",
-        "no-code",
-        "python",
-        "rpa",
-        "scraping"
-      ],
-      "last_updated": "2025-08-25",
-      "discovered_at": "2026-08-13",
-      "license": "AGPL-3.0",
-      "homepage": "http://spidercreator.com/",
-      "verified": false,
-      "use_cases": [
-        "AI 自动生成爬虫",
-        "低代码爬虫创建",
-        "企业级数据采集"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 37
-    },
-    {
       "repo_url": "https://github.com/pathwaycom/pathway",
       "full_name": "pathwaycom/pathway",
       "name": "pathway",
       "category": "api-collector",
       "one_line_description": "Python ETL framework for stream processing, real-time analytics, LLM pipelines, and RAG.",
-      "stars": 62449,
+      "stars": 62398,
       "language": "Python",
       "topics": [
         "batch-processing",
@@ -809,7 +653,7 @@
         "kafka",
         "machine-learning-algorithms"
       ],
-      "last_updated": "2026-08-16",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-07-10",
       "license": "NOASSERTION",
       "homepage": "https://pathway.com",
@@ -871,7 +715,7 @@
       "name": "airbyte",
       "category": "api-collector",
       "one_line_description": "Open-source data movement for ELT pipelines and AI agents — from APIs, databases & files to warehouses, lakes, and AI applications. Both self-hosted and Cloud.",
-      "stars": 21902,
+      "stars": 21943,
       "language": "Python",
       "topics": [
         "bigquery",
@@ -885,15 +729,15 @@
         "elt",
         "etl"
       ],
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-07-05",
       "license": "NOASSERTION",
       "homepage": "https://airbyte.com",
       "verified": false,
       "use_cases": [
         "API 数据同步",
-        "多源数据集成",
-        "ELT 管道数据获取"
+        "数据库到数仓 ETL",
+        "多源数据集成"
       ],
       "caveats": [],
       "tags": [
@@ -935,45 +779,6 @@
       "notes": "B站 API 最完整的文档集合，已归档但仍是重要参考",
       "workflow_file": null,
       "match_score": 90
-    },
-    {
-      "repo_url": "https://github.com/teng-lin/notebooklm-py",
-      "full_name": "teng-lin/notebooklm-py",
-      "name": "notebooklm-py",
-      "category": "api-collector",
-      "one_line_description": "Unofficial Python API and agentic skill for Google Gemini Notebook. Full programmatic access to NotebookLM's features—including capabilities the web UI doesn't expose—via Python, CLI, and AI agents...",
-      "stars": 18744,
-      "language": "Python",
-      "topics": [
-        "agentic-skill",
-        "api",
-        "claude",
-        "claude-skills",
-        "gemini-notebook",
-        "google-notebooklm",
-        "notebooklm",
-        "notebooklm-api",
-        "notebooklm-skill",
-        "openclaw-skills"
-      ],
-      "last_updated": "2026-08-16",
-      "discovered_at": "2026-08-13",
-      "license": "MIT",
-      "homepage": "https://github.com/teng-lin/notebooklm-py",
-      "verified": false,
-      "use_cases": [
-        "调用NotebookLM API获取数据",
-        "Agent集成NotebookLM能力",
-        "批量处理Notebook内容"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 100
     },
     {
       "repo_url": "https://github.com/Evil0ctal/Douyin_TikTok_Download_API",
@@ -1023,7 +828,7 @@
       "name": "mage-ai",
       "category": "api-collector",
       "one_line_description": "🧙 Build, run, and manage data pipelines for integrating and transforming data.",
-      "stars": 8801,
+      "stars": 8810,
       "language": "Python",
       "topics": [
         "artificial-intelligence",
@@ -1062,7 +867,7 @@
       "name": "omniparse",
       "category": "api-collector",
       "one_line_description": "Ingest, parse, and optimize any data format ➡️ from documents to multimedia ➡️ for enhanced compatibility with GenAI frameworks",
-      "stars": 7810,
+      "stars": 7815,
       "language": "Python",
       "topics": [
         "ingestion-api",
@@ -1146,7 +951,7 @@
       "name": "jitsu",
       "category": "api-collector",
       "one_line_description": "Jitsu is an open-source Segment alternative. Fully-scriptable data ingestion engine for modern data teams. Set-up a real-time data pipeline in minutes, not days",
-      "stars": 5032,
+      "stars": 5040,
       "language": "TypeScript",
       "topics": [
         "bigquery",
@@ -1159,7 +964,7 @@
         "redshift",
         "snowflake"
       ],
-      "last_updated": "2026-08-14",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://jitsu.com",
@@ -1222,7 +1027,7 @@
       "name": "devlake",
       "category": "api-collector",
       "one_line_description": "Apache DevLake is an open-source dev data platform to ingest, analyze, and visualize the fragmented data from DevOps tools, extracting insights for engineering excellence, developer experience, and...",
-      "stars": 3100,
+      "stars": 3105,
       "language": "Go",
       "topics": [
         "dashboard-friendly",
@@ -1236,7 +1041,7 @@
         "dora",
         "etl"
       ],
-      "last_updated": "2026-08-16",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-10",
       "license": "Apache-2.0",
       "homepage": "https://devlake.apache.org/",
@@ -1261,7 +1066,7 @@
       "name": "instill-core",
       "category": "api-collector",
       "one_line_description": "🔮 Instill Core is a full-stack AI infrastructure tool for data, model and pipeline orchestration, designed to streamline every aspect of building versatile AI-first applications",
-      "stars": 2319,
+      "stars": 2320,
       "language": "Python",
       "topics": [
         "ai",
@@ -1293,40 +1098,6 @@
       "notes": "",
       "workflow_file": null,
       "match_score": 63
-    },
-    {
-      "repo_url": "https://github.com/apache/gobblin",
-      "full_name": "apache/gobblin",
-      "name": "gobblin",
-      "category": "api-collector",
-      "one_line_description": "A distributed data integration framework that simplifies common aspects of big data integration such as data ingestion, replication, organization and lifecycle management for both streaming and bat...",
-      "stars": 2270,
-      "language": "Java",
-      "topics": [
-        "apache",
-        "data",
-        "ingestion",
-        "management",
-        "replication"
-      ],
-      "last_updated": "2026-07-31",
-      "discovered_at": "2026-07-10",
-      "license": "Apache-2.0",
-      "homepage": "https://gobblin.apache.org/",
-      "verified": false,
-      "use_cases": [
-        "大数据批量摄取",
-        "数据复制与同步",
-        "流批一体数据集成"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 62
     },
     {
       "repo_url": "https://github.com/joyce677/TrendRadar",
@@ -1370,7 +1141,7 @@
       "name": "smarter_csv",
       "category": "api-collector",
       "one_line_description": "Fastest end-to-end CSV ingestion for Ruby (with C acceleration). SmarterCSV auto-detects formats, applies smart defaults, and returns Rails-ready hashes for seamless use with ActiveRecord, Sidekiq,...",
-      "stars": 1550,
+      "stars": 1551,
       "language": "Ruby",
       "topics": [
         "csv",
@@ -1384,7 +1155,7 @@
         "csv-parser",
         "csv-parsing"
       ],
-      "last_updated": "2026-08-10",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-10",
       "license": "MIT",
       "homepage": null,
@@ -1409,7 +1180,7 @@
       "name": "apollo-upload-client",
       "category": "api-collector",
       "one_line_description": "A terminating Apollo Link for Apollo Client that fetches a GraphQL multipart request if the GraphQL variables contain files (by default FileList, File, or Blob instances), or else fetches a regular...",
-      "stars": 1542,
+      "stars": 1541,
       "language": "JavaScript",
       "topics": [
         "apollo",
@@ -1436,45 +1207,6 @@
       "notes": "",
       "workflow_file": null,
       "match_score": 50
-    },
-    {
-      "repo_url": "https://github.com/datazip-inc/olake",
-      "full_name": "datazip-inc/olake",
-      "name": "olake",
-      "category": "api-collector",
-      "one_line_description": "OLake - Fastest Databases, Kafka & S3 Replication to Apache Iceberg with Table optimization (Called OLake Fusion). ⚡ Efficient, quick and scalable data ingestion for real-time analytics.  Supported...",
-      "stars": 1419,
-      "language": "Go",
-      "topics": [
-        "apache-iceberg",
-        "cdc",
-        "change-data-capture",
-        "data-pipeline",
-        "database",
-        "elt",
-        "hacktoberfest",
-        "kafka",
-        "lakehouse",
-        "parquet"
-      ],
-      "last_updated": "2026-08-16",
-      "discovered_at": "2026-07-10",
-      "license": "Apache-2.0",
-      "homepage": "https://olake.io",
-      "verified": false,
-      "use_cases": [
-        "数据库变更数据捕获",
-        "实时数据同步管道",
-        "多源数据湖集成"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 54
     },
     {
       "repo_url": "https://github.com/ShilongLee/Crawler",
@@ -1521,7 +1253,7 @@
       "name": "RustHound",
       "category": "api-collector",
       "one_line_description": "Active Directory data ingestor for BloodHound Legacy written in Rust. 🦀",
-      "stars": 1167,
+      "stars": 1170,
       "language": "Rust",
       "topics": [
         "active-directory",
@@ -1542,8 +1274,8 @@
       "verified": false,
       "use_cases": [
         "AD域数据收集",
-        "安全态势数据采集",
-        "BloodHound数据源"
+        "安全审计数据拉取",
+        "BloodHound数据导入"
       ],
       "caveats": [],
       "tags": [
@@ -1580,11 +1312,14 @@
       "homepage": "https://duckle.org/",
       "verified": false,
       "use_cases": [
-        "REST/GraphQL 数据拉取",
-        "ETL 管道"
+        "多源数据管道构建",
+        "CDC实时数据同步",
+        "数据质量校验"
       ],
       "caveats": [],
-      "tags": [],
+      "tags": [
+        "llm-reviewed"
+      ],
       "favorite": false,
       "notes": "",
       "workflow_file": null,
@@ -1677,7 +1412,7 @@
       "name": "clickhouse-etl",
       "category": "api-collector",
       "one_line_description": "GlassFlow: Open source data ingestion and transformations for ClickHouse pipelines",
-      "stars": 497,
+      "stars": 500,
       "language": "TypeScript",
       "topics": [
         "clickhouse",
@@ -1693,9 +1428,9 @@
       "homepage": "https://glassflow.dev/",
       "verified": false,
       "use_cases": [
-        "实时数据管道",
+        "实时数据摄入管道",
         "ClickHouse数据转换",
-        "Kafka数据摄入"
+        "流式ETL处理"
       ],
       "caveats": [],
       "tags": [
@@ -1704,7 +1439,7 @@
       "favorite": false,
       "notes": "",
       "workflow_file": null,
-      "match_score": 44
+      "match_score": 45
     },
     {
       "repo_url": "https://github.com/yuncaiji/API",
@@ -1752,7 +1487,7 @@
       "name": "Flowfile",
       "category": "api-collector",
       "one_line_description": "Flowfile is a visual ETL tool and Python library combining drag-and-drop workflows with Polars dataframes. Build data pipelines visually, define flows programmatically with a Polars-like API, and e...",
-      "stars": 341,
+      "stars": 344,
       "language": "Python",
       "topics": [
         "drag-and-drop",
@@ -1764,15 +1499,15 @@
         "visual-programming",
         "vue"
       ],
-      "last_updated": "2026-08-16",
+      "last_updated": "2026-08-22",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://edwardvaneechoud.github.io/Flowfile/",
       "verified": false,
       "use_cases": [
-        "可视化ETL工具",
-        "Polars数据处理",
-        "拖拽式数据管道"
+        "可视化数据管道构建",
+        "ETL工作流编排",
+        "数据转换流程设计"
       ],
       "caveats": [],
       "tags": [
@@ -1782,6 +1517,31 @@
       "notes": "",
       "workflow_file": null,
       "match_score": 43
+    },
+    {
+      "repo_url": "https://github.com/jiangranlv/LDA-1B",
+      "full_name": "jiangranlv/LDA-1B",
+      "name": "LDA-1B",
+      "category": "api-collector",
+      "one_line_description": "[RSS 2026] LDA-1B: Scaling Latent Dynamics Action Model via Universal Embodied Data Ingestion",
+      "stars": 305,
+      "language": "Python",
+      "topics": [],
+      "last_updated": "2026-05-26",
+      "discovered_at": "2026-08-24",
+      "license": "NOASSERTION",
+      "homepage": null,
+      "verified": false,
+      "use_cases": [
+        "REST/GraphQL 数据拉取",
+        "ETL 管道"
+      ],
+      "caveats": [],
+      "tags": [],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 23
     },
     {
       "repo_url": "https://github.com/z-mio/ParseHub",
@@ -1833,7 +1593,7 @@
       "name": "awesome-public-datasets",
       "category": "dataset",
       "one_line_description": "A topic-centric list of HQ open datasets.",
-      "stars": 78119,
+      "stars": 78561,
       "language": null,
       "topics": [
         "aaron-swartz",
@@ -1841,7 +1601,7 @@
         "datasets",
         "opendata"
       ],
-      "last_updated": "2026-08-04",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://awesomedataworld.slack.com",
@@ -1870,7 +1630,7 @@
       "name": "awesome-pretrained-chinese-nlp-models",
       "category": "dataset",
       "one_line_description": "Awesome Pretrained Chinese NLP Models，高质量中文预训练模型&大模型&多模态模型&大语言模型集合",
-      "stars": 5579,
+      "stars": 5583,
       "language": "Python",
       "topics": [
         "bert",
@@ -1907,7 +1667,7 @@
       "name": "awesome-industrial-anomaly-detection",
       "category": "dataset",
       "one_line_description": "Paper list and datasets for industrial image anomaly/defect detection (updating). 工业异常/瑕疵检测论文及数据集检索库(持续更新)。",
-      "stars": 3738,
+      "stars": 3745,
       "language": null,
       "topics": [
         "anomaly-detection",
@@ -1919,7 +1679,7 @@
         "industrial-image",
         "medical"
       ],
-      "last_updated": "2026-08-12",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-10",
       "license": null,
       "homepage": "https://link.springer.com/content/pdf/10.1007/s11633-023-1459-z.pdf",
@@ -1941,7 +1701,7 @@
       "name": "awesome-json-datasets",
       "category": "dataset",
       "one_line_description": "A curated list of awesome JSON datasets that don't require authentication.",
-      "stars": 3610,
+      "stars": 3612,
       "language": "JavaScript",
       "topics": [
         "awesome",
@@ -1978,7 +1738,7 @@
       "name": "Awesome-Code-LLM",
       "category": "dataset",
       "one_line_description": "[TMLR] A curated list of language modeling researches for code (and other software engineering activities), plus related datasets.",
-      "stars": 3425,
+      "stars": 3430,
       "language": null,
       "topics": [
         "ai",
@@ -2006,7 +1766,7 @@
       "favorite": false,
       "notes": "",
       "workflow_file": null,
-      "match_score": 69
+      "match_score": 64
     },
     {
       "repo_url": "https://github.com/yunlong10/Awesome-LLMs-for-Video-Understanding",
@@ -2014,7 +1774,7 @@
       "name": "Awesome-LLMs-for-Video-Understanding",
       "category": "dataset",
       "one_line_description": "🔥🔥🔥 [IEEE TCSVT] Latest Papers, Codes and Datasets on Vid-LLMs.",
-      "stars": 3266,
+      "stars": 3271,
       "language": null,
       "topics": [],
       "last_updated": "2026-08-12",
@@ -2040,7 +1800,7 @@
       "name": "awesome-TS-anomaly-detection",
       "category": "dataset",
       "one_line_description": "List of tools & datasets for anomaly detection on time-series data.",
-      "stars": 3167,
+      "stars": 3161,
       "language": null,
       "topics": [
         "anomaly-detection",
@@ -2074,7 +1834,7 @@
       "name": "awesome-virtual-try-on",
       "category": "dataset",
       "one_line_description": "A curated list of awesome research papers, projects, code, dataset, workshops etc. related to virtual try-on.",
-      "stars": 3151,
+      "stars": 3157,
       "language": null,
       "topics": [
         "2d-virtual-try-on",
@@ -2110,7 +1870,7 @@
       "name": "awesome-public-real-time-datasets",
       "category": "dataset",
       "one_line_description": "A list of publicly available datasets with real-time data maintained by the team at bytewax.io",
-      "stars": 2872,
+      "stars": 2887,
       "language": null,
       "topics": [
         "awesome-list",
@@ -2146,7 +1906,7 @@
       "name": "Awesome-AI4Med",
       "category": "dataset",
       "one_line_description": "A curated list of medical LLMs, multimodal systems, datasets, benchmarks, and more. 🏥",
-      "stars": 2862,
+      "stars": 2868,
       "language": null,
       "topics": [
         "awesome-lists",
@@ -2181,7 +1941,7 @@
       "name": "awesome-remote-sensing-change-detection",
       "category": "dataset",
       "one_line_description": "A comprehensive and up-to-date compilation of datasets, tools, methods, review papers, and competitions for remote sensing change detection.",
-      "stars": 2300,
+      "stars": 2306,
       "language": null,
       "topics": [
         "awesome",
@@ -2212,7 +1972,7 @@
       "name": "Awesome-Medical-Dataset",
       "category": "dataset",
       "one_line_description": "Collection of awesome medical dataset resources.",
-      "stars": 2088,
+      "stars": 2094,
       "language": null,
       "topics": [],
       "last_updated": "2025-01-23",
@@ -2240,7 +2000,7 @@
       "name": "Awesome-FL",
       "category": "dataset",
       "one_line_description": "Comprehensive and timely academic information on federated learning (papers, frameworks, datasets, tutorials, workshops)",
-      "stars": 2011,
+      "stars": 2012,
       "language": "Python",
       "topics": [
         "artificial-intelligence",
@@ -2268,7 +2028,7 @@
       "favorite": false,
       "notes": "",
       "workflow_file": null,
-      "match_score": 60
+      "match_score": 55
     },
     {
       "repo_url": "https://github.com/Guang000/Awesome-Dataset-Distillation",
@@ -2276,7 +2036,7 @@
       "name": "Awesome-Dataset-Distillation",
       "category": "dataset",
       "one_line_description": "A curated list of awesome papers on dataset distillation and related applications.",
-      "stars": 1968,
+      "stars": 1969,
       "language": "HTML",
       "topics": [
         "awesome-list",
@@ -2304,7 +2064,7 @@
       "name": "awesome-slam-datasets",
       "category": "dataset",
       "one_line_description": "A curated list of awesome datasets for SLAM",
-      "stars": 1941,
+      "stars": 1944,
       "language": null,
       "topics": [],
       "last_updated": "2024-12-13",
@@ -2324,12 +2084,45 @@
       "match_score": 29
     },
     {
+      "repo_url": "https://github.com/ai4s-research/awesome-ai-for-science",
+      "full_name": "ai4s-research/awesome-ai-for-science",
+      "name": "awesome-ai-for-science",
+      "category": "dataset",
+      "one_line_description": "A curated list of awesome AI tools, libraries, papers, datasets, and frameworks that accelerate scientific discovery — from physics and chemistry to biology, materials, and beyond.",
+      "stars": 1901,
+      "language": null,
+      "topics": [
+        "ai-for-science",
+        "ai4s",
+        "ai4science",
+        "awesome",
+        "awesome-list",
+        "bioinformatics",
+        "scientific-ai"
+      ],
+      "last_updated": "2026-08-23",
+      "discovered_at": "2026-07-10",
+      "license": "MIT",
+      "homepage": "https://github.com/ai-boost/awesome-ai-for-science",
+      "verified": false,
+      "use_cases": [
+        "公开数据集",
+        "资源汇总浏览"
+      ],
+      "caveats": [],
+      "tags": [],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 59
+    },
+    {
       "repo_url": "https://github.com/wq2012/awesome-diarization",
       "full_name": "wq2012/awesome-diarization",
       "name": "awesome-diarization",
       "category": "dataset",
       "one_line_description": "A curated list of awesome Speaker Diarization papers, libraries, datasets, and other resources.",
-      "stars": 1892,
+      "stars": 1891,
       "language": null,
       "topics": [
         "awesome",
@@ -2357,45 +2150,12 @@
       "match_score": 58
     },
     {
-      "repo_url": "https://github.com/ai4s-research/awesome-ai-for-science",
-      "full_name": "ai4s-research/awesome-ai-for-science",
-      "name": "awesome-ai-for-science",
-      "category": "dataset",
-      "one_line_description": "A curated list of awesome AI tools, libraries, papers, datasets, and frameworks that accelerate scientific discovery — from physics and chemistry to biology, materials, and beyond.",
-      "stars": 1877,
-      "language": null,
-      "topics": [
-        "ai-for-science",
-        "ai4s",
-        "ai4science",
-        "awesome",
-        "awesome-list",
-        "bioinformatics",
-        "scientific-ai"
-      ],
-      "last_updated": "2026-08-17",
-      "discovered_at": "2026-07-10",
-      "license": "MIT",
-      "homepage": "https://github.com/ai-boost/awesome-ai-for-science",
-      "verified": false,
-      "use_cases": [
-        "公开数据集",
-        "资源汇总浏览"
-      ],
-      "caveats": [],
-      "tags": [],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 58
-    },
-    {
       "repo_url": "https://github.com/ZHOUYI1023/awesome-radar-perception",
       "full_name": "ZHOUYI1023/awesome-radar-perception",
       "name": "awesome-radar-perception",
       "category": "dataset",
       "one_line_description": "A curated list of radar datasets, detection, tracking and fusion",
-      "stars": 1875,
+      "stars": 1878,
       "language": null,
       "topics": [
         "autonomous-driving",
@@ -2429,7 +2189,7 @@
       "name": "awesome-transit",
       "category": "dataset",
       "one_line_description": "Community list of transit APIs, apps, datasets, research, and software :bus::star2::train::star2::steam_locomotive:",
-      "stars": 1819,
+      "stars": 1820,
       "language": null,
       "topics": [
         "awesome",
@@ -2465,7 +2225,7 @@
       "name": "Awesome-Deepfakes-Detection",
       "category": "dataset",
       "one_line_description": "A list of tools, papers and code related to Deepfake Detection.",
-      "stars": 1814,
+      "stars": 1815,
       "language": null,
       "topics": [
         "awesome",
@@ -2501,7 +2261,7 @@
       "name": "awesome-yolo-object-detection",
       "category": "dataset",
       "one_line_description": "🚀🚀🚀 A collection of some awesome public YOLO object detection series projects and the related object detection datasets.",
-      "stars": 1781,
+      "stars": 1783,
       "language": null,
       "topics": [
         "cuda",
@@ -2538,7 +2298,7 @@
       "name": "awesome-machine-learning-in-compilers",
       "category": "dataset",
       "one_line_description": "Must read research papers and links to tools and datasets that are related to using machine learning for compilers and systems optimisation",
-      "stars": 1685,
+      "stars": 1687,
       "language": null,
       "topics": [
         "artificial-intelligence",
@@ -2574,7 +2334,7 @@
       "name": "Awesome-Jailbreak-on-LLMs",
       "category": "dataset",
       "one_line_description": "Awesome-Jailbreak-on-LLMs is a collection of state-of-the-art, novel, exciting jailbreak methods on LLMs. It contains papers, codes, datasets, evaluations, and analyses.",
-      "stars": 1584,
+      "stars": 1599,
       "language": null,
       "topics": [
         "ai",
@@ -2610,7 +2370,7 @@
       "name": "Awesome-LLMs-Datasets",
       "category": "dataset",
       "one_line_description": "Summarize existing representative LLMs text datasets.",
-      "stars": 1482,
+      "stars": 1480,
       "language": null,
       "topics": [],
       "last_updated": "2026-03-11",
@@ -2636,7 +2396,7 @@
       "name": "awesome-lidar",
       "category": "dataset",
       "one_line_description": "😎 Awesome LIDAR list. The list includes LIDAR manufacturers, datasets, point cloud-processing algorithms, point cloud frameworks and simulators.",
-      "stars": 1321,
+      "stars": 1328,
       "language": null,
       "topics": [
         "3d",
@@ -2672,7 +2432,7 @@
       "name": "awesome-vlm-architectures",
       "category": "dataset",
       "one_line_description": "Curated visual catalog of 155+ vision-language model (VLM/MLLM) architectures: papers, diagrams, training recipes, datasets, and a release timeline for multimodal AI agents.",
-      "stars": 1304,
+      "stars": 1305,
       "language": "Markdown",
       "topics": [
         "ai-agents",
@@ -2709,7 +2469,7 @@
       "name": "Matterport",
       "category": "dataset",
       "one_line_description": "Matterport3D is a pretty awesome dataset for RGB-D machine learning tasks :)",
-      "stars": 1242,
+      "stars": 1245,
       "language": "C++",
       "topics": [
         "3d-reconstruction",
@@ -2773,18 +2533,18 @@
       "name": "crawl4ai",
       "category": "dynamic-scraper",
       "one_line_description": "🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN",
-      "stars": 78400,
+      "stars": 79265,
       "language": "Python",
       "topics": [],
-      "last_updated": "2026-08-15",
+      "last_updated": "2026-08-20",
       "discovered_at": "2026-07-05",
       "license": "Apache-2.0",
       "homepage": "https://crawl4ai.com",
       "verified": false,
       "use_cases": [
-        "LLM/RAG数据抓取",
-        "动态页面内容提取",
-        "Markdown格式输出"
+        "LLM训练数据抓取",
+        "动态网页内容提取",
+        "大规模网站爬取"
       ],
       "caveats": [],
       "tags": [
@@ -2801,7 +2561,7 @@
       "name": "Scrapling",
       "category": "dynamic-scraper",
       "one_line_description": "🕷️ An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl!",
-      "stars": 74621,
+      "stars": 76137,
       "language": "Python",
       "topics": [
         "ai",
@@ -2815,15 +2575,15 @@
         "mcp",
         "mcp-server"
       ],
-      "last_updated": "2026-08-11",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-07-05",
       "license": "BSD-3-Clause",
       "homepage": "https://scrapling.readthedocs.io/en/latest/",
       "verified": false,
       "use_cases": [
-        "自适应反爬抓取",
+        "自适应网页数据提取",
         "大规模网站爬取",
-        "MCP Server数据提取"
+        "反爬对抗抓取"
       ],
       "caveats": [],
       "tags": [
@@ -2943,12 +2703,48 @@
       "match_score": 93
     },
     {
+      "repo_url": "https://github.com/feder-cr/Jobs_Applier_AI_Agent_AIHawk",
+      "full_name": "feder-cr/Jobs_Applier_AI_Agent_AIHawk",
+      "name": "Jobs_Applier_AI_Agent_AIHawk",
+      "category": "dynamic-scraper",
+      "one_line_description": "Open source AI job application bot in Python: browser automation and web scraping to read job postings, then auto-apply with a tailored resume and cover letter for each posting.",
+      "stars": 30236,
+      "language": "Python",
+      "topics": [
+        "anti-bot",
+        "anti-detect-browser",
+        "antidetect",
+        "automation",
+        "bot-detection",
+        "browser-automation",
+        "browser-fingerprinting",
+        "cloudflare",
+        "crawler",
+        "fingerprint"
+      ],
+      "last_updated": "2026-08-19",
+      "discovered_at": "2026-08-24",
+      "license": "AGPL-3.0",
+      "homepage": "https://github.com/feder-cr/Jobs_Applier_AI_Agent_AIHawk/wiki",
+      "verified": false,
+      "use_cases": [
+        "静态 HTML 抓取",
+        "结构化数据抽取"
+      ],
+      "caveats": [],
+      "tags": [],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 100
+    },
+    {
       "repo_url": "https://github.com/apify/crawlee",
       "full_name": "apify/crawlee",
       "name": "crawlee",
       "category": "dynamic-scraper",
       "one_line_description": "Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers. In JavaScript and TypeScript. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, an...",
-      "stars": 25413,
+      "stars": 25479,
       "language": "TypeScript",
       "topics": [
         "apify",
@@ -2962,15 +2758,15 @@
         "npm",
         "playwright"
       ],
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "Apache-2.0",
       "homepage": "https://crawlee.dev",
       "verified": false,
       "use_cases": [
-        "Node.js爬虫开发",
-        "AI/LLM数据提取",
-        "可靠爬虫构建"
+        "构建可靠爬虫",
+        "AI数据提取",
+        "批量下载HTML/PDF/图片"
       ],
       "caveats": [],
       "tags": [
@@ -2987,7 +2783,7 @@
       "name": "maxun",
       "category": "dynamic-scraper",
       "one_line_description": "🔥 The open-source no-code platform for web scraping, crawling, search and AI data extraction • Turn websites into structured APIs in minutes 🔥",
-      "stars": 17160,
+      "stars": 17274,
       "language": "TypeScript",
       "topics": [
         "agents",
@@ -3001,7 +2797,7 @@
         "nocode",
         "playwright"
       ],
-      "last_updated": "2026-08-14",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-07-05",
       "license": "AGPL-3.0",
       "homepage": "https://www.maxun.dev",
@@ -3026,7 +2822,7 @@
       "name": "examples-of-web-crawlers",
       "category": "dynamic-scraper",
       "one_line_description": "一些非常有趣的python爬虫例子,对新手比较友好,主要爬取淘宝、天猫、微信、微信读书、豆瓣、QQ等网站。(Some interesting examples of python crawlers that are friendly to beginners. )",
-      "stars": 14677,
+      "stars": 14676,
       "language": "HTML",
       "topics": [
         "agent-pool",
@@ -3066,7 +2862,7 @@
       "name": "crawlee-python",
       "category": "dynamic-scraper",
       "one_line_description": "Crawlee—A web scraping and browser automation library for Python to build reliable crawlers. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Wo...",
-      "stars": 9432,
+      "stars": 9465,
       "language": "Python",
       "topics": [
         "apify",
@@ -3080,15 +2876,15 @@
         "pip",
         "playwright"
       ],
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "Apache-2.0",
       "homepage": "https://crawlee.dev/python/",
       "verified": false,
       "use_cases": [
-        "构建可靠爬虫",
-        "AI/RAG 数据提取",
-        "批量下载网页文件"
+        "Python爬虫开发",
+        "AI数据提取",
+        "批量网页抓取"
       ],
       "caveats": [],
       "tags": [
@@ -3105,8 +2901,8 @@
       "name": "pydoll",
       "category": "dynamic-scraper",
       "one_line_description": "Pydoll is a library for automating chromium-based browsers without a WebDriver, offering realistic interactions.",
-      "stars": 7026,
-      "language": "Python",
+      "stars": 7043,
+      "language": "HTML",
       "topics": [
         "anti-detection",
         "automation",
@@ -3119,15 +2915,15 @@
         "headless",
         "playwright"
       ],
-      "last_updated": "2026-08-14",
+      "last_updated": "2026-08-22",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://pydoll.tech/",
       "verified": false,
       "use_cases": [
         "反检测浏览器自动化",
-        "动态页面数据采集",
-        "指纹模拟抓取"
+        "指纹伪装抓取",
+        "CDP协议爬虫"
       ],
       "caveats": [],
       "tags": [
@@ -3144,7 +2940,7 @@
       "name": "llm-scraper",
       "category": "dynamic-scraper",
       "one_line_description": "Turn any webpage into structured data using LLMs",
-      "stars": 6911,
+      "stars": 6915,
       "language": "TypeScript",
       "topics": [
         "ai",
@@ -3164,9 +2960,9 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "网页结构化提取",
-        "LLM 驱动数据获取",
-        "非结构化页面解析"
+        "LLM驱动网页解析",
+        "非结构化页面提取",
+        "智能数据抓取"
       ],
       "caveats": [],
       "tags": [
@@ -3215,7 +3011,7 @@
       "name": "Scraperr",
       "category": "dynamic-scraper",
       "one_line_description": "Self-hosted webscraper.",
-      "stars": 4913,
+      "stars": 4912,
       "language": "TypeScript",
       "topics": [
         "docker",
@@ -3235,9 +3031,9 @@
       "homepage": "https://scraperr-docs.pages.dev/",
       "verified": false,
       "use_cases": [
-        "自托管爬虫部署",
-        "K8s 环境爬虫",
-        "动态页面抓取"
+        "自托管爬虫服务",
+        "Kubernetes部署抓取",
+        "网页数据持续采集"
       ],
       "caveats": [],
       "tags": [
@@ -3254,7 +3050,7 @@
       "name": "pipet",
       "category": "dynamic-scraper",
       "one_line_description": "Swiss-army tool for scraping and extracting data from online assets, made for hackers",
-      "stars": 4768,
+      "stars": 4770,
       "language": "Go",
       "topics": [
         "css",
@@ -3271,8 +3067,8 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "在线资产数据提取",
-        "CSS/JSON 路径抓取",
+        "在线资源数据提取",
+        "CSS/JSON选择器抓取",
         "安全研究数据采集"
       ],
       "caveats": [],
@@ -3328,7 +3124,7 @@
       "name": "oxylabs-ai-studio-py",
       "category": "dynamic-scraper",
       "one_line_description": "Structured data gathering from any website using AI-powered scraper, crawler, and browser automation. Scraping and crawling with natural language prompts. Equip your LLM agents with fresh data. AI ...",
-      "stars": 3295,
+      "stars": 3297,
       "language": "Python",
       "topics": [
         "ai-crawler",
@@ -3342,15 +3138,15 @@
         "firecrawl-alternative",
         "proxy-scraper"
       ],
-      "last_updated": "2026-07-08",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": "https://aistudio.oxylabs.io/",
       "verified": false,
       "use_cases": [
         "自然语言驱动抓取",
-        "LLM Agent 数据供给",
-        "结构化数据获取"
+        "LLM Agent数据供给",
+        "AI增强网页采集"
       ],
       "caveats": [],
       "tags": [
@@ -3367,7 +3163,7 @@
       "name": "fingerprint-suite",
       "category": "dynamic-scraper",
       "one_line_description": "Browser fingerprinting tools for anonymizing your scrapers. Developed by Apify.",
-      "stars": 2567,
+      "stars": 2575,
       "language": "TypeScript",
       "topics": [
         "fingerprinting",
@@ -3376,7 +3172,7 @@
         "scraping",
         "typescript"
       ],
-      "last_updated": "2026-08-14",
+      "last_updated": "2026-08-20",
       "discovered_at": "2026-07-05",
       "license": "Apache-2.0",
       "homepage": null,
@@ -3401,7 +3197,7 @@
       "name": "shot-scraper",
       "category": "dynamic-scraper",
       "one_line_description": "A CLI utility for taking screenshots of websites, recording video demos and scraping sites using JavaScript",
-      "stars": 2546,
+      "stars": 2553,
       "language": "Python",
       "topics": [
         "playwright",
@@ -3417,8 +3213,8 @@
       "verified": false,
       "use_cases": [
         "网页截图采集",
-        "JS 渲染页面抓取",
-        "网站变更监控"
+        "JS渲染页面抓取",
+        "视频演示录制"
       ],
       "caveats": [],
       "tags": [
@@ -3559,49 +3355,12 @@
       "match_score": 63
     },
     {
-      "repo_url": "https://github.com/watercrawl/WaterCrawl",
-      "full_name": "watercrawl/WaterCrawl",
-      "name": "WaterCrawl",
-      "category": "dynamic-scraper",
-      "one_line_description": "Transform Web Content into LLM-Ready Data",
-      "stars": 2011,
-      "language": "TypeScript",
-      "topics": [
-        "aicrawler",
-        "crawl4ai",
-        "crawler",
-        "crawling-python",
-        "html2markdown",
-        "llm-crawler",
-        "llm-scraper",
-        "scraper"
-      ],
-      "last_updated": "2026-05-20",
-      "discovered_at": "2026-07-05",
-      "license": "NOASSERTION",
-      "homepage": "https://watercrawl.dev",
-      "verified": false,
-      "use_cases": [
-        "LLM 数据预处理",
-        "HTML 转 Markdown",
-        "网页内容结构化"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 60
-    },
-    {
       "repo_url": "https://github.com/Anakin-Inc/anakin",
       "full_name": "Anakin-Inc/anakin",
       "name": "anakin",
       "category": "dynamic-scraper",
       "one_line_description": "Open-source web scraping API. Turn any website into clean markdown or structured JSON. Anti-detect browser, proxy auto-selection, self-hosted. One command: make up",
-      "stars": 1963,
+      "stars": 2242,
       "language": "Go",
       "topics": [
         "ai",
@@ -3615,15 +3374,91 @@
         "web-crawler",
         "web-scraping"
       ],
-      "last_updated": "2026-08-07",
+      "last_updated": "2026-08-18",
       "discovered_at": "2026-07-09",
       "license": "AGPL-3.0",
       "homepage": "https://anakin.io",
       "verified": false,
       "use_cases": [
-        "网页转 Markdown/JSON",
-        "反检测爬虫",
-        "自托管抓取服务"
+        "网页转Markdown/JSON",
+        "自托管抓取API",
+        "反检测数据采集"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 62
+    },
+    {
+      "repo_url": "https://github.com/watercrawl/WaterCrawl",
+      "full_name": "watercrawl/WaterCrawl",
+      "name": "WaterCrawl",
+      "category": "dynamic-scraper",
+      "one_line_description": "Transform Web Content into LLM-Ready Data",
+      "stars": 2009,
+      "language": "TypeScript",
+      "topics": [
+        "aicrawler",
+        "crawl4ai",
+        "crawler",
+        "crawling-python",
+        "html2markdown",
+        "llm-crawler",
+        "llm-scraper",
+        "scraper"
+      ],
+      "last_updated": "2026-08-17",
+      "discovered_at": "2026-07-05",
+      "license": "NOASSERTION",
+      "homepage": "https://watercrawl.dev",
+      "verified": false,
+      "use_cases": [
+        "LLM数据准备",
+        "HTML转Markdown",
+        "网页内容结构化"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 60
+    },
+    {
+      "repo_url": "https://github.com/feder-cr/invisible_playwright",
+      "full_name": "feder-cr/invisible_playwright",
+      "name": "invisible_playwright",
+      "category": "dynamic-scraper",
+      "one_line_description": "Free antidetect browser stealth for Playwright: undetected headless Firefox fingerprint. Python scraping, recaptcha and bot detection bypass. Open source",
+      "stars": 1925,
+      "language": "Python",
+      "topics": [
+        "anti-bot",
+        "anti-detect-browser",
+        "antidetect",
+        "automation",
+        "bot-detection",
+        "browser-automation",
+        "browser-fingerprinting",
+        "cloudflare",
+        "crawler",
+        "fingerprint"
+      ],
+      "last_updated": "2026-08-23",
+      "discovered_at": "2026-08-24",
+      "license": "MIT",
+      "homepage": null,
+      "verified": false,
+      "use_cases": [
+        "绕过反爬检测",
+        "动态页面隐身抓取",
+        "Cloudflare 绕过"
       ],
       "caveats": [],
       "tags": [
@@ -3635,51 +3470,12 @@
       "match_score": 59
     },
     {
-      "repo_url": "https://github.com/tinyfish-io/agentql",
-      "full_name": "tinyfish-io/agentql",
-      "name": "agentql",
-      "category": "dynamic-scraper",
-      "one_line_description": "AgentQL is a suite of tools for connecting your AI to the web. Featuring a query language and Playwright integrations for interacting with elements and extracting data quickly, precisely, and at sc...",
-      "stars": 1450,
-      "language": "Python",
-      "topics": [
-        "agent",
-        "ai",
-        "aiagent",
-        "automation",
-        "javascript",
-        "playwright",
-        "python",
-        "rpa",
-        "scraping",
-        "web"
-      ],
-      "last_updated": "2026-08-09",
-      "discovered_at": "2026-07-05",
-      "license": "MIT",
-      "homepage": "https://agentql.com",
-      "verified": false,
-      "use_cases": [
-        "结构化网页数据提取",
-        "Playwright 元素查询",
-        "规模化网页抓取"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 54
-    },
-    {
       "repo_url": "https://github.com/rebrowser/rebrowser-patches",
       "full_name": "rebrowser/rebrowser-patches",
       "name": "rebrowser-patches",
       "category": "dynamic-scraper",
       "one_line_description": "Collection of patches for puppeteer and playwright to avoid automation detection and leaks. Helps to avoid Cloudflare and DataDome CAPTCHA pages. Easy to patch/unpatch, can be enabled/disabled on d...",
-      "stars": 1412,
+      "stars": 1417,
       "language": "JavaScript",
       "topics": [
         "automation",
@@ -3744,44 +3540,6 @@
       "match_score": 90
     },
     {
-      "repo_url": "https://github.com/raznem/parsera",
-      "full_name": "raznem/parsera",
-      "name": "parsera",
-      "category": "dynamic-scraper",
-      "one_line_description": "Lightweight library for scraping web-sites with LLMs",
-      "stars": 1348,
-      "language": "Python",
-      "topics": [
-        "ai",
-        "ai-scraping",
-        "data-extraction",
-        "llm",
-        "opensource",
-        "playwright",
-        "python",
-        "scraping",
-        "webscraping"
-      ],
-      "last_updated": "2025-12-17",
-      "discovered_at": "2026-07-05",
-      "license": "GPL-2.0",
-      "homepage": "https://docs.parsera.org",
-      "verified": false,
-      "use_cases": [
-        "LLM 网页解析",
-        "轻量级数据提取",
-        "AI 驱动抓取"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 48
-    },
-    {
       "repo_url": "https://github.com/techwithtim/Price-Tracking-Web-Scraper",
       "full_name": "techwithtim/Price-Tracking-Web-Scraper",
       "name": "Price-Tracking-Web-Scraper",
@@ -3808,45 +3566,6 @@
       "notes": "",
       "workflow_file": null,
       "match_score": 22
-    },
-    {
-      "repo_url": "https://github.com/zohaibbashir/Google-Maps-Scrapper",
-      "full_name": "zohaibbashir/Google-Maps-Scrapper",
-      "name": "Google-Maps-Scrapper",
-      "category": "dynamic-scraper",
-      "one_line_description": "This code is used to perform web scraping and data extraction from Google Maps. It is particularly designed for obtaining information about businesses, including their name, address, website, phone...",
-      "stars": 1275,
-      "language": "Python",
-      "topics": [
-        "chromium",
-        "data",
-        "data-scraping",
-        "google",
-        "google-maps",
-        "google-maps-scraper",
-        "google-maps-scraper-python",
-        "google-maps-scraping",
-        "google-maps-scrapping",
-        "googlemaps"
-      ],
-      "last_updated": "2026-05-18",
-      "discovered_at": "2026-07-05",
-      "license": "MIT",
-      "homepage": "https://google.com/maps",
-      "verified": false,
-      "use_cases": [
-        "抓取商家名称地址电话",
-        "批量采集地图POI数据",
-        "竞品门店信息收集"
-      ],
-      "caveats": [],
-      "tags": [
-        "llm-reviewed"
-      ],
-      "favorite": false,
-      "notes": "",
-      "workflow_file": null,
-      "match_score": 47
     },
     {
       "repo_url": "https://github.com/1061700625/WeChat_Article",
@@ -3922,12 +3641,90 @@
       "match_score": 90
     },
     {
+      "repo_url": "https://github.com/ScrapeGraphAI/scrapecraft",
+      "full_name": "ScrapeGraphAI/scrapecraft",
+      "name": "scrapecraft",
+      "category": "dynamic-scraper",
+      "one_line_description": "🤖 AI-powered web scraping editor with visual workflow builder. Build, test & deploy web scrapers using natural language. Powered by ScrapeGraphAI & LangGraph.",
+      "stars": 682,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "automation",
+        "data-extraction",
+        "docker",
+        "fastapi",
+        "hacktoberfest",
+        "langgraph",
+        "python",
+        "react",
+        "scrapegraphai"
+      ],
+      "last_updated": "2025-12-26",
+      "discovered_at": "2026-07-05",
+      "license": "MIT",
+      "homepage": null,
+      "verified": false,
+      "use_cases": [
+        "可视化爬虫工作流",
+        "自然语言构建爬虫",
+        "AI驱动网页数据提取"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 41
+    },
+    {
+      "repo_url": "https://github.com/freddy-schuetz/n8n-claw",
+      "full_name": "freddy-schuetz/n8n-claw",
+      "name": "n8n-claw",
+      "category": "dynamic-scraper",
+      "one_line_description": "OpenClaw-inspired autonomous AI agent built entirely in n8n. Adaptive RAG-powered memory, Skills via MCP templates, Expert Agents with delegated sub-agents, proactive task management, media underst...",
+      "stars": 548,
+      "language": "Shell",
+      "topics": [
+        "agent",
+        "ai",
+        "ai-agent",
+        "ai-agent-framework",
+        "ai-agents",
+        "ai-agents-framework",
+        "crawl4ai",
+        "crawl4ai-scraper",
+        "framework",
+        "mcp"
+      ],
+      "last_updated": "2026-08-18",
+      "discovered_at": "2026-07-05",
+      "license": null,
+      "homepage": "https://n8n-claw.com",
+      "verified": false,
+      "use_cases": [
+        "自主数据采集 agent",
+        "MCP 技能编排",
+        "RAG 驱动信息获取"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 40
+    },
+    {
       "repo_url": "https://github.com/Xewdy444/CF-Clearance-Scraper",
       "full_name": "Xewdy444/CF-Clearance-Scraper",
       "name": "CF-Clearance-Scraper",
       "category": "dynamic-scraper",
       "one_line_description": "A simple program for scraping Cloudflare clearance (cf_clearance) cookies from websites issuing Cloudflare challenges to visitors",
-      "stars": 510,
+      "stars": 511,
       "language": "Python",
       "topics": [
         "clearance",
@@ -3938,7 +3735,7 @@
         "scraper",
         "undetected-chromedriver"
       ],
-      "last_updated": "2026-07-16",
+      "last_updated": "2026-08-20",
       "discovered_at": "2026-07-05",
       "license": "MIT",
       "homepage": null,
@@ -3958,12 +3755,51 @@
       "match_score": 45
     },
     {
+      "repo_url": "https://github.com/scraperai/scraperai",
+      "full_name": "scraperai/scraperai",
+      "name": "scraperai",
+      "category": "dynamic-scraper",
+      "one_line_description": "ScraperAI is an open-source, AI-powered tool designed to simplify web scraping for users of all skill levels.",
+      "stars": 471,
+      "language": "HTML",
+      "topics": [
+        "crawler",
+        "langchain",
+        "linkedin",
+        "openai",
+        "parser",
+        "parsing",
+        "python",
+        "requests",
+        "scraper",
+        "scraping"
+      ],
+      "last_updated": "2025-09-18",
+      "discovered_at": "2026-07-05",
+      "license": "GPL-3.0",
+      "homepage": "https://docs.scraper-ai.com",
+      "verified": false,
+      "use_cases": [
+        "AI驱动网页抓取",
+        "LinkedIn数据提取",
+        "零代码爬虫工具"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 39
+    },
+    {
       "repo_url": "https://github.com/tiliondev/fortress",
       "full_name": "tiliondev/fortress",
       "name": "fortress",
       "category": "dynamic-scraper",
       "one_line_description": "Stealth Chromium engine that stops scrapers and browser agents from getting blocked, with one line of code change.",
-      "stars": 443,
+      "stars": 460,
       "language": "Python",
       "topics": [
         "anti-bot",
@@ -4002,7 +3838,7 @@
       "name": "sosse",
       "category": "dynamic-scraper",
       "one_line_description": "Selenium Open Source Search Engine & crawler",
-      "stars": 409,
+      "stars": 410,
       "language": "Python",
       "topics": [
         "automation",
@@ -4219,6 +4055,45 @@
       "match_score": 37
     },
     {
+      "repo_url": "https://github.com/carlosplanchon/spidercreator",
+      "full_name": "carlosplanchon/spidercreator",
+      "name": "spidercreator",
+      "category": "dynamic-scraper",
+      "one_line_description": "Automated web scraping spider generation using Browser Use and LLMs. Streamline the creation of Playwright-based spiders with minimal manual coding. Ideal for large enterprises with recurring data ...",
+      "stars": 223,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "automation",
+        "browser-use",
+        "crawling",
+        "llm",
+        "low-code",
+        "no-code",
+        "python",
+        "rpa",
+        "scraping"
+      ],
+      "last_updated": "2025-08-25",
+      "discovered_at": "2026-08-13",
+      "license": "AGPL-3.0",
+      "homepage": "http://spidercreator.com/",
+      "verified": false,
+      "use_cases": [
+        "自动生成动态页面爬虫",
+        "低代码爬虫生成",
+        "企业级批量爬取"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 37
+    },
+    {
       "repo_url": "https://github.com/skindhu/How-To-Scale-Your-Model-CN",
       "full_name": "skindhu/How-To-Scale-Your-Model-CN",
       "name": "How-To-Scale-Your-Model-CN",
@@ -4288,7 +4163,7 @@
       "name": "scrapy",
       "category": "web-scraper",
       "one_line_description": "Scrapy, a fast high-level web crawling & scraping framework for Python.",
-      "stars": 63877,
+      "stars": 64008,
       "language": "Python",
       "topics": [
         "crawler",
@@ -4300,7 +4175,7 @@
         "web-scraping",
         "web-scraping-python"
       ],
-      "last_updated": "2026-08-16",
+      "last_updated": "2026-08-23",
       "discovered_at": "2026-07-05",
       "license": "BSD-3-Clause",
       "homepage": "https://scrapy.org",
@@ -4366,7 +4241,7 @@
       "name": "autoscraper",
       "category": "web-scraper",
       "one_line_description": "A Smart, Automatic, Fast and Lightweight Web Scraper for Python",
-      "stars": 7873,
+      "stars": 7892,
       "language": "Python",
       "topics": [
         "ai",
@@ -4386,9 +4261,9 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "自动提取网页内容",
-        "无需手动写选择器",
-        "轻量级数据采集"
+        "自动抓取网页结构化数据",
+        "快速原型爬虫开发",
+        "批量网页内容提取"
       ],
       "caveats": [],
       "tags": [
@@ -4405,7 +4280,7 @@
       "name": "trafilatura",
       "category": "web-scraper",
       "one_line_description": "Python & Command-line tool to gather text and metadata on the Web: Crawling, scraping, extraction, output as CSV, JSON, HTML, MD, TXT, XML",
-      "stars": 6647,
+      "stars": 6691,
       "language": "Python",
       "topics": [
         "article-extractor",
@@ -4419,7 +4294,7 @@
         "news-crawler",
         "nlp"
       ],
-      "last_updated": "2026-08-15",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "Apache-2.0",
       "homepage": "https://trafilatura.readthedocs.io",
@@ -4525,7 +4400,7 @@
       "name": "grab",
       "category": "web-scraper",
       "one_line_description": "Web Scraping Framework",
-      "stars": 2462,
+      "stars": 2464,
       "language": "Python",
       "topics": [
         "asynchronous",
@@ -4545,9 +4420,9 @@
       "homepage": "https://grab.readthedocs.io",
       "verified": false,
       "use_cases": [
-        "异步网页抓取",
-        "爬虫框架开发",
-        "HTTP 请求自动化"
+        "高性能异步爬虫",
+        "大规模网页抓取",
+        "HTTP批量请求"
       ],
       "caveats": [],
       "tags": [
@@ -4674,7 +4549,7 @@
       "name": "requests-ip-rotator",
       "category": "web-scraper",
       "one_line_description": "A Python library to utilize AWS API Gateway's large IP pool as a proxy to generate pseudo-infinite IPs for web scraping and brute forcing.",
-      "stars": 1674,
+      "stars": 1675,
       "language": "Python",
       "topics": [
         "apigateway",
@@ -4694,9 +4569,9 @@
       "homepage": "https://pypi.org/project/requests-ip-rotator/",
       "verified": false,
       "use_cases": [
-        "爬虫 IP 轮换",
-        "反封锁代理",
-        "大规模数据采集"
+        "爬虫IP轮换",
+        "反封禁代理策略",
+        "大规模抓取"
       ],
       "caveats": [],
       "tags": [
@@ -4713,7 +4588,7 @@
       "name": "thepipe",
       "category": "web-scraper",
       "one_line_description": "Get clean data from tricky documents, powered by vision-language models ⚡",
-      "stars": 1526,
+      "stars": 1524,
       "language": "Python",
       "topics": [
         "document",
@@ -4747,12 +4622,128 @@
       "match_score": 50
     },
     {
+      "repo_url": "https://github.com/tinyfish-io/agentql",
+      "full_name": "tinyfish-io/agentql",
+      "name": "agentql",
+      "category": "web-scraper",
+      "one_line_description": "AgentQL is a suite of tools for connecting your AI to the web. Featuring a query language and Playwright integrations for interacting with elements and extracting data quickly, precisely, and at sc...",
+      "stars": 1453,
+      "language": "Python",
+      "topics": [
+        "agent",
+        "ai",
+        "aiagent",
+        "automation",
+        "javascript",
+        "playwright",
+        "python",
+        "rpa",
+        "scraping",
+        "web"
+      ],
+      "last_updated": "2026-08-17",
+      "discovered_at": "2026-07-05",
+      "license": "MIT",
+      "homepage": "https://agentql.com",
+      "verified": false,
+      "use_cases": [
+        "结构化网页数据提取",
+        "Playwright 元素查询",
+        "规模化网页抓取"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 54
+    },
+    {
+      "repo_url": "https://github.com/raznem/parsera",
+      "full_name": "raznem/parsera",
+      "name": "parsera",
+      "category": "web-scraper",
+      "one_line_description": "Lightweight library for scraping web-sites with LLMs",
+      "stars": 1350,
+      "language": "Python",
+      "topics": [
+        "ai",
+        "ai-scraping",
+        "data-extraction",
+        "llm",
+        "opensource",
+        "playwright",
+        "python",
+        "scraping",
+        "webscraping"
+      ],
+      "last_updated": "2025-12-17",
+      "discovered_at": "2026-07-05",
+      "license": "GPL-2.0",
+      "homepage": "https://docs.parsera.org",
+      "verified": false,
+      "use_cases": [
+        "LLM 网页解析",
+        "轻量级数据提取",
+        "AI 驱动抓取"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 48
+    },
+    {
+      "repo_url": "https://github.com/zohaibbashir/Google-Maps-Scrapper",
+      "full_name": "zohaibbashir/Google-Maps-Scrapper",
+      "name": "Google-Maps-Scrapper",
+      "category": "web-scraper",
+      "one_line_description": "This code is used to perform web scraping and data extraction from Google Maps. It is particularly designed for obtaining information about businesses, including their name, address, website, phone...",
+      "stars": 1281,
+      "language": "Python",
+      "topics": [
+        "chromium",
+        "data",
+        "data-scraping",
+        "google",
+        "google-maps",
+        "google-maps-scraper",
+        "google-maps-scraper-python",
+        "google-maps-scraping",
+        "google-maps-scrapping",
+        "googlemaps"
+      ],
+      "last_updated": "2026-05-18",
+      "discovered_at": "2026-07-05",
+      "license": "MIT",
+      "homepage": "https://google.com/maps",
+      "verified": false,
+      "use_cases": [
+        "抓取商家名称地址电话",
+        "批量采集地图POI数据",
+        "竞品门店信息收集"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 47
+    },
+    {
       "repo_url": "https://github.com/scrapfly/scrapfly-scrapers",
       "full_name": "scrapfly/scrapfly-scrapers",
       "name": "scrapfly-scrapers",
       "category": "web-scraper",
       "one_line_description": "Scalable Python web scraping scripts for +40 popular domains",
-      "stars": 1062,
+      "stars": 1065,
       "language": "Python",
       "topics": [
         "antibot",
@@ -4766,15 +4757,15 @@
         "python",
         "python-scraper"
       ],
-      "last_updated": "2026-08-14",
+      "last_updated": "2026-08-21",
       "discovered_at": "2026-07-05",
       "license": "NOASSERTION",
       "homepage": "https://scrapfly.io",
       "verified": false,
       "use_cases": [
-        "多站点批量采集",
-        "反爬绕过方案",
-        "规模化数据抓取"
+        "多站点批量抓取",
+        "反爬绕过",
+        "生产级爬虫脚本"
       ],
       "caveats": [],
       "tags": [
@@ -4791,7 +4782,7 @@
       "name": "hrequests",
       "category": "web-scraper",
       "one_line_description": "🚀 Web scraping for humans",
-      "stars": 1019,
+      "stars": 1023,
       "language": "Python",
       "topics": [
         "forhumans",
@@ -4811,9 +4802,9 @@
       "homepage": "https://daijro.gitbook.io/hrequests/",
       "verified": false,
       "use_cases": [
-        "简化网页抓取",
-        "动态页面采集",
-        "HTTP 请求封装"
+        "简化爬虫开发",
+        "HTTP批量请求",
+        "轻量级网页抓取"
       ],
       "caveats": [],
       "tags": [
@@ -4863,7 +4854,7 @@
       "name": "dorks-eye",
       "category": "web-scraper",
       "one_line_description": "Dorks Eye Google Hacking Dork Scraping and Searching Script. Dorks Eye is a script I made in python 3. With this tool, you can easily find Google Dorks. Dork Eye collects potentially vulnerable web...",
-      "stars": 901,
+      "stars": 908,
       "language": "Python",
       "topics": [],
       "last_updated": "2026-08-02",
@@ -4872,8 +4863,8 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "Google Dork 采集",
-        "安全漏洞搜索",
+        "Google Dork采集",
+        "安全漏洞信息搜索",
         "搜索引擎结果抓取"
       ],
       "caveats": [],
@@ -4981,9 +4972,48 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "分布式爬虫开发",
-        "高并发数据采集",
-        "爬虫中间件集成"
+        "通用爬虫框架",
+        "分布式爬取",
+        "Java爬虫开发"
+      ],
+      "caveats": [],
+      "tags": [
+        "llm-reviewed"
+      ],
+      "favorite": false,
+      "notes": "",
+      "workflow_file": null,
+      "match_score": 46
+    },
+    {
+      "repo_url": "https://github.com/AnonCatalyst/Ominis-OSINT",
+      "full_name": "AnonCatalyst/Ominis-OSINT",
+      "name": "Ominis-OSINT",
+      "category": "web-scraper",
+      "one_line_description": "This Python application is an OSINT (Open Source Intelligence) tool called \"Ominis OSINT - Web Hunter.\" It performs online information gathering by querying Google for search results related to a u...",
+      "stars": 611,
+      "language": "Python",
+      "topics": [
+        "finder",
+        "forensics",
+        "information-gathering",
+        "infosec",
+        "offsec",
+        "ominis-osint",
+        "osint",
+        "osint-resources",
+        "osint-tools",
+        "python"
+      ],
+      "last_updated": "2026-08-23",
+      "discovered_at": "2026-08-24",
+      "license": "MIT",
+      "homepage": "https://pypi.org/project/Ominis-OSINT/",
+      "verified": false,
+      "use_cases": [
+        "网络信息收集",
+        "OSINT 调查",
+        "搜索数据批量获取"
       ],
       "caveats": [],
       "tags": [
@@ -5000,7 +5030,7 @@
       "name": "Stealth-Requests",
       "category": "web-scraper",
       "one_line_description": "Undetected web-scraping & seamless HTML parsing in Python!",
-      "stars": 557,
+      "stars": 559,
       "language": "Python",
       "topics": [
         "data",
@@ -5020,9 +5050,9 @@
       "homepage": "https://pypi.org/project/stealth-requests/",
       "verified": false,
       "use_cases": [
-        "防检测网页抓取",
-        "HTML 解析",
-        "反爬绕过"
+        "反检测网页抓取",
+        "隐蔽HTTP请求",
+        "HTML解析提取"
       ],
       "caveats": [],
       "tags": [
@@ -5095,8 +5125,8 @@
       "verified": false,
       "use_cases": [
         "半自动内容提取",
-        "CSS 选择器提取",
-        "网页数据抓取"
+        "CSS选择器爬虫",
+        "网页数据抽取"
       ],
       "caveats": [],
       "tags": [
@@ -5135,7 +5165,7 @@
       "use_cases": [
         "快速编写静态页面爬虫",
         "异步批量抓取",
-        "装饰器式爬虫开发"
+        "CSS 选择器数据提取"
       ],
       "caveats": [],
       "tags": [
@@ -5171,9 +5201,9 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "高性能大规模爬虫",
+        "高性能大规模爬取",
         "Go 生态爬虫开发",
-        "分布式抓取"
+        "分布式 Spider 部署"
       ],
       "caveats": [],
       "tags": [
@@ -5190,7 +5220,7 @@
       "name": "syno-videoinfo-plugin",
       "category": "web-scraper",
       "one_line_description": "A simple web scraping plugin for Synology Video Station",
-      "stars": 344,
+      "stars": 345,
       "language": "Python",
       "topics": [
         "python",
@@ -5204,9 +5234,9 @@
       "homepage": null,
       "verified": false,
       "use_cases": [
-        "视频元数据抓取",
+        "视频元数据自动采集",
         "NAS 媒体库信息补全",
-        "影视信息自动采集"
+        "影视信息抓取"
       ],
       "caveats": [],
       "tags": [
@@ -5215,7 +5245,7 @@
       "favorite": false,
       "notes": "",
       "workflow_file": null,
-      "match_score": 40
+      "match_score": 35
     },
     {
       "repo_url": "https://github.com/YuleZhang/JDComment_Spider",
@@ -5254,7 +5284,7 @@
       "name": "webscraping_python_selenium",
       "category": "web-scraper",
       "one_line_description": "Web Scraping Javascript generated pages using Python and Selenium",
-      "stars": 267,
+      "stars": 268,
       "language": "Python",
       "topics": [],
       "last_updated": "2026-04-21",
@@ -5331,9 +5361,9 @@
       "homepage": "https://jamesturk.github.io/spatula/",
       "verified": false,
       "use_cases": [
-        "可维护爬虫开发",
+        "构建可维护爬虫",
         "结构化数据提取",
-        "Python 爬虫库"
+        "爬虫代码组织"
       ],
       "caveats": [],
       "tags": [
@@ -5387,7 +5417,7 @@
       "name": "scraper",
       "category": "web-scraper",
       "one_line_description": "Web scraper for scraping, tracking and visualizing prices of products on various websites.",
-      "stars": 242,
+      "stars": 243,
       "language": "Python",
       "topics": [
         "amazon",
@@ -5409,7 +5439,7 @@
       "use_cases": [
         "商品价格监控",
         "电商价格对比",
-        "多站点价格采集"
+        "价格趋势可视化"
       ],
       "caveats": [],
       "tags": [
@@ -5426,7 +5456,7 @@
       "name": "search-result-scraper-markdown",
       "category": "web-scraper",
       "one_line_description": "This project provides a powerful web scraping tool that fetches search results and converts them into Markdown format using FastAPI, SearXNG, and Browserless. It includes the capability to use prox...",
-      "stars": 239,
+      "stars": 240,
       "language": "Python",
       "topics": [
         "ai",
@@ -5447,7 +5477,7 @@
       "verified": false,
       "use_cases": [
         "搜索结果批量采集",
-        "AI 数据源准备",
+        "AI 数据源获取",
         "搜索数据转 Markdown"
       ],
       "caveats": [],
@@ -5465,7 +5495,7 @@
       "name": "WebScrapper",
       "category": "web-scraper",
       "one_line_description": "Powerful Telegram bot for web scraping and crawling. Fast, easy, and loved by thousands!",
-      "stars": 210,
+      "stars": 211,
       "language": "Python",
       "topics": [
         "beautifulsoup4",
@@ -5486,7 +5516,7 @@
       "verified": false,
       "use_cases": [
         "Telegram 交互式爬虫",
-        "即时网页数据查询",
+        "快速网页内容抓取",
         "轻量级爬取任务"
       ],
       "caveats": [],

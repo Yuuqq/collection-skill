@@ -22,7 +22,7 @@
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/status-active-22c55e?style=flat-square">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square">
-  <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-155-8b5cf6?style=flat-square">
+  <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-156-8b5cf6?style=flat-square">
   <img alt="language" src="https://img.shields.io/badge/top%20lang-Python-3776AB?style=flat-square">
   <img alt="platform" src="https://img.shields.io/badge/platform-cross--platform-475569?style=flat-square">
   <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
@@ -100,16 +100,16 @@ category menu  →  tool card  →  load workflow  →  confirm scope  →  craw
 
 ## 📊 Catalog snapshot
 
-> Auto-generated from `tool-catalog.json` · last refreshed `2026-08-17`
+> Auto-generated from `tool-catalog.json` · last refreshed `2026-08-24`
 
 | Category | Count | | Top languages |
 |----------|------:|---|---------------|
-| 🕸️ web-scraper | 37 | | Python · Java · Jupyter Notebook |
-| 🔌 api-collector | 27 | | Python · TypeScript · Go |
-| ⚡ dynamic-scraper | 41 | | Python · TypeScript · HTML |
-| 🤖 agent-skill | 22 | | Python · TypeScript · JavaScript |
+| 🕸️ web-scraper | 41 | | Python · Java · Jupyter Notebook |
+| 🔌 api-collector | 25 | | Python · TypeScript · JavaScript |
+| ⚡ dynamic-scraper | 44 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 18 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 28 | | Python · HTML · JavaScript |
-| **Total** | **155** | | **Python (83)** leads |
+| **Total** | **156** | | **Python (85)** leads |
 
 > 🆕 **New tools land every week.** The catalog auto-refreshes weekly — see what's newly added in each [weekly digest](../../releases). **Watch** the repo to get notified.
 
@@ -117,12 +117,12 @@ category menu  →  tool card  →  load workflow  →  confirm scope  →  craw
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper card"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 37 tools</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper card"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 41 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper card"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 41 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper card"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 44 tools</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector card"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 27 tools</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill card"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 22 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector card"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 25 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill card"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 18 tools</a></sub></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset card"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 28 tools</a></sub></td>
