@@ -1,6 +1,6 @@
 ---
 name: collection-skill
-description: Recommends the right data-collection / scraping / crawling tool and actually fetches the data you need. Use whenever the user wants to collect, scrape, crawl, fetch, or pull data from a website, an API, or a platform (抓取 / 采集 / 爬取 / 爬虫 / 抓数据 / 获取数据 / 数据采集 / 数据抓取). Also use to browse a curated catalog of scrapers, crawlers, API collectors, MCP/agent skills, and public datasets, or to discover/refresh that catalog from GitHub.
+description: Chinese-social-media crawler picker — recommends the right tool and actually fetches posts, notes, comments, and reviews from 小红书 / 抖音 / 哔哩哔哩 / 微博 / 知乎 / 贴吧 / 快手 / 微信公众号 / 视频号 / 淘宝 / 京东 / 拼多多 / 豆瓣 / 雪球 (xhs, douyin, bilibili, weibo, zhihu, tieba, kuaishou, wechat, taobao, jd, pdd, douban, xueqiu), behind a compliance gate. Also covers general scraping of any website or API (抓取 / 采集 / 爬取 / 爬虫 / 抓数据 / 获取数据 / 数据采集 / scrape / crawl / collect data). Maintains a curated, auto-refreshed catalog of scrapers, API collectors, MCP/agent skills, and datasets.
 ---
 
 <essential_principles>
@@ -10,6 +10,11 @@ This skill has two halves that share one knowledge base:
 - **Match & crawl** — when the user names a target, recommend tools from the catalog via progressive disclosure, then start crawling.
 
 Always check the catalog freshness before recommending. If stale (> N days), surface that to the user.
+</principle>
+<principle name="Chinese-Social First">
+The headline use case is Chinese social/e-commerce platforms. When the user names one (小红书/抖音/B站/微博/知乎/贴吧/快手/公众号/视频号/淘宝/京东/拼多多/豆瓣/雪球…), route **directly** to the fast path (`workflows/match-and-crawl.md` Step 3B) via `references/chinese-social-platforms.md` — never show the generic category menu. The general five-category catalog is the fallback breadth for every other target.
+
+**Compliance gate (non-negotiable):** most Chinese-platform tools are reverse-engineered and violate platform ToS. Always show the compliance reminder before tool selection, re-confirm intent before the first network request, never help evade anti-bot / risk-control systems, and default to low request rates + anonymized personal data.
 </principle>
 
 <principle name="Progressive Disclosure">
@@ -50,10 +55,11 @@ Discovery *can* use an LLM (`LLM_API_KEY`) to judge candidates and reassign cate
 <intake>
 On invocation, determine the user's intent. Most messages fall into one of:
 
-1. **"Find/discover tools"** — refresh the catalog, search GitHub for collection-class repos.
-2. **"I want to scrape/fetch X"** — match a tool from the catalog to a target and start crawling.
-3. **"Browse the catalog"** — show categories / tool cards without scraping.
-4. **"Schedule / automate"** — set up the periodic refresh hook.
+1. **"抓小红书 / 抖音评论 / 微博热搜…" (Chinese platform named)** — fast path: platform-tagged shortlist + compliance gate, straight to a tool.
+2. **"Find/discover tools"** — refresh the catalog, search GitHub for collection-class repos.
+3. **"I want to scrape/fetch X" (any other target)** — match a tool from the catalog to a target and start crawling.
+4. **"Browse the catalog"** — show categories / tool cards without scraping.
+5. **"Schedule / automate"** — set up the periodic refresh hook.
 
 If the message is ambiguous, ask **one** minimal question to disambiguate, then route.
 </intake>
@@ -63,6 +69,7 @@ Map user intent to a workflow:
 
 | User says | Route to |
 |-----------|----------|
+| any Chinese platform name (小红书/抖音/B站/微博/淘宝…, full alias table in `references/chinese-social-platforms.md`) | `workflows/match-and-crawl.md` (Step 3B fast path) |
 | "refresh", "discover", "find new repos", "update catalog" | `workflows/discover-catalog.md` |
 | "I want to scrape/fetch/collect X", "抓 X 数据" | `workflows/match-and-crawl.md` |
 | "show me the catalog", "what tools do we have", "browse" | `workflows/browse-catalog.md` |
@@ -78,6 +85,7 @@ All in `references/`:
 - `tool-catalog.md` — human-readable catalog (generated, do not edit)
 - `discovery-log.md` — append-only run log
 - `category-keywords.md` — search keywords + GitHub topic mapping per category
+- `chinese-social-platforms.md` — canonical platform registry: alias → key map, tag conventions, per-platform crawl characteristics (load whenever a Chinese platform is suspected)
 - `repo-schema.md` — the JSON schema every catalog entry must satisfy
 - `rate-limit-guide.md` — GitHub API quota, pagination, retry/backoff patterns
 - `llm-judging.md` — optional LLM judge mechanism + safe-pruning guards (load only when running/tuning discovery)
@@ -99,6 +107,7 @@ Existing per-tool workflows: `tools/scrapy.md`, `tools/playwright.md`, `tools/cr
 
 <success_criteria>
 This skill works when:
+- A Chinese-platform request hits the fast path and sees the compliance reminder before any tool card.
 - The catalog contains real, recently-verified entries across all five categories.
 - `tool-catalog.md` and `tool-catalog.json` stay in sync (MD regenerated from JSON).
 - A user asking "I want to scrape X" gets a category menu → tool card → workflow in ≤ 2 turns.

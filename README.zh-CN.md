@@ -23,6 +23,7 @@
   <img alt="状态" src="https://img.shields.io/badge/状态-运行中-22c55e?style=flat-square">
   <img alt="许可证" src="https://img.shields.io/badge/许可证-MIT-blue?style=flat-square">
   <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-156-8b5cf6?style=flat-square">
+  <img alt="覆盖平台" src="https://img.shields.io/badge/覆盖平台-19-e11d48?style=flat-square">
   <img alt="主要语言" src="https://img.shields.io/badge/主要语言-Python-3776AB?style=flat-square">
   <img alt="平台" src="https://img.shields.io/badge/平台-跨平台-475569?style=flat-square">
   <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
@@ -30,12 +31,13 @@
 
 ---
 
-> 一个**发现并编目 GitHub 上采集 / 爬虫类 skill 与仓库**的技能,在你需要抓取数据时**渐进式推荐合适工具并开始抓取**。
+> 一个**中文社媒采集**技能:说出平台名 —— 小红书、抖音、B站、微博、知乎、贴吧、快手、公众号、淘宝、京东…… —— 即可拿到定向工具 shortlist(前置合规提醒)并开始抓取。背后是自动刷新的采集工具编目(爬虫 / API 采集器 / MCP 技能 / 数据集),同样覆盖任意网站与 API。
 
 ## ✨ 特性一览
 
 | | |
 |:--|:--|
+| 🇨🇳 **中文社媒快速通道** | 说出平台名(小红书 / 抖音 / 微博 / 公众号 / 淘宝…)→ 定向 shortlist + 合规提醒,不走通用菜单。 |
 | 🗂️ **精选编目** | 自动发现 GitHub 仓库,归入**五大标准类目**,自动去重并打分排序。 |
 | 🧭 **渐进式披露** | 绝不一股脑倾倒整个编目 —— 类目菜单 → 工具卡片 → 工作流 → 抓取。 |
 | 🗃️ **JSON 为本** | `tool-catalog.json` 是唯一权威数据源,Markdown 视图由脚本生成。 |
@@ -92,11 +94,21 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 | 📚 `dataset` | 公开数据集、awesome 列表 | 精选资源仓库 |
 
 ### ② 匹配 & 抓取
-当你说*"我想抓 X"* 时,它会走一条短漏斗:
+直接点名中文平台(小红书/抖音/微博/公众号/淘宝…)会跳过通用漏斗:
+
+```
+平台定向 shortlist  →  合规提醒  →  加载工作流  →  抓取
+```
+
+其他目标则走短漏斗:
 
 ```
 类目菜单  →  工具卡片  →  加载工作流  →  确认范围  →  抓取
 ```
+
+## ⚠️ 合规声明
+
+编目中的多数中文平台爬虫为社区逆向实现,违反平台服务条款(ToS)。本技能收录它们是为了研究 / 已授权场景的信息可见性,并在展示任何工具前强制出现合规提醒。**使用者须自行承担合规责任**:遵守 ToS 与 `robots.txt`,控制请求频率,仅在具合法依据时采集个人数据(尽量匿名化),未经授权不得将抓取内容商用。本技能不会协助规避任何反爬 / 风控机制。
 
 ## 📊 编目概览
 
@@ -135,6 +147,7 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 | 你说 | 会发生什么 |
 |------|-----------|
+| `抓小红书笔记` / `抖音评论` / `微博热搜` | 快速通道:平台定向 shortlist + 合规门 → 抓取 |
 | `refresh` / `discover` / `刷新` | 运行 `scripts/discover_repos.py`,更新编目 |
 | `我想抓 X` / `抓 X 数据` | 渐进式披露 → 类目菜单 → 卡片 → 抓取 |
 | `browse` / `看看编目` | 只读的类目/卡片视图 |

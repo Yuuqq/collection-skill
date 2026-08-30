@@ -6,6 +6,14 @@ The skill uses it to:
 2. Tag catalog entries with the right `platform` sub-tag.
 3. Group entries in the catalog's 🇨🇳 aggregation block.
 
+## ⚠️ Compliance (read first)
+
+Most tools in this space are community reverse-engineered and violate the platforms' Terms of Service. This skill catalogs them with the risk surfaced, not hidden:
+
+- The compliance reminder in `match-and-crawl.md` Step 3B is **mandatory** before any tool selection, and intent is re-confirmed before the first network request (Step 5).
+- The skill **never** assists with evading anti-bot / risk-control systems.
+- Default posture: research / authorized use, low request rates, public data, anonymized personal data.
+
 ## Tag Convention
 
 Every Chinese-social catalog entry gets:
@@ -53,7 +61,7 @@ This is a **soft tag** — entries keep their primary `category` (usually `dynam
 | `douban` | 豆瓣 | `豆瓣`, `douban`, `豆瓣小组`, `豆瓣书影音`, `豆瓣评论`, `豆瓣电影` | 书影音/小组，API 较友好 |
 | `jike` | 即刻 | `即刻`, `jike`, `即刻app` | 年轻社区，工具少 |
 | `xueqiu` | 雪球 | `雪球`, `xueqiu`, `雪球财经`, `雪球讨论`, `股票评论` | 金融数据，API 逆向 |
-| ` juejin` | 掘金 | `掘金`, `juejin`, `掘金文章` | 技术社区，API 较开放 |
+| `juejin` | 掘金 | `掘金`, `juejin`, `掘金文章` | 技术社区，API 较开放 |
 | `v2ex` | V2EX | `v2ex`, `v2ex 节点`, `v2ex 帖子` | 技术社区，API 开放 |
 | `xiaohongshu-variant` | 啡呵/得物等 | `得物`, `dewu`, `闲鱼`, `xianyu` | 二级电商/社区 |
 

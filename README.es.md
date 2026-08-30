@@ -23,6 +23,7 @@
   <img alt="estado" src="https://img.shields.io/badge/estado-activo-22c55e?style=flat-square">
   <img alt="licencia" src="https://img.shields.io/badge/licencia-MIT-blue?style=flat-square">
   <img alt="catálogo" src="https://img.shields.io/badge/herramientas-156-8b5cf6?style=flat-square">
+  <img alt="plataformas" src="https://img.shields.io/badge/plataformas%20cubiertas-19-e11d48?style=flat-square">
   <img alt="lenguaje" src="https://img.shields.io/badge/lenguaje%20principal-Python-3776AB?style=flat-square">
   <img alt="plataforma" src="https://img.shields.io/badge/plataforma-multiplataforma-475569?style=flat-square">
   <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
@@ -30,12 +31,13 @@
 
 ---
 
-> Una skill que **descubre y cataloga skills y repositorios de recolección/scraping en GitHub**, y luego **recomienda progresivamente la herramienta adecuada y comienza a extraer** cuando quieres obtener datos.
+> Una skill que elige —y ejecuta— el crawler adecuado para **plataformas sociales y de e-commerce chinas** (小红书, 抖音, bilibili, 微博, 知乎, 快手, 淘宝 …), tras una puerta de cumplimiento. Respaldada por un catálogo auto-actualizado de scrapers, colectores de API, skills MCP y datasets que también cubre cualquier otro sitio o API.
 
 ## ✨ Características
 
 | | |
 |:--|:--|
+| 🇨🇳 **Vía rápida china** | Nombra una plataforma (小红书 / 抖音 / 微博 / 淘宝…) → lista corta + recordatorio de cumplimiento, sin menú genérico. |
 | 🗂️ **Catálogo curado** | Descubre repos en GitHub y los clasifica en **cinco categorías canónicas**, con deduplicación y puntuación. |
 | 🧭 **Divulgación progresiva** | Nunca vuelca todo el catálogo — menú de categorías → ficha de herramienta → flujo → recolección. |
 | 🗃️ **JSON como fuente** | `tool-catalog.json` es la única fuente de verdad; la vista Markdown se genera. |
@@ -92,11 +94,21 @@ Escanea GitHub periódicamente en busca de repos *de recolección*, en cinco cat
 | 📚 `dataset` | Datasets públicos, awesome-lists | repos curados de recursos |
 
 ### ② Elegir & Recolectar
-Cuando dices *"quiero extraer X"*, recorre un embudo corto:
+Nombrar una plataforma china (小红书/抖音/微博/公众号/淘宝…) salta el embudo:
+
+```
+lista corta por plataforma  →  recordatorio de cumplimiento  →  cargar flujo  →  recolectar
+```
+
+Para cualquier otro objetivo, decir *"quiero extraer X"* recorre un embudo corto:
 
 ```
 menú de categorías  →  ficha de herramienta  →  cargar flujo  →  confirmar alcance  →  recolectar
 ```
+
+## ⚠️ Cumplimiento
+
+La mayoría de los crawlers de plataformas chinas del catálogo son implementaciones comunitarias de ingeniería inversa y violan los términos de servicio de esas plataformas. Esta skill los cataloga con fines de investigación / uso autorizado y siempre muestra un recordatorio de cumplimiento antes de seleccionar una herramienta. **El uso lícito es tu responsabilidad**: respeta los ToS y `robots.txt`, mantén tasas de petición bajas, recoge datos personales solo con base legal (anonimiza cuando puedas) y no reutilices contenido capturado comercialmente sin autorización. La skill no ayuda a evadir sistemas anti-bot ni de control de riesgo.
 
 ## 📊 Estado del catálogo
 
@@ -135,6 +147,7 @@ Invoca la skill y habla con naturalidad:
 
 | Dices | Qué ocurre |
 |-------|------------|
+| `小红书 notas` / `抖音 comentarios` / `weibo hot search` | Vía rápida: lista corta por plataforma + puerta de cumplimiento → recolección |
 | `refresh` / `discover` / `actualizar` | Ejecuta `scripts/discover_repos.py`, actualiza el catálogo |
 | `quiero extraer X` / `抓 X 数据` | Divulgación progresiva → categorías → ficha → recolección |
 | `browse` / `ver catálogo` | Vista de solo lectura de categorías/fichas |

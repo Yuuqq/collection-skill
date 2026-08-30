@@ -23,6 +23,7 @@
   <img alt="状態" src="https://img.shields.io/badge/状態-稼働中-22c55e?style=flat-square">
   <img alt="ライセンス" src="https://img.shields.io/badge/ライセンス-MIT-blue?style=flat-square">
   <img alt="カタログ数" src="https://img.shields.io/badge/収録ツール-156-8b5cf6?style=flat-square">
+  <img alt="対象プラットフォーム" src="https://img.shields.io/badge/対象プラットフォーム-19-e11d48?style=flat-square">
   <img alt="主要言語" src="https://img.shields.io/badge/主要言語-Python-3776AB?style=flat-square">
   <img alt="プラットフォーム" src="https://img.shields.io/badge/プラットフォーム-クロスプラットフォーム-475569?style=flat-square">
   <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
@@ -30,12 +31,13 @@
 
 ---
 
-> GitHub 上の**収集・スクレイピング系スキルとリポジトリを発見・カタログ化**し、データを取得したいときに**最適なツールを段階的に提案してクロールを開始**するスキル。
+> **中国 SNS・EC プラットフォーム向けクローラー選定**スキル —— 小紅書 / 抖音 / bilibili / 微博 / 知乎 / 快手 / 公衆号 / 淘宝 などプラットフォーム名を言うだけで、コンプライアンスゲート付きの絞り込み候補からクロールを開始。背後には自動更新の収集ツールカタログ(スクレイパー / API コレクター / MCP スキル / データセット)があり、他のあらゆるサイト・API もカバー。
 
 ## ✨ 主な特徴
 
 | | |
 |:--|:--|
+| 🇨🇳 **中国 SNS 高速パス** | プラットフォーム名(小紅書 / 抖音 / 微博 / 淘宝…)→ 絞り込み候補 + コンプライアンスリマインダー。汎用メニューは省略。 |
 | 🗂️ **厳選カタログ** | GitHub リポジトリを**5つの標準カテゴリ**に自動分類、重複排除とスコアリング付き。 |
 | 🧭 **段階的開示** | カタログを一括表示しない —— カテゴリメニュー → ツールカード → ワークフロー → クロール。 |
 | 🗃️ **JSON が正** | `tool-catalog.json` が唯一の信頼源、Markdown ビューは自動生成。 |
@@ -92,11 +94,21 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 | 📚 `dataset` | 公開データセット、awesome リスト | 厳選リソースリポジトリ |
 
 ### ② 選定 & クロール
-「*X をスクレイプしたい*」と言うと、短いファネルを進みます:
+中国系プラットフォーム名(小紅書/抖音/微博/公衆号/淘宝…)を挙げるとファネルを短絡します:
+
+```
+プラットフォーム絞り込み  →  コンプライアンスリマインダー  →  ワークフロー読込  →  クロール
+```
+
+その他の対象は「*X をスクレイプしたい*」から短いファネルへ:
 
 ```
 カテゴリメニュー  →  ツールカード  →  ワークフロー読込  →  範囲確認  →  クロール
 ```
+
+## ⚠️ コンプライアンス
+
+カタログ内の中国系プラットフォーム向けクローラーの多くはコミュニティによるリバースエンジニアリング実装で、プラットフォームの利用規約に違反します。本スキルは研究・許諾済み利用のための情報として収録し、ツール提示の前に必ずコンプライアンスリマインダーを表示します。**合法的な利用は使用者の責任**です:利用規約と `robots.txt` を守り、リクエスト率を抑え、個人データは正当な根拠のある場合のみ収集(可能な限り匿名化)し、無断での商用利用はしないでください。本スキルはアンチボット・リスクコントロール機構の回避を支援しません。
 
 ## 📊 カタログ概況
 
@@ -135,6 +147,7 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 | 言うこと | 何が起きるか |
 |---------|--------------|
+| `小紅書ノート` / `抖音コメント` / `weibo hot search` | 高速パス:プラットフォーム絞り込み + コンプライアンスゲート → クロール |
 | `refresh` / `discover` / `更新` | `scripts/discover_repos.py` を実行、カタログを更新 |
 | `X をスクレイプしたい` / `抓 X 数据` | 段階的開示 → カテゴリ → カード → クロール |
 | `browse` / `カタログを見せて` | 読み取り専用のカテゴリ/カード表示 |

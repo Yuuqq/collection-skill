@@ -43,7 +43,9 @@ Tune these freely — they directly control discovery quality. After editing, ru
 - `javascript rendering scraper`
 - `browser automation scrape`
 - `小红书 爬虫` (Chinese platform scrapers — Xiaohongshu)
+- `小红书 采集` (Xiaohongshu collection)
 - `抖音 爬虫` (Douyin)
+- `抖音 采集` (Douyin collection)
 - `bilibili 爬虫` (Bilibili)
 - `微博 爬虫` (Weibo)
 - `知乎 爬虫` (Zhihu)

@@ -23,6 +23,7 @@
   <img alt="status" src="https://img.shields.io/badge/status-active-22c55e?style=flat-square">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square">
   <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-156-8b5cf6?style=flat-square">
+  <img alt="platforms" src="https://img.shields.io/badge/platforms%20covered-19-e11d48?style=flat-square">
   <img alt="language" src="https://img.shields.io/badge/top%20lang-Python-3776AB?style=flat-square">
   <img alt="platform" src="https://img.shields.io/badge/platform-cross--platform-475569?style=flat-square">
   <a href="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml"><img alt="Discover &amp; Catalog" src="https://github.com/Yuuqq/collection-skill/actions/workflows/discover.yml/badge.svg"></a>
@@ -30,12 +31,13 @@
 
 ---
 
-> A skill that **discovers and catalogs collection/scraping-related skills and repos on GitHub**, then **progressively recommends the right tool and begins crawling** when you want to fetch data.
+> A skill that picks — and runs — the right crawler for **Chinese social & e-commerce platforms** (小红书, 抖音, B站, 微博, 知乎, 贴吧, 快手, 公众号, 淘宝, 京东 …), behind a compliance gate. Backed by an auto-refreshed catalog of scrapers, API collectors, MCP/agent skills, and datasets that also covers any other website or API.
 
 ## ✨ Highlights
 
 | | |
 |:--|:--|
+| 🇨🇳 **Chinese-social fast path** | Name a platform (小红书 / 抖音 / 微博 / 公众号 / 淘宝 …) → targeted shortlist + compliance reminder, no generic menu. |
 | 🗂️ **Curated catalog** | Auto-discovers GitHub repos into **five canonical categories**, deduped and score-ranked. |
 | 🧭 **Progressive disclosure** | Never dumps the whole catalog — category menu → tool card → workflow → crawl. |
 | 🗃️ **JSON is canonical** | `tool-catalog.json` is the single source of truth; the markdown view is generated. |
@@ -92,11 +94,21 @@ Periodically scans GitHub for *collection-class* repos across five categories:
 | 📚 `dataset` | Public datasets, awesome-lists | curated resource repos |
 
 ### ② Match & Crawl
-When you say *"I want to scrape X"*, it walks a short funnel:
+Naming a Chinese platform (小红书/抖音/微博/公众号/淘宝…) short-circuits the funnel:
+
+```
+platform-tagged shortlist  →  compliance reminder  →  load workflow  →  crawl
+```
+
+For any other target, saying *"I want to scrape X"* walks a short funnel:
 
 ```
 category menu  →  tool card  →  load workflow  →  confirm scope  →  crawl
 ```
+
+## ⚠️ Compliance
+
+Most Chinese-platform crawlers in the catalog are community reverse-engineered and violate the platforms' Terms of Service. This skill keeps them cataloged for research / authorized-use awareness, and always shows a compliance reminder before tool selection. **You are responsible for lawful use**: respect ToS and `robots.txt`, keep request rates low, collect personal data only with a lawful basis (anonymize when possible), and don't reuse captured content commercially without authorization. The skill will not help evade anti-bot or risk-control systems.
 
 ## 📊 Catalog snapshot
 
@@ -135,6 +147,7 @@ Invoke the skill, then speak naturally:
 
 | You say | What happens |
 |---------|--------------|
+| `抓小红书笔记` / `抖音评论` / `weibo hot search` | Fast path: platform-tagged shortlist + compliance gate → crawl |
 | `refresh` / `discover` | Runs `scripts/discover_repos.py`, updates the catalog |
 | `I want to scrape X` / `抓 X 数据` | Progressive disclosure → category menu → card → crawl |
 | `browse` / `show catalog` | Read-only category/card view |

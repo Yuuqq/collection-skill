@@ -19,6 +19,8 @@
 
 _32 个工具_  ·  查看 `references/chinese-social-platforms.md` 获取平台关键词完整映射
 
+> ⚠️ 多数工具为社区逆向实现，可能违反平台 ToS —— 使用前先过 `workflows/match-and-crawl.md` Step 3B 的合规门。
+
 **平台覆盖：**
 
 | 平台群 | 平台 | 工具数 | 多平台覆盖 |
