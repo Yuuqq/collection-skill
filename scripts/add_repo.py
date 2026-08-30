@@ -23,6 +23,8 @@ from pathlib import Path
 import urllib.request
 import urllib.error
 
+import validate_catalog  # sibling module: schema gate (references/repo-schema.md)
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 SKILL_ROOT = SCRIPT_DIR.parent
 CATALOG = SKILL_ROOT / "references" / "tool-catalog.json"
@@ -148,6 +150,11 @@ def main() -> int:
 
     # --- Build entry ---
     entry = repo_to_entry(repo, args.category, args.notes, args.favorite)
+    # Schema autofill: description/use_cases are required (repo-schema.md R5/R7)
+    if not entry["one_line_description"].strip():
+        entry["one_line_description"] = f"{entry['full_name']} — no repo description; see its README"
+    if not entry["use_cases"]:
+        entry["use_cases"] = [entry["one_line_description"][:80]]
     if args.use_cases:
         entry["use_cases"] = args.use_cases[:3]
     if args.caveats:
@@ -188,6 +195,14 @@ def main() -> int:
     doc["entries"] = list(by_url.values())
     doc["entries"].sort(key=lambda e: (e["category"], -e.get("stars", 0)))
     doc["last_refreshed"] = datetime.now(timezone.utc).isoformat()
+
+    # --- Schema gate: refuse to write a non-conforming entry ---
+    issues = validate_catalog.validate_entry(by_url[url])
+    if issues:
+        for _sev, rule, msg in issues:
+            sys.stderr.write(f"[schema] [{rule}] {msg}\n")
+        sys.exit("entry violates repo-schema.md — fix the arguments and retry")
+
     CATALOG.write_text(json.dumps(doc, ensure_ascii=False, indent=2),
                        encoding="utf-8")
     print(f"{action}: {entry['full_name']}  ⭐{entry['stars']:,}  [{entry['category']}]")

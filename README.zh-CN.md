@@ -196,6 +196,7 @@ collection-skill/
 ├── scripts/
 │   ├── discover_repos.py          # GitHub 搜索 → 编目
 │   ├── build_catalog_md.py        # JSON → Markdown
+│   ├── validate_catalog.py        # 写入前执行 schema 校验
 │   └── add_repo.py                # 手动添加条目
 └── docs/                          # README 横幅与图示
 ```

@@ -344,7 +344,7 @@ High-speed downloader for multiple platforms
 #### 哔哩哔哩 (`platform:bilibili`) — 2 个工具
 ### 🔧 bilibili-API-collect  ⭐20,262  2026-01-30 ✓
 
-_no description_
+哔哩哔哩 API 文档集合：视频/评论/用户/直播/弹幕等接口文档与调用说明
 
 
 ✅ **适合：** B站全量 API 文档与接口清单 · B站逆向参考
@@ -1954,7 +1954,7 @@ Open-source data movement for ELT pipelines and AI agents — from APIs, databas
 
 ### 🔧 bilibili-API-collect  ⭐20,262  2026-01-30 ✓
 
-_no description_
+哔哩哔哩 API 文档集合：视频/评论/用户/直播/弹幕等接口文档与调用说明
 
 
 ✅ **适合：** B站全量 API 文档与接口清单 · B站逆向参考

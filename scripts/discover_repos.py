@@ -41,6 +41,8 @@ try:
 except ImportError:  # pragma: no cover
     sys.exit("This script requires urllib (stdlib).")
 
+import validate_catalog  # sibling module: schema gate (references/repo-schema.md)
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
@@ -670,6 +672,11 @@ def main() -> int:
         _write_last_run(effective_mode, auth_mode, triggered_by,
                         new_total, upd_total, skip_total, dry_run=True)
         return 0
+
+    # --- Schema gate: validate/repair/drop before writing (repo-schema.md) ---
+    catalog_doc, schema_warnings = validate_catalog.enforce(catalog_doc)
+    for w in schema_warnings:
+        sys.stderr.write(f"[schema] {w}\n")
 
     args.catalog.write_text(
         json.dumps(catalog_doc, ensure_ascii=False, indent=2),

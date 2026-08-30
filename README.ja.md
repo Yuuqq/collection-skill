@@ -196,6 +196,7 @@ collection-skill/
 ├── scripts/
 │   ├── discover_repos.py          # GitHub 検索 → カタログ
 │   ├── build_catalog_md.py        # JSON → Markdown
+│   ├── validate_catalog.py        # 書き込み前にスキーマ検証
 │   └── add_repo.py                # 手動でエントリを追加
 └── docs/                          # README のバナーと図
 ```

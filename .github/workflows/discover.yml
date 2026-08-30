@@ -50,6 +50,9 @@ jobs:
       - name: Build markdown catalog (JSON -> MD)
         run: python scripts/build_catalog_md.py
 
+      - name: Validate catalog schema (references/repo-schema.md)
+        run: python scripts/validate_catalog.py
+
       - name: Sync README statistics (badge / snapshot / captions)
         run: python scripts/sync_readme_stats.py
 

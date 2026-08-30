@@ -1,6 +1,6 @@
 # Catalog Entry Schema
 
-Every entry in `tool-catalog.json` MUST conform to this. The discovery script validates before writing.
+Every entry in `tool-catalog.json` MUST conform to this. `scripts/validate_catalog.py` enforces it: discovery repairs/drops non-conforming entries before writing, `add_repo.py` refuses to write a non-conforming entry, and CI runs the validator as a gate.
 
 ## Top-Level Shape
 
@@ -46,6 +46,16 @@ Every entry in `tool-catalog.json` MUST conform to this. The discovery script va
 5. `use_cases` has 1-3 entries, each ≤ 80 chars.
 6. No duplicate `repo_url` across entries.
 7. `one_line_description` is required and ≤ 200 chars.
+
+### Enforcement (`scripts/validate_catalog.py`)
+
+- Truncatable flaws are auto-repaired first: `use_cases` clipped to 3 × 80 chars, `one_line_description` to 200, bad `stars` coerced to 0.
+- Non-protected entries that still fail a rule are **dropped** (logged as `[schema]` warnings).
+- Protected entries (`verified` / `favorite` / `manually-added`) are never dropped — they stay with the flaw surfaced. Same protection-first philosophy as the LLM-judging guards.
+- Duplicate `repo_url` (rule 6) is always repaired keep-first, matching discovery's by-url dedupe.
+
+CLI: `python scripts/validate_catalog.py` — exit 0 when valid (warnings allowed), 1 on errors.
+Tests: `python -m unittest discover -s tests` (18 cases).
 
 ## Discovery Defaults
 
@@ -94,4 +104,4 @@ The LLM judge can reassign an entry's `category` and rewrite its `use_cases`; **
 
 ## Schema Versioning
 
-If we add fields, bump `schema_version`. The discovery script runs a migrator forward; old fields are kept for one version then dropped.
+If we add fields, bump `schema_version`. There is no automated migrator (yet) — a version bump must update `validate_catalog.py`'s rule set in the same change, so entries missing newly-required fields get flagged. Old fields are kept for one version, then dropped by hand.

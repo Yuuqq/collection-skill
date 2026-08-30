@@ -196,6 +196,7 @@ collection-skill/
 ├── scripts/
 │   ├── discover_repos.py          # Búsqueda en GitHub → catálogo
 │   ├── build_catalog_md.py        # JSON → Markdown
+│   ├── validate_catalog.py        # Validar repo-schema.md antes de escribir
 │   └── add_repo.py                # Añadir una entrada manualmente
 └── docs/                          # Banners y diagramas del README
 ```
