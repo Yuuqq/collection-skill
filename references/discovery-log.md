@@ -9,6 +9,26 @@ Append-only history of catalog refresh runs. Newest at top.
 ---
 
 
+## 2026-09-07 08:28 (UTC)
+
+- **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
+- **New entries:** 24
+- **Updated entries:** 126
+- **Skipped (dedupe / filtered):** 1259
+- **LLM excluded:** 0
+- **Effective judging mode:** llm
+- **Errors:** see stderr above
+- **Auth mode:** token
+- **Triggered by:** scheduled (GitHub Actions)
+
+- **Per category:**
+  - `web-scraper`: +1 new, ~29 updated, 139 filtered
+  - `dynamic-scraper`: +1 new, ~29 updated, 531 filtered
+  - `api-collector`: +2 new, ~28 updated, 513 filtered
+  - `agent-skill`: +17 new, ~13 updated, 21 filtered
+  - `dataset`: +3 new, ~27 updated, 55 filtered
+
+
 ## 2026-08-31 10:22 (UTC)
 
 - **Categories:** web-scraper, dynamic-scraper, api-collector, agent-skill, dataset
