@@ -471,10 +471,10 @@ def _is_protected(entry: dict) -> bool:
 # even if the model mistakenly labels it off-topic (guards against an
 # unreliable judge nuking legitimate tools).
 COLLECTION_SIGNALS = (
-    "scrap", "crawl", "collect", "fetch", "playwright", "selenium", "puppeteer",
-    "browser", "mcp", "api client", "dataset", "rss", "extract", "parser",
-    "spider", "scraper", "爬虫", "采集", "抓取", "爬取", "数据", "web agent",
-    "web automation", "agentql", "etl", "sdk", "knowledge graph",
+    "scrap", "crawl", "collect", "playwright", "selenium", "puppeteer",
+    "mcp", "dataset", "rss", "extract",
+    "spider", "scraper", "爬虫", "采集", "抓取", "爬取", "web agent",
+    "web automation", "agentql", "etl", "knowledge graph",
     "knowledge-graph", "graphrag", "open data",
 )
 
@@ -633,29 +633,42 @@ def main() -> int:
                 decisions = {}
             for entry in to_judge:
                 if _is_protected(entry):
-                    continue
-                d = decisions.get(entry["repo_url"])
-                if not d:
-                    continue
-                if not d.get("include", True):
-                    if _has_collection_signal(entry):
-                        # LLM misjudged a clearly collection-related repo;
-                        # keep it regardless.
-                        sys.stderr.write(
-                            f"[llm] kept (collection signal) {entry['full_name']}\n")
-                        continue
-                    by_url.pop(entry["repo_url"], None)
-                    llm_excluded += 1
-                    continue
-                cat = d.get("category")
-                if isinstance(cat, str) and cat in ALL_CATEGORIES:
-                    entry["category"] = cat
-                uc = d.get("use_cases") or []
-                if uc:
-                    entry["use_cases"] = [str(u) for u in uc][:3]
-                tags = entry.setdefault("tags", [])
-                if "llm-reviewed" not in tags:
-                    tags.append("llm-reviewed")
+                    pass
+                else:
+                    d = decisions.get(entry["repo_url"])
+                    if not d:
+                        pass
+                    elif not d.get("include", True):
+                        if _has_collection_signal(entry):
+                            # LLM misjudged a clearly collection-related repo;
+                            # keep it regardless.
+                            sys.stderr.write(
+                                f"[llm] kept (collection signal) {entry['full_name']}\n")
+                        else:
+                            by_url.pop(entry["repo_url"], None)
+                            llm_excluded += 1
+                            continue
+                    else:
+                        cat = d.get("category")
+                        if isinstance(cat, str) and cat in ALL_CATEGORIES:
+                            entry["category"] = cat
+                        uc = d.get("use_cases") or []
+                        if uc:
+                            entry["use_cases"] = [str(u) for u in uc][:3]
+                        tags = entry.setdefault("tags", [])
+                        if "llm-reviewed" not in tags:
+                            tags.append("llm-reviewed")
+
+    # Deterministic agent-skill cleanup
+    to_remove = []
+    for url, entry in by_url.items():
+        if entry.get("category") == "agent-skill":
+            if not _is_protected(entry) and not _has_collection_signal(entry):
+                to_remove.append(url)
+
+    for url in to_remove:
+        by_url.pop(url, None)
+        llm_excluded += 1
 
     # --- Write back ---
     catalog_doc["entries"] = list(by_url.values())
