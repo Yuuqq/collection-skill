@@ -125,22 +125,29 @@ def main() -> int:
     return 0
 
 
+import html
+
+def _escape_md(text: str) -> str:
+    """Escape potentially dangerous HTML/Markdown characters."""
+    return html.escape(str(text))
+
 def _render_card(e: dict) -> str:
     stars = e.get("stars", 0)
     last = e.get("last_updated", "—")
     verified = " ✓" if e.get("verified") else ""
     fav = " ⭐" if e.get("favorite") else ""
-    desc = e.get("one_line_description") or "_no description_"
-    use_cases = e.get("use_cases", []) or []
-    caveats = e.get("caveats", []) or []
-    tags = e.get("tags", []) or []
-    topics = e.get("topics", []) or []
-    license_ = e.get("license") or "—"
-    lang = e.get("language") or "—"
-    notes = e.get("notes") or ""
+    desc = _escape_md(e.get("one_line_description") or "_no description_")
+    use_cases = [_escape_md(u) for u in (e.get("use_cases", []) or [])]
+    caveats = [_escape_md(c) for c in (e.get("caveats", []) or [])]
+    tags = [_escape_md(t) for t in (e.get("tags", []) or [])]
+    topics = [_escape_md(t) for t in (e.get("topics", []) or [])]
+    license_ = _escape_md(e.get("license") or "—")
+    lang = _escape_md(e.get("language") or "—")
+    notes = _escape_md(e.get("notes") or "")
+    name = _escape_md(e.get("name", "?"))
 
     lines: list[str] = []
-    lines.append(f"### 🔧 {e.get('name', '?')}  ⭐{stars:,}  {last}{verified}{fav}\n")
+    lines.append(f"### 🔧 {name}  ⭐{stars:,}  {last}{verified}{fav}\n")
     lines.append(f"{desc}\n\n")
     if use_cases:
         lines.append("✅ **适合：** " + " · ".join(use_cases) + "\n")
