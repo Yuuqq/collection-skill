@@ -3,8 +3,8 @@
   "auth_mode": "token",
   "triggered_by": "scheduled (GitHub Actions)",
   "dry_run": false,
-  "new": 24,
-  "updated": 126,
-  "skipped": 1259,
-  "finished_at": "2026-09-07T08:28:07.186062+00:00"
+  "new": 1,
+  "updated": 149,
+  "skipped": 1264,
+  "finished_at": "2026-09-14T09:04:42.447474+00:00"
 }

@@ -22,7 +22,7 @@
 <p align="center">
   <img alt="状态" src="https://img.shields.io/badge/状态-运行中-22c55e?style=flat-square">
   <img alt="许可证" src="https://img.shields.io/badge/许可证-MIT-blue?style=flat-square">
-  <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-204-8b5cf6?style=flat-square">
+  <img alt="编目工具" src="https://img.shields.io/badge/已编目工具-205-8b5cf6?style=flat-square">
   <img alt="覆盖平台" src="https://img.shields.io/badge/覆盖平台-19-e11d48?style=flat-square">
   <img alt="主要语言" src="https://img.shields.io/badge/主要语言-Python-3776AB?style=flat-square">
   <img alt="平台" src="https://img.shields.io/badge/平台-跨平台-475569?style=flat-square">
@@ -112,16 +112,16 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 ## 📊 编目概览
 
-> 由 `tool-catalog.json` 自动生成 · 最近刷新 `2026-09-07`
+> 由 `tool-catalog.json` 自动生成 · 最近刷新 `2026-09-14`
 
 | 类目 | 数量 | | 主要语言 |
 |------|----:|---|----------|
-| 🕸️ web-scraper | 45 | | Python · Java · Jupyter Notebook |
+| 🕸️ web-scraper | 46 | | Python · Java · Jupyter Notebook |
 | 🔌 api-collector | 44 | | Python · Java · Go |
 | ⚡ dynamic-scraper | 47 | | Python · TypeScript · HTML |
 | 🤖 agent-skill | 37 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 31 | | Python · HTML · JavaScript |
-| **合计** | **204** | | **Python(106)** 居首 |
+| **合计** | **205** | | **Python(106)** 居首 |
 
 > 🆕 **每周都有新工具入库。** 目录每周自动刷新 —— 在[每周 digest](../../releases) 中查看本周新增。Watch 本仓库即可收到通知。
 
@@ -129,7 +129,7 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 45 个工具</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper 卡片"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 46 个工具</a></sub></td>
     <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper 卡片"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 47 个工具</a></sub></td>
   </tr>
   <tr>
