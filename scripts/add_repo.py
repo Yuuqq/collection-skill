@@ -6,10 +6,8 @@ Use this for repos you want in the catalog that discovery missed
 GitHub API, merges into catalog, preserves user-set fields if it exists.
 
 Usage:
-    python scripts/add_repo.py owner/name [--category CAT] [--notes "..." [--favorite]
+    python scripts/add_repo.py owner/name --category CAT [--notes "..."] [--favorite]
 
-If --category omitted, you'll be prompted to choose from the five canonical
-categories (still scriptable — see error output).
 """
 from __future__ import annotations
 
@@ -177,6 +175,16 @@ def main() -> int:
         for k in PRESERVED_FIELDS:
             if k in existing:
                 merged[k] = existing[k]
+
+        # Merge tags properly (existing tags + new tags)
+        if "tags" in existing:
+            merged_tags = set(existing.get("tags", []))
+            if args.platform:
+                merged_tags.update(["chinese-social", f"platform:{args.platform}"])
+            merged_tags.update(args.extra_tags)
+            merged_tags.add("manually-added")
+            merged["tags"] = sorted(list(merged_tags))
+
         # CLI overrides
         if args.notes:
             merged["notes"] = args.notes

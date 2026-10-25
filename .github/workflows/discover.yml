@@ -33,17 +33,18 @@ jobs:
 
       - name: Discover repos (GitHub search + LLM judging)
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL || 'https://token.sensenova.cn/v1' }}
           LLM_MODEL: ${{ secrets.LLM_MODEL || 'sensenova-6.7-flash-lite' }}
+          INPUT_CATEGORIES: ${{ github.event.inputs.categories }}
         run: |
           ARGS=""
           if [ "${{ github.event.inputs.llm }}" = "false" ]; then
             ARGS="$ARGS --no-llm"
           fi
-          if [ -n "${{ github.event.inputs.categories }}" ]; then
-            ARGS="$ARGS --categories ${{ github.event.inputs.categories }}"
+          if [ -n "$INPUT_CATEGORIES" ]; then
+            ARGS="$ARGS --categories $INPUT_CATEGORIES"
           fi
           python scripts/discover_repos.py $ARGS
 
@@ -58,7 +59,7 @@ jobs:
 
       - name: Commit changes
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -75,4 +76,5 @@ jobs:
             *)          LABEL="mode-unknown" ;;
           esac
           git commit -m "chore: scheduled catalog refresh ($LABEL)" || echo "no changes"
-          git push "https://${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref_name }}
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push origin HEAD:${{ github.ref_name }}
