@@ -22,7 +22,7 @@
 <p align="center">
   <img alt="status" src="https://img.shields.io/badge/status-active-22c55e?style=flat-square">
   <img alt="license" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square">
-  <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-216-8b5cf6?style=flat-square">
+  <img alt="catalog" src="https://img.shields.io/badge/tools%20cataloged-217-8b5cf6?style=flat-square">
   <img alt="platforms" src="https://img.shields.io/badge/platforms%20covered-19-e11d48?style=flat-square">
   <img alt="language" src="https://img.shields.io/badge/top%20lang-Python-3776AB?style=flat-square">
   <img alt="platform" src="https://img.shields.io/badge/platform-cross--platform-475569?style=flat-square">
@@ -112,16 +112,16 @@ Most Chinese-platform crawlers in the catalog are community reverse-engineered a
 
 ## 📊 Catalog snapshot
 
-> Auto-generated from `tool-catalog.json` · last refreshed `2026-10-19`
+> Auto-generated from `tool-catalog.json` · last refreshed `2026-10-26`
 
 | Category | Count | | Top languages |
 |----------|------:|---|---------------|
 | 🕸️ web-scraper | 52 | | Python · Java · Jupyter Notebook |
-| 🔌 api-collector | 44 | | Python · Go · Java |
+| 🔌 api-collector | 45 | | Python · Go · Java |
 | ⚡ dynamic-scraper | 49 | | Python · TypeScript · HTML |
 | 🤖 agent-skill | 40 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 31 | | Python · HTML · JavaScript |
-| **Total** | **216** | | **Python (115)** leads |
+| **Total** | **217** | | **Python (116)** leads |
 
 > 🆕 **New tools land every week.** The catalog auto-refreshes weekly — see what's newly added in each [weekly digest](../../releases). **Watch** the repo to get notified.
 
@@ -133,7 +133,7 @@ Most Chinese-platform crawlers in the catalog are community reverse-engineered a
     <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper card"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 49 tools</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector card"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 44 tools</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector card"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 45 tools</a></sub></td>
     <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill card"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 40 tools</a></sub></td>
   </tr>
   <tr>
