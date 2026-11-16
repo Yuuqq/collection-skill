@@ -2,11 +2,11 @@
   <img src="docs/banner.svg" alt="collection-skill 横幅" width="100%"/>
 </p>
 
-<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
 <p align="center">
-  <img src="docs/demo.gif" alt="说一句要抓什么 → 推荐工具 → 开始抓取" width="92%"/>
+  <img src="docs/demo.gif" alt="离线预览：小红书快速通道，确认范围前停止" width="92%"/>
+  <br/>
+  <sub>当前小红书快速通道的离线预览，读取本地文件。不是实时推理，也没有采集。</sub>
 </p>
--->
 
 <h3 align="center">
   发现 · 编目 · 匹配 · 抓取
