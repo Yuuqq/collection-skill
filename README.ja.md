@@ -2,11 +2,11 @@
   <img src="docs/banner.svg" alt="collection-skill バナー" width="100%"/>
 </p>
 
-<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
 <p align="center">
-  <img src="docs/demo.gif" alt="欲しいデータを言う → ツール選定 → クロール開始" width="92%"/>
+  <img src="docs/demo.gif" alt="オフラインプレビュー：小紅書の高速経路。収集前に停止" width="92%"/>
+  <br/>
+  <sub>現行の小紅書ファストパスをローカルファイルから再生したオフラインプレビュー。ライブ推論でも実収集でもありません。</sub>
 </p>
--->
 
 <h3 align="center">
   発見 · カタログ化 · 選定 · クロール

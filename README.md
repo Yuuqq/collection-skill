@@ -2,11 +2,11 @@
   <img src="docs/banner.svg" alt="collection-skill banner" width="100%"/>
 </p>
 
-<!-- TODO(demo): record docs/demo.gif per docs/demo-storyboard.md, then uncomment.
 <p align="center">
-  <img src="docs/demo.gif" alt="Ask for data → get a tool → it crawls" width="92%"/>
+  <img src="docs/demo.gif" alt="Offline preview: Xiaohongshu fast path, stop before collection" width="92%"/>
+  <br/>
+  <sub>Offline preview of the current Xiaohongshu fast path, read from local files. Not live inference, and no collection.</sub>
 </p>
--->
 
 <h3 align="center">
   Discover · Catalog · Match · Crawl
