@@ -3179,6 +3179,47 @@
       "match_score": 32
     },
     {
+      "repo_url": "https://github.com/Xquik-dev/x-twitter-scraper",
+      "full_name": "Xquik-dev/x-twitter-scraper",
+      "name": "x-twitter-scraper",
+      "category": "api-collector",
+      "one_line_description": "X (Twitter) scraper API, MCP server & Claude skill to scrape tweets & followers. Not affiliated with X Corp.",
+      "stars": 229,
+      "language": "TypeScript",
+      "topics": [
+        "agent-skill",
+        "claude-code",
+        "follower-export",
+        "mcp",
+        "mcp-server",
+        "social-media-api",
+        "tweet-scraper",
+        "tweet-search",
+        "twitter",
+        "twitter-api"
+      ],
+      "last_updated": "2026-11-18",
+      "discovered_at": "2026-11-22",
+      "license": "MIT",
+      "homepage": "https://xquik.com",
+      "verified": false,
+      "use_cases": [
+        "Retrieve X/Twitter data through the Xquik API"
+      ],
+      "caveats": [
+        "Client for a proprietary paid hosted service.",
+        "Collects X/Twitter data via a third party not affiliated with X Corp; users must check X's Terms of Service."
+      ],
+      "tags": [
+        "manually-added",
+        "vendor-submitted"
+      ],
+      "favorite": false,
+      "notes": "Vendor-submitted client for the Xquik hosted API.",
+      "workflow_file": null,
+      "match_score": 90
+    },
+    {
       "repo_url": "https://github.com/z-mio/ParseHub",
       "full_name": "z-mio/ParseHub",
       "name": "ParseHub",
@@ -3219,6 +3260,42 @@
       ],
       "favorite": false,
       "notes": "轻量社交媒体聚合解析库",
+      "workflow_file": null,
+      "match_score": 90
+    },
+    {
+      "repo_url": "https://github.com/geonodecom/mcp",
+      "full_name": "geonodecom/mcp",
+      "name": "mcp",
+      "category": "api-collector",
+      "one_line_description": "Client for web data extraction through Geonode's hosted MCP service.",
+      "stars": 27,
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "geonode",
+        "mcp",
+        "model-context-protocol",
+        "web-scraping"
+      ],
+      "last_updated": "2026-10-29",
+      "discovered_at": "2026-11-22",
+      "license": "MIT",
+      "homepage": "https://geonode.com/integrations",
+      "verified": false,
+      "use_cases": [
+        "Collect web data through the Geonode MCP service"
+      ],
+      "caveats": [
+        "Client for a paid hosted MCP service: limited keyless tier; API key required for full features.",
+        "Below the discovery min-stars threshold (50); added manually from a vendor self-submission."
+      ],
+      "tags": [
+        "manually-added",
+        "vendor-submitted"
+      ],
+      "favorite": false,
+      "notes": "Vendor-submitted client for the Geonode hosted MCP service.",
       "workflow_file": null,
       "match_score": 90
     },
