@@ -22,7 +22,7 @@
 <p align="center">
   <img alt="状態" src="https://img.shields.io/badge/状態-稼働中-22c55e?style=flat-square">
   <img alt="ライセンス" src="https://img.shields.io/badge/ライセンス-MIT-blue?style=flat-square">
-  <img alt="カタログ数" src="https://img.shields.io/badge/収録ツール-226-8b5cf6?style=flat-square">
+  <img alt="カタログ数" src="https://img.shields.io/badge/収録ツール-232-8b5cf6?style=flat-square">
   <img alt="対象プラットフォーム" src="https://img.shields.io/badge/対象プラットフォーム-19-e11d48?style=flat-square">
   <img alt="主要言語" src="https://img.shields.io/badge/主要言語-Python-3776AB?style=flat-square">
   <img alt="プラットフォーム" src="https://img.shields.io/badge/プラットフォーム-クロスプラットフォーム-475569?style=flat-square">
@@ -112,16 +112,16 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 ## 📊 カタログ概況
 
-> `tool-catalog.json` から自動生成 · 最終更新 `2026-11-09`
+> `tool-catalog.json` から自動生成 · 最終更新 `2026-11-23`
 
 | カテゴリ | 件数 | | 主要言語 |
 |----------|----:|---|----------|
-| 🕸️ web-scraper | 52 | | Python · Java · Jupyter Notebook |
-| 🔌 api-collector | 48 | | Python · Go · Java |
-| ⚡ dynamic-scraper | 50 | | Python · TypeScript · HTML |
-| 🤖 agent-skill | 44 | | Python · TypeScript · JavaScript |
+| 🕸️ web-scraper | 55 | | Python · Java · Jupyter Notebook |
+| 🔌 api-collector | 49 | | Python · Rust · Go |
+| ⚡ dynamic-scraper | 51 | | Python · TypeScript · HTML |
+| 🤖 agent-skill | 45 | | Python · TypeScript · JavaScript |
 | 📚 dataset | 32 | | Python · HTML · JavaScript |
-| **合計** | **226** | | **Python(120)** が最多 |
+| **合計** | **232** | | **Python(124)** が最多 |
 
 > 🆕 **毎週新しいツールが追加されます。** カタログは毎週自動更新されます。新規追加は[週次ダイジェスト](../../releases)で確認できます。Watch すると通知が届きます。
 
@@ -129,12 +129,12 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper カード"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 52ツール</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper カード"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 50ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-web-scraper.svg" alt="web-scraper カード"/><br><sub><a href="docs/card-web-scraper.svg">🕸️ web-scraper · 55ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-dynamic-scraper.svg" alt="dynamic-scraper カード"/><br><sub><a href="docs/card-dynamic-scraper.svg">⚡ dynamic-scraper · 51ツール</a></sub></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector カード"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 48ツール</a></sub></td>
-    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill カード"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 44ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-api-collector.svg" alt="api-collector カード"/><br><sub><a href="docs/card-api-collector.svg">🔌 api-collector · 49ツール</a></sub></td>
+    <td width="50%" align="center"><img src="docs/card-agent-skill.svg" alt="agent-skill カード"/><br><sub><a href="docs/card-agent-skill.svg">🤖 agent-skill · 45ツール</a></sub></td>
   </tr>
   <tr>
     <td colspan="2" align="center"><img src="docs/card-dataset.svg" alt="dataset カード"/><br><sub><a href="docs/card-dataset.svg">📚 dataset · 32ツール</a></sub></td>
