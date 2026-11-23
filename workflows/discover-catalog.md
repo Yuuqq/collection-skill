@@ -15,7 +15,7 @@ Check that one of these is available for authenticated GitHub calls (much higher
 - `gh auth status` returns logged in, OR
 - `GITHUB_TOKEN` env var is set.
 
-If neither, fall back to unauthenticated search (10 req/min, search limit 10/min) and warn the user. Recommend setting up `gh auth login`.
+If neither, fall back to unauthenticated search (10 search requests/min) and warn the user. Recommend setting up `gh auth login`.
 
 Ask the user (only if not obvious from context):
 - Refresh all five categories, or just one?
@@ -35,13 +35,14 @@ python scripts/discover_repos.py \
 
 The script (see `scripts/discover_repos.py`):
 - Uses GitHub Search API (`/search/repositories`) with keywords from `category-keywords.md`.
-- Filters: stars ≥ 50, pushed in last 2 years, not archived.
+- Filters by GitHub URL, minimum stars (default 50), a push within the last 730 days, and the category's exclusion words.
 - Dedupes against existing catalog entries (by `repo_url`).
 - Preserves user-added fields (`notes`, `verified`, `workflow_file`, `favorite`) on existing entries.
 - Appends new entries with `verified: false` (auto-discovered, not yet validated).
-- Writes updated JSON.
+- Optionally judges the full merged catalog with an LLM. Use `--no-rescan` to judge only entries found in this run, or `--no-llm` to disable judging.
+- Enforces the catalog schema before writing updated JSON.
 
-If `--categories` omitted, runs all five.
+If `--categories` is omitted, the script runs all five. `--catalog` points to an existing JSON file. `--dry-run` still performs GitHub searches and any enabled LLM judging; it skips writing the catalog and discovery log but updates `references/.last-run.json`. For a dry run, skip Steps 3–4 and report the preview counts.
 
 ## Step 3: Regenerate the Markdown View
 
@@ -53,20 +54,9 @@ python scripts/build_catalog_md.py \
 
 This rebuilds the human-readable catalog from JSON. Never edit the markdown by hand.
 
-## Step 4: Log the Run
+## Step 4: Check the Run Log
 
-Append to `references/discovery-log.md` using the template in `templates/discovery-log-entry.md`:
-
-```
-## YYYY-MM-DD HH:MM (TZ)
-- Categories: …
-- New entries: N
-- Updated entries: M
-- Skipped (dedupe / filtered): K
-- Errors: …
-- Runtime: ~Ns
-- Triggered by: manual | scheduled
-```
+Discovery writes a dated entry to `references/discovery-log.md` automatically. Do not add a second entry. Check stderr for search errors and schema warnings, and `references/.last-run.json` for the effective judging mode and run counts.
 
 ## Step 5: Report to User
 
@@ -81,7 +71,7 @@ Suggest next step: "要看新发现的工具，用 `/collection-skill browse`。
 
 <success_criteria>
 - Discovery script ran without auth errors (or with documented fallback).
-- Catalog JSON grew by N entries, each matching `repo-schema.md`.
+- Catalog JSON was refreshed through the schema gate; a run can add no entries or remove entries.
 - Markdown view regenerated and matches JSON.
 - `discovery-log.md` has a new dated entry.
 - Existing user-added fields (`notes`, `verified`, `favorite`) were preserved.

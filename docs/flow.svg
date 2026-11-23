@@ -47,7 +47,7 @@
   <!-- Lane B: Match & Crawl -->
   <g>
     <rect x="40" y="220" width="800" height="170" rx="12" fill="#a855f7" fill-opacity="0.06" stroke="#a855f7" stroke-opacity="0.35" stroke-dasharray="4 4"/>
-    <text x="60" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#7e22ce">② MATCH &amp; CRAWL · progressive disclosure</text>
+    <text x="60" y="246" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#7e22ce">② MATCH &amp; CRAWL · generic path</text>
 
     <g transform="translate(60,275)">
       <rect width="150" height="90" rx="10" fill="#fff" stroke="#cbd5e1"/>

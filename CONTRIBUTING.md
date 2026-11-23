@@ -5,7 +5,7 @@ Thanks for helping grow the catalog! There are three easy ways to contribute.
 ## 1. Submit a tool to the catalog
 
 The fastest path: open a [tool submission issue](../../issues/new?template=submit-tool.yml)
-with the repo URL and category — we (or the weekly discovery run) will vet and add it.
+with the repo URL and category — maintainers review submissions for inclusion. The weekly discovery run searches repositories, not submission issues.
 
 Prefer a PR? Add the entry yourself:
 
@@ -34,7 +34,7 @@ and point the catalog entry's `workflow_file` at your new file under `workflows/
 Standard flow: fork → branch → PR.
 
 - Follow conventional commits (`feat:`, `fix:`, `docs:`, `chore:`), matching the git log style.
-- If you touched `scripts/`, run a `--dry-run` discovery locally before opening the PR.
+- If you touched `scripts/`, run `python -m unittest discover -s tests` and a `--dry-run` discovery locally before opening the PR. Discovery's dry run still makes network calls and updates `references/.last-run.json`; leave that file out of the PR unless the run is part of an intended catalog refresh.
 
 ## Ground rules
 

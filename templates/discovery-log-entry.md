@@ -4,8 +4,10 @@
 - **New entries:** N
 - **Updated entries:** M
 - **Skipped (dedupe / filtered):** K
-- **Errors:** none | [list]
-- **Runtime:** ~Ns
-- **Triggered by:** manual | scheduled
-- **Auth mode:** token (Yuuqq) | unauthenticated
-- **Notes:** [anything notable — sparse category, query tuning, etc.]
+- **LLM excluded:** L
+- **Effective judging mode:** llm | heuristic
+- **Errors:** see stderr above
+- **Auth mode:** token | unauthenticated
+- **Triggered by:** manual | scheduled (GitHub Actions)
+- **Per category:**
+  - web-scraper: +N new, ~M updated, K filtered

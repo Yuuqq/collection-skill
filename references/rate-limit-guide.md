@@ -16,38 +16,33 @@
 ## Search API Pagination
 
 - `/search/repositories` returns up to **1,000 results** per query max (10 pages × 100/page).
-- Default page size 30; we use `per_page=100` to minimize calls.
-- For each query in `category-keywords.md`, fetch up to N pages until we have `--max-per-category` unfiltered candidates.
+- Discovery fetches up to 2 pages of 100 results per query, stopping earlier if there are no more results.
+- It stops starting new queries in a category once it has at least twice `--max-per-category` candidates that pass the filters, then keeps the top `--max-per-category` by stars.
 
 ## Per-Query Budget
 
 At 30 req/min authenticated, with 5 categories × ~7 queries each = ~35 queries:
 - 35 queries × 1-2 pages each ≈ 50-70 search calls.
-- Plus ~1 enrichment call per new repo (for license, etc.) — defer most enrichment to lazy load.
-- Total: ~3-5 min runtime if we respect limits.
+- Repo metadata (including license, when present) comes from search results; discovery does not make a separate GitHub request per repo.
+- Runtime depends on pagination, retries, and whether LLM judging is enabled.
 
 ## Backoff Strategy
 
-The script implements exponential backoff:
-- On HTTP 403 with `X-RateLimit-Remaining: 0` → sleep until `X-RateLimit-Reset`, retry once.
-- On HTTP 429 → wait 60s, retry up to 3 times.
-- On 5xx → wait 2^n seconds (n=1..5), retry up to 5 times.
-- Any other error → log and skip that query, continue.
+The script makes up to five attempts per request:
+- On a successful response with `X-RateLimit-Remaining: 0` → wait until `X-RateLimit-Reset` before continuing.
+- On HTTP 403 or 429 → honor `Retry-After`, or wait 60s if the header is missing.
+- On HTTP 5xx or a network error → wait 2^n seconds (n=1..5).
+- Other HTTP errors or exhausted attempts → log the problem and return no results for that page.
 
 ## Headers to Read
 
-Always inspect:
-- `X-RateLimit-Limit`
+The discovery script reads:
 - `X-RateLimit-Remaining`
 - `X-RateLimit-Reset` (unix timestamp)
-- `Retry-After` (on 429/503)
+- `Retry-After` (on 403/429)
 
 ## Secondary Rate Limits
 
 GitHub also enforces "secondary" limits (content-based, harder to predict) — e.g., too many requests in a short burst. Mitigation:
 - Sleep ~500ms between successive requests.
 - Disable parallel requests in the script (keep it sequential).
-
-## Token Rotation (Optional)
-
-If running multiple categories heavily, you can rotate between `Yuuqq` and `qcmuu` accounts (both logged in per `gh auth status`). Not needed for typical weekly refresh.

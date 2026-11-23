@@ -38,7 +38,7 @@
 | | |
 |:--|:--|
 | 🇨🇳 **中文社媒快速通道** | 说出平台名(小红书 / 抖音 / 微博 / 公众号 / 淘宝…)→ 定向 shortlist + 合规提醒,不走通用菜单。 |
-| 🗂️ **精选编目** | 自动发现 GitHub 仓库,归入**五大标准类目**,自动去重并打分排序。 |
+| 🗂️ **精选编目** | 自动发现 GitHub 仓库,归入**五大标准类目**,去重后在各类目内按星标数排序。 |
 | 🧭 **渐进式披露** | 绝不一股脑倾倒整个编目 —— 类目菜单 → 工具卡片 → 工作流 → 抓取。 |
 | 🗃️ **JSON 为本** | `tool-catalog.json` 是唯一权威数据源,Markdown 视图由脚本生成。 |
 | 🔐 **默认安全** | 令牌从 `gh` 密钥环 / 环境变量读取 —— 仓库内不留任何凭据。 |
@@ -97,7 +97,7 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 直接点名中文平台(小红书/抖音/微博/公众号/淘宝…)会跳过通用漏斗:
 
 ```
-平台定向 shortlist  →  合规提醒  →  加载工作流  →  抓取
+合规提醒  →  平台定向 shortlist  →  加载工作流  →  确认范围  →  抓取
 ```
 
 其他目标则走短漏斗:
@@ -162,15 +162,16 @@ gh auth login
 # 2. 首次刷新
 python scripts/discover_repos.py
 python scripts/build_catalog_md.py
+python scripts/sync_readme_stats.py
 
 # 3.(可选)安排每周刷新 —— 唤起技能并说 "定时刷新"
 ```
 
 ## 🤖 LLM 智能判级(可选)
 
-设置 `LLM_API_KEY` 后,发现流程会把每个候选仓库发给 **OpenAI 兼容接口**,由其判断**是否纳入**并**归入哪个分类**(覆盖搜索关键词推测的分类),同时补全 1–3 条适用场景。默认端点为 Sensenova 兼容 API,可用 `LLM_BASE_URL` / `LLM_MODEL` 覆盖;未设置 key 时自动退回基于星标与关键词的启发式逻辑。Key 支持 `;` 分隔的密钥池,按请求随机选取以摊匀限流。
+默认情况下,设置 `LLM_API_KEY` 后,发现脚本会把整个编目(包括新候选)发送给 OpenAI 兼容端点。模型建议是否收录、所属类目及使用场景;人工策展条目受保护,具备采集特征的条目也不会因模型误判被移除。`--no-rescan` 只评估本次新增或更新的条目,`--no-llm` 在有密钥时仍可使用启发式规则。端点与密钥池设置见 [LLM 判级说明](references/llm-judging.md)。
 
-仓库已内置 GitHub Action(`.github/workflows/discover.yml`),按 `cron` 每周自动检索并刷新目录;在仓库 **Settings → Secrets** 中配置 `GH_PAT`、`LLM_API_KEY`(及可选的 `LLM_BASE_URL` / `LLM_MODEL`)即可启用,也可在 Actions 页面手动 `workflow_dispatch` 触发。
+[Discover & Catalog 工作流](.github/workflows/discover.yml)在每周一 03:17 UTC 刷新编目。在 **Settings → Secrets** 配置 `GH_PAT` 用于认证搜索和推送更新。`LLM_API_KEY` 可选,不配置时使用启发式规则。也可在 Actions 页面手动运行,通过 `categories` 指定以空格分隔的类目,或关闭 `llm`。发现成功后,[Weekly Digest](.github/workflows/weekly-digest.yml)会在最近七天有新收录条目时发布 GitHub Release。
 
 ## 🗺️ 项目结构
 
@@ -181,14 +182,17 @@ collection-skill/
 │   ├── discover-catalog.md        # 从 GitHub 刷新
 │   ├── match-and-crawl.md         # 渐进式披露 → 抓取
 │   ├── browse-catalog.md          # 只读视图
-│   └── schedule-refresh.md        # 安装周期性刷新
+│   ├── schedule-refresh.md        # 安装周期性刷新
+│   └── tools/                     # 单工具抓取工作流
 ├── references/
 │   ├── tool-catalog.json          # 权威数据(在此编辑)
 │   ├── tool-catalog.md            # 生成的视图(请勿手改)
 │   ├── discovery-log.md           # 只追加的运行历史
 │   ├── category-keywords.md       # 每类目的搜索关键词
 │   ├── repo-schema.md             # 条目结构
-│   └── rate-limit-guide.md        # GitHub API 限额
+│   ├── rate-limit-guide.md        # GitHub API 限额
+│   ├── chinese-social-platforms.md # 平台别名与标签
+│   └── llm-judging.md             # 可选判级与保护机制
 ├── templates/
 │   ├── crawl-template.md          # 通用抓取工作流
 │   ├── discovery-log-entry.md
@@ -197,7 +201,10 @@ collection-skill/
 │   ├── discover_repos.py          # GitHub 搜索 → 编目
 │   ├── build_catalog_md.py        # JSON → Markdown
 │   ├── validate_catalog.py        # 写入前执行 schema 校验
-│   └── add_repo.py                # 手动添加条目
+│   ├── add_repo.py                # 手动添加条目
+│   ├── sync_readme_stats.py       # 更新各语言 README 统计
+│   ├── make_digest.py             # 生成新收录条目的摘要
+│   └── offline_demo_walk.py       # 从本地文件播放离线演示
 └── docs/                          # README 横幅与图示
 ```
 
@@ -213,7 +220,7 @@ collection-skill/
 
 知道某个好用但还没收录的爬虫、采集器、agent skill 或数据集？30 秒即可提交：
 
-- **开一个[工具收录 issue](../../issues/new?template=submit-tool.yml)** —— 我们会审核并收录（每周自动刷新也会顺带收入）。
+- **开一个[工具收录 issue](../../issues/new?template=submit-tool.yml)** —— 我们会审核是否收录。
 - **或直接提 PR** —— 编目规则与单工具 workflow 的写法见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 每一次提交都让目录对所有人更有用。🙌

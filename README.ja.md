@@ -38,7 +38,7 @@
 | | |
 |:--|:--|
 | 🇨🇳 **中国 SNS 高速パス** | プラットフォーム名(小紅書 / 抖音 / 微博 / 淘宝…)→ 絞り込み候補 + コンプライアンスリマインダー。汎用メニューは省略。 |
-| 🗂️ **厳選カタログ** | GitHub リポジトリを**5つの標準カテゴリ**に自動分類、重複排除とスコアリング付き。 |
+| 🗂️ **厳選カタログ** | GitHub リポジトリを**5つの標準カテゴリ**に自動分類し、重複を除いてカテゴリごとにスター数順で表示。 |
 | 🧭 **段階的開示** | カタログを一括表示しない —— カテゴリメニュー → ツールカード → ワークフロー → クロール。 |
 | 🗃️ **JSON が正** | `tool-catalog.json` が唯一の信頼源、Markdown ビューは自動生成。 |
 | 🔐 **デフォルトで安全** | トークンは `gh` キーリング / 環境変数から —— リポジトリに資格情報は置かない。 |
@@ -97,7 +97,7 @@ git clone https://github.com/Yuuqq/collection-skill.git ~/.codex/skills/collecti
 中国系プラットフォーム名(小紅書/抖音/微博/公衆号/淘宝…)を挙げるとファネルを短絡します:
 
 ```
-プラットフォーム絞り込み  →  コンプライアンスリマインダー  →  ワークフロー読込  →  クロール
+コンプライアンスリマインダー  →  プラットフォーム別の候補  →  ワークフロー読込  →  範囲の確認  →  クロール
 ```
 
 その他の対象は「*X をスクレイプしたい*」から短いファネルへ:
@@ -162,15 +162,16 @@ gh auth login
 # 2. 初回更新
 python scripts/discover_repos.py
 python scripts/build_catalog_md.py
+python scripts/sync_readme_stats.py
 
 # 3.(任意)毎週の更新を予約 —— スキルを呼び出して「定期更新」と発話
 ```
 
 ## 🤖 LLM ジャッジ(オプション)
 
-`LLM_API_KEY` を設定すると、発見パイプラインは各候補リポジトリを **OpenAI 互換エンドポイント**に送り、**採否**と**カテゴリ**(キーワード推定を上書き)を判定し、適用シナリオを 1–3 件補完します。既定は Sensenova 互換 API で、`LLM_BASE_URL` / `LLM_MODEL` で変更可能。キー未設定時はスター数とキーワードのヒューリスティックにフォールバックします。キーは `;` 区切りのプールに対応し、リクエストごとにランダム選択してレート制限を分散します。
+`LLM_API_KEY` を設定すると、発見スクリプトは既定で新規候補を含むカタログ全体を OpenAI 互換エンドポイントに送ります。モデルは採否・カテゴリ・用途を提案しますが、人の手で選定した項目は保護され、収集に関連する特徴があれば誤って除外されません。`--no-rescan` で今回の新規・更新項目だけを評価でき、`--no-llm` でキーがあってもヒューリスティックを使えます。エンドポイントやキープールの設定は [LLM ジャッジの詳細](references/llm-judging.md) を参照してください。
 
-同梱の GitHub Action(`.github/workflows/discover.yml`)が `cron` で毎週カタログを自動更新します。**Settings → Secrets** に `GH_PAT`、`LLM_API_KEY`(任意で `LLM_BASE_URL` / `LLM_MODEL`)を設定すると有効化され、Actions ページから `workflow_dispatch` で手動実行もできます。
+[Discover & Catalog ワークフロー](.github/workflows/discover.yml)は毎週月曜 03:17 UTC にカタログを更新します。認証付き検索と更新のプッシュには **Settings → Secrets** で `GH_PAT` を設定します。`LLM_API_KEY` は任意で、未設定ならヒューリスティックを使います。Actions ページから手動実行する場合は、空白区切りの `categories` を指定したり、`llm` を無効にしたりできます。発見ワークフローの成功後、直近7日間に新規登録があれば [Weekly Digest](.github/workflows/weekly-digest.yml) が GitHub Release を公開します。
 
 ## 🗺️ プロジェクト構成
 
@@ -181,14 +182,17 @@ collection-skill/
 │   ├── discover-catalog.md        # GitHub から更新
 │   ├── match-and-crawl.md         # 段階的開示 → クロール
 │   ├── browse-catalog.md          # 読み取り専用ビュー
-│   └── schedule-refresh.md        # 定期更新のインストール
+│   ├── schedule-refresh.md        # 定期更新のインストール
+│   └── tools/                     # ツール別クロールワークフロー
 ├── references/
 │   ├── tool-catalog.json          # 正データ(ここを編集)
 │   ├── tool-catalog.md            # 生成ビュー(編集不可)
 │   ├── discovery-log.md           # 追記型の実行履歴
 │   ├── category-keywords.md       # カテゴリ別の検索キーワード
 │   ├── repo-schema.md             # エントリのスキーマ
-│   └── rate-limit-guide.md        # GitHub API の制限
+│   ├── rate-limit-guide.md        # GitHub API の制限
+│   ├── chinese-social-platforms.md # プラットフォームの別名とタグ
+│   └── llm-judging.md             # 任意の判定と保護ルール
 ├── templates/
 │   ├── crawl-template.md          # 汎用クロールワークフロー
 │   ├── discovery-log-entry.md
@@ -197,7 +201,10 @@ collection-skill/
 │   ├── discover_repos.py          # GitHub 検索 → カタログ
 │   ├── build_catalog_md.py        # JSON → Markdown
 │   ├── validate_catalog.py        # 書き込み前にスキーマ検証
-│   └── add_repo.py                # 手動でエントリを追加
+│   ├── add_repo.py                # 手動でエントリを追加
+│   ├── sync_readme_stats.py       # 各言語の README の統計を更新
+│   ├── make_digest.py             # 新規登録項目のダイジェストを生成
+│   └── offline_demo_walk.py       # ローカルファイルでオフラインデモを再生
 └── docs/                          # README のバナーと図
 ```
 
@@ -213,7 +220,7 @@ collection-skill/
 
 まだ載っていない優れたスクレイパー・コレクター・agent skill・データセットをご存知ですか？30 秒で提案できます：
 
-- **[ツール提案 issue](../../issues/new?template=submit-tool.yml)を開く** —— 確認のうえ追加します（毎週の自動更新でも拾われます）。
+- **[ツール提案 issue](../../issues/new?template=submit-tool.yml)を開く** —— 内容を確認して掲載を検討します。
 - **または PR を送る** —— カタログのルールとツール別 workflow のパターンは [CONTRIBUTING.md](CONTRIBUTING.md) を参照してください。
 
 提案ひとつひとつが、カタログをみんなにとって便利にします。🙌

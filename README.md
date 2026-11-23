@@ -38,7 +38,7 @@
 | | |
 |:--|:--|
 | 🇨🇳 **Chinese-social fast path** | Name a platform (小红书 / 抖音 / 微博 / 公众号 / 淘宝 …) → targeted shortlist + compliance reminder, no generic menu. |
-| 🗂️ **Curated catalog** | Auto-discovers GitHub repos into **five canonical categories**, deduped and score-ranked. |
+| 🗂️ **Curated catalog** | Auto-discovers GitHub repos into **five canonical categories**, deduplicated and sorted by stars within each category. |
 | 🧭 **Progressive disclosure** | Never dumps the whole catalog — category menu → tool card → workflow → crawl. |
 | 🗃️ **JSON is canonical** | `tool-catalog.json` is the single source of truth; the markdown view is generated. |
 | 🔐 **Safe by default** | Reads tokens from `gh` keyring / env — no credentials in the repo. |
@@ -97,7 +97,7 @@ Periodically scans GitHub for *collection-class* repos across five categories:
 Naming a Chinese platform (小红书/抖音/微博/公众号/淘宝…) short-circuits the funnel:
 
 ```
-platform-tagged shortlist  →  compliance reminder  →  load workflow  →  crawl
+compliance reminder  →  platform-tagged shortlist  →  load workflow  →  confirm scope  →  crawl
 ```
 
 For any other target, saying *"I want to scrape X"* walks a short funnel:
@@ -162,24 +162,25 @@ gh auth login
 # 2. first refresh
 python scripts/discover_repos.py
 python scripts/build_catalog_md.py
+python scripts/sync_readme_stats.py
 
 # 3. (optional) schedule a weekly refresh — invoke the skill and say "schedule"
 ```
 
 ## 🤖 LLM judging (optional)
 
-Set `LLM_API_KEY` and the discovery pipeline sends every candidate repo to an
-**OpenAI-compatible endpoint**, which decides **whether to include it** and
-**which category it belongs to** (overriding the keyword-based guess), and fills
-in 1–3 usage scenarios. The default endpoint is a Sensenova-compatible API;
-override with `LLM_BASE_URL` / `LLM_MODEL`. Without a key it falls back to
-star/keyword heuristics. The key accepts a `;`-separated pool, picked at random
-per request to spread rate limits.
+With `LLM_API_KEY` set, discovery sends the whole catalog, including new candidates, to an
+OpenAI-compatible endpoint by default. The model recommends inclusion, category and use cases;
+human-curated entries are protected, and collection signals guard against mistaken exclusions.
+Use `--no-rescan` to judge only new or updated entries, or `--no-llm` to use heuristics even
+when a key is set. See [LLM judging](references/llm-judging.md) for endpoint and key-pool settings.
 
-A bundled GitHub Action (`.github/workflows/discover.yml`) refreshes the catalog
-weekly on `cron`; set `GH_PAT` and `LLM_API_KEY` (plus optional `LLM_BASE_URL` /
-`LLM_MODEL`) under **Settings → Secrets** to enable it, or trigger it manually
-via `workflow_dispatch` from the Actions tab.
+The [Discover & Catalog workflow](.github/workflows/discover.yml) runs Mondays at 03:17 UTC.
+Set `GH_PAT` under **Settings → Secrets** for authenticated search and pushing catalog updates.
+`LLM_API_KEY` is optional; without it discovery uses heuristics. From the Actions tab,
+you can run discovery manually with optional space-separated `categories` and turn off `llm`.
+After a successful discovery run, [Weekly Digest](.github/workflows/weekly-digest.yml)
+publishes a GitHub Release if the catalog contains entries discovered in the last seven days.
 
 ## 🗺️ Project structure
 
@@ -190,14 +191,17 @@ collection-skill/
 │   ├── discover-catalog.md        # Refresh from GitHub
 │   ├── match-and-crawl.md         # Progressive disclosure → crawl
 │   ├── browse-catalog.md          # Read-only view
-│   └── schedule-refresh.md        # Install periodic refresh
+│   ├── schedule-refresh.md        # Install periodic refresh
+│   └── tools/                     # Per-tool crawl workflows
 ├── references/
 │   ├── tool-catalog.json          # Canonical data (edit this)
 │   ├── tool-catalog.md            # Generated view (do not edit)
 │   ├── discovery-log.md           # Append-only run history
 │   ├── category-keywords.md       # Search terms per category
 │   ├── repo-schema.md             # Entry schema
-│   └── rate-limit-guide.md        # GitHub API limits
+│   ├── rate-limit-guide.md        # GitHub API limits
+│   ├── chinese-social-platforms.md # Platform aliases and tags
+│   └── llm-judging.md             # Optional judging and safeguards
 ├── templates/
 │   ├── crawl-template.md          # Generic crawl workflow
 │   ├── discovery-log-entry.md
@@ -206,7 +210,10 @@ collection-skill/
 │   ├── discover_repos.py          # GitHub search → catalog
 │   ├── build_catalog_md.py        # JSON → markdown
 │   ├── validate_catalog.py        # Enforce repo-schema.md before writing
-│   └── add_repo.py                # Manually add an entry
+│   ├── add_repo.py                # Manually add an entry
+│   ├── sync_readme_stats.py       # Update localized README counters
+│   ├── make_digest.py             # Render newly discovered entries
+│   └── offline_demo_walk.py       # Offline demo from local files
 └── docs/                          # README banners & diagrams
 ```
 
@@ -222,7 +229,7 @@ collection-skill/
 
 Know a great scraper, collector, agent skill, or dataset that's missing? It takes 30 seconds:
 
-- **Open a [tool submission](../../issues/new?template=submit-tool.yml)** — we vet and add it (the weekly run picks it up too).
+- **Open a [tool submission](../../issues/new?template=submit-tool.yml)** — we vet it for inclusion.
 - **Or send a PR** — see [CONTRIBUTING.md](CONTRIBUTING.md) for the catalog rules and the per-tool workflow pattern.
 
 Every submission makes the catalog better for everyone. 🙌
