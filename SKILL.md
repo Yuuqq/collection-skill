@@ -9,7 +9,7 @@ This skill has two halves that share one knowledge base:
 - **Discover & catalog** — periodically scan GitHub for "collection-class" repos (scrapers, API collectors, agent skills/MCP, datasets/awesome-lists) and store them in `references/tool-catalog.{md,json}`.
 - **Match & crawl** — when the user names a target, recommend tools from the catalog via progressive disclosure, then start crawling.
 
-Always check the catalog freshness before recommending. If stale (> N days), surface that to the user.
+Before matching a tool to a target, check `references/discovery-log.md` and tell the user if the last successful refresh was more than 7 days ago (configurable).
 </principle>
 <principle name="Chinese-Social First">
 The headline use case is Chinese social/e-commerce platforms. When the user names one (小红书/抖音/B站/微博/知乎/贴吧/快手/公众号/视频号/淘宝/京东/拼多多/豆瓣/雪球…), route **directly** to the fast path (`workflows/match-and-crawl.md` Step 3B) via `references/chinese-social-platforms.md` — never show the generic category menu. The general five-category catalog is the fallback breadth for every other target.
@@ -18,7 +18,7 @@ The headline use case is Chinese social/e-commerce platforms. When the user name
 </principle>
 
 <principle name="Progressive Disclosure">
-Never dump the whole catalog. Show a **category menu** first, then drill into tool cards within the chosen category, then load the matching workflow only after the user picks a tool. Load references lazily — only what the current step needs.
+Never dump the whole catalog. On the generic path, show a **category menu** first, then drill into tool cards within the chosen category. On the Chinese-social fast path, show the compliance reminder before the shortlist. Load the matching workflow only after the user picks a tool. Load references lazily — only what the current step needs.
 </principle>
 
 <principle name="Five Canonical Categories">
@@ -111,6 +111,6 @@ This skill works when:
 - The catalog contains real, recently-verified entries across all five categories.
 - `tool-catalog.md` and `tool-catalog.json` stay in sync (MD regenerated from JSON).
 - A user asking "I want to scrape X" gets a category menu → tool card → workflow in ≤ 2 turns.
-- Discovery runs are idempotent and logged in `discovery-log.md`.
+- Discovery deduplicates by repository URL and records each non-dry run in `discovery-log.md`.
 - No credentials are committed; tokens come from env or `gh` keyring.
 </success_criteria>

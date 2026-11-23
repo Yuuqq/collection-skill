@@ -38,7 +38,7 @@
 | | |
 |:--|:--|
 | 🇨🇳 **Vía rápida china** | Nombra una plataforma (小红书 / 抖音 / 微博 / 淘宝…) → lista corta + recordatorio de cumplimiento, sin menú genérico. |
-| 🗂️ **Catálogo curado** | Descubre repos en GitHub y los clasifica en **cinco categorías canónicas**, con deduplicación y puntuación. |
+| 🗂️ **Catálogo curado** | Descubre repos en GitHub y los clasifica en **cinco categorías canónicas**, sin duplicados y ordenados por estrellas dentro de cada categoría. |
 | 🧭 **Divulgación progresiva** | Nunca vuelca todo el catálogo — menú de categorías → ficha de herramienta → flujo → recolección. |
 | 🗃️ **JSON como fuente** | `tool-catalog.json` es la única fuente de verdad; la vista Markdown se genera. |
 | 🔐 **Seguro por defecto** | Lee tokens desde el llavero de `gh` / variables de entorno — sin credenciales en el repo. |
@@ -97,7 +97,7 @@ Escanea GitHub periódicamente en busca de repos *de recolección*, en cinco cat
 Nombrar una plataforma china (小红书/抖音/微博/公众号/淘宝…) salta el embudo:
 
 ```
-lista corta por plataforma  →  recordatorio de cumplimiento  →  cargar flujo  →  recolectar
+recordatorio de cumplimiento  →  lista corta por plataforma  →  cargar flujo  →  confirmar alcance  →  recolectar
 ```
 
 Para cualquier otro objetivo, decir *"quiero extraer X"* recorre un embudo corto:
@@ -162,15 +162,16 @@ gh auth login
 # 2. primera actualización
 python scripts/discover_repos.py
 python scripts/build_catalog_md.py
+python scripts/sync_readme_stats.py
 
 # 3. (opcional) programar actualización semanal — invoca la skill y di "programar"
 ```
 
 ## 🤖 Evaluación con LLM (opcional)
 
-Con `LLM_API_KEY` configurada, el descubrimiento envía cada repositorio candidato a un **endpoint compatible con OpenAI**, que decide **si se incluye** y **en qué categoría** (sobrescribiendo la estimación por palabras clave), y completa 1–3 escenarios de uso. El endpoint por defecto es una API compatible con Sensenova; cámbialo con `LLM_BASE_URL` / `LLM_MODEL`. Sin clave, recurre a la heurística de estrellas y palabras clave. La clave admite un pool separado por `;`, elegido al azar por petición para repartir los límites de tasa.
+Con `LLM_API_KEY` configurada, el descubrimiento envía por defecto todo el catálogo, incluidos los candidatos nuevos, a un endpoint compatible con OpenAI. El modelo propone la inclusión, la categoría y los usos; las entradas curadas están protegidas y las señales de recolección evitan exclusiones erróneas. Usa `--no-rescan` para evaluar solo entradas nuevas o actualizadas, o `--no-llm` para usar la heurística incluso si hay clave. Consulta la [guía de evaluación con LLM](references/llm-judging.md) para configurar el endpoint y el conjunto de claves.
 
-El repo incluye una GitHub Action (`.github/workflows/discover.yml`) que refresca el catálogo cada semana vía `cron`; configura `GH_PAT` y `LLM_API_KEY` (y opcionalmente `LLM_BASE_URL` / `LLM_MODEL`) en **Settings → Secrets** para activarla, o lánzala manualmente con `workflow_dispatch` desde la pestaña Actions.
+El flujo [Discover & Catalog](.github/workflows/discover.yml) actualiza el catálogo los lunes a las 03:17 UTC. Configura `GH_PAT` en **Settings → Secrets** para autenticar las búsquedas y enviar los cambios. `LLM_API_KEY` es opcional; sin clave se usa la heurística. Desde la pestaña Actions también puedes lanzarlo manualmente, indicar `categories` separadas por espacios o desactivar `llm`. Tras un descubrimiento exitoso, [Weekly Digest](.github/workflows/weekly-digest.yml) publica una GitHub Release si hay entradas descubiertas en los últimos siete días.
 
 ## 🗺️ Estructura del proyecto
 
@@ -181,14 +182,17 @@ collection-skill/
 │   ├── discover-catalog.md        # Actualizar desde GitHub
 │   ├── match-and-crawl.md         # Divulgación progresiva → recolección
 │   ├── browse-catalog.md          # Vista de solo lectura
-│   └── schedule-refresh.md        # Instalar actualización periódica
+│   ├── schedule-refresh.md        # Instalar actualización periódica
+│   └── tools/                     # Flujos de recolección por herramienta
 ├── references/
 │   ├── tool-catalog.json          # Dato canónico (edita esto)
 │   ├── tool-catalog.md            # Vista generada (no editar)
 │   ├── discovery-log.md           # Historial de solo anexión
 │   ├── category-keywords.md       # Términos de búsqueda por categoría
 │   ├── repo-schema.md             # Esquema de entrada
-│   └── rate-limit-guide.md        # Límites de la API de GitHub
+│   ├── rate-limit-guide.md        # Límites de la API de GitHub
+│   ├── chinese-social-platforms.md # Alias y etiquetas de plataformas
+│   └── llm-judging.md             # Evaluación opcional y protecciones
 ├── templates/
 │   ├── crawl-template.md          # Flujo de recolección genérico
 │   ├── discovery-log-entry.md
@@ -197,7 +201,10 @@ collection-skill/
 │   ├── discover_repos.py          # Búsqueda en GitHub → catálogo
 │   ├── build_catalog_md.py        # JSON → Markdown
 │   ├── validate_catalog.py        # Validar repo-schema.md antes de escribir
-│   └── add_repo.py                # Añadir una entrada manualmente
+│   ├── add_repo.py                # Añadir una entrada manualmente
+│   ├── sync_readme_stats.py       # Actualizar cifras de los README traducidos
+│   ├── make_digest.py             # Generar un resumen de entradas nuevas
+│   └── offline_demo_walk.py       # Reproducir la demo sin conexión
 └── docs/                          # Banners y diagramas del README
 ```
 
@@ -213,7 +220,7 @@ collection-skill/
 
 ¿Conoces un scraper, colector, agent skill o dataset que falte? Solo toma 30 segundos:
 
-- **Abre un [issue de propuesta](../../issues/new?template=submit-tool.yml)** — lo revisamos y lo añadimos (la ejecución semanal también lo recoge).
+- **Abre un [issue de propuesta](../../issues/new?template=submit-tool.yml)** — lo revisamos para valorar su inclusión.
 - **O envía un PR** — consulta [CONTRIBUTING.md](CONTRIBUTING.md) para las reglas del catálogo y el patrón de workflows por herramienta.
 
 Cada propuesta mejora el catálogo para todos. 🙌

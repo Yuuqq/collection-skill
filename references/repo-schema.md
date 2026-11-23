@@ -55,7 +55,7 @@ Every entry in `tool-catalog.json` MUST conform to this. `scripts/validate_catal
 - Duplicate `repo_url` (rule 6) is always repaired keep-first, matching discovery's by-url dedupe.
 
 CLI: `python scripts/validate_catalog.py` — exit 0 when valid (warnings allowed), 1 on errors.
-Tests: `python -m unittest discover -s tests` (18 cases).
+Tests: `python -m unittest discover -s tests`.
 
 ## Discovery Defaults
 
@@ -66,8 +66,8 @@ A freshly-discovered entry has:
 - `notes: ""`, `caveats: []`, `workflow_file: null`
 
 A re-discovered entry (already in catalog):
-- All `manual`-set fields above are **preserved**.
-- Only auto-fields (`stars`, `last_updated`, `topics`, `language`, `match_score`) are refreshed.
+- The discovery merge preserves `verified`, `use_cases`, `caveats`, `tags`, `favorite`, `notes`, `workflow_file`, and `discovered_at`.
+- Other fields are refreshed from the new candidate. If LLM judging is enabled, it can then update the category, use cases, and tags of entries that are not protected.
 
 ## Tag Conventions
 
@@ -100,7 +100,7 @@ names a specific platform.
 
 ## LLM Judging & Safe Pruning
 
-The LLM judge can reassign an entry's `category` and rewrite its `use_cases`; **pruning is never the model's call alone**. The two deterministic guards (collection-signal protection + `agent-skill` cleanup) and the full CLI/endpoint config are documented in **`references/llm-judging.md`** — load that when tuning discovery. Schema-relevant rule: an `agent-skill` entry with no collection signal and no human-curation tag will be pruned on the next re-scan.
+The LLM judge can reassign an entry's `category` and rewrite its `use_cases`. Its exclusions are gated by collection-signal and human-curation checks. See [LLM judging](llm-judging.md) for details. These checks are separate from the schema enforcement above.
 
 ## Schema Versioning
 

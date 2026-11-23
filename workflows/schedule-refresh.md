@@ -14,7 +14,7 @@ Ask using AskUserQuestion (one round):
 - **Frequency** — daily / weekly (default) / monthly
 - **Day/time** — e.g., every Monday 03:00 local
 - **Scope** — all categories (default) or a subset
-- **Operating mode** — this is Windows (Task Scheduler) per environment
+- **Operating mode** — Task Scheduler on Windows, or cron on Linux/macOS
 
 Default if user just says "yes schedule it": **weekly, Sunday 03:00, all categories**.
 
@@ -24,15 +24,15 @@ Create `scripts/run_scheduled_refresh.sh` (Git Bash compatible) — or verify it
 1. `cd` to the skill root.
 2. Set `GITHUB_TOKEN` if not already set (read from `gh auth token`).
 3. Run `discover_repos.py` then `build_catalog_md.py`.
-4. Append to `discovery-log.md` with `triggered by: scheduled`.
+4. Let discovery write its own entry in `discovery-log.md`. Local scheduler runs are labeled `manual` by the Python script; it uses the scheduled label only when `GITHUB_ACTIONS` is set.
 5. Exit non-zero on failure (so Task Scheduler can detect it).
 6. **Not** require any interactive input.
 
-See `templates/run_scheduled_refresh.sh.template` for the canonical version.
+See `templates/run_scheduled_refresh.sh.template` for the canonical version. It defaults to all five categories; adjust `--categories` for a narrower scope.
 
 ## Step 3: Install the OS-Level Trigger
 
-**Windows Task Scheduler** (this environment is win32):
+**Windows Task Scheduler**:
 
 Generate the schtasks command. Example (weekly Sun 03:00):
 
@@ -55,7 +55,8 @@ Notes for Windows:
 ## Step 4: Verify the Trigger
 
 - Windows: `schtasks /Query /TN "CollectionSkillRefresh" /V /FO LIST` — confirm Next Run Time is set.
-- Do NOT wait for the trigger to fire. Instead, do a one-shot manual run of `run_scheduled_refresh.sh` to confirm it works end-to-end in non-interactive mode.
+- Linux/macOS: `crontab -l` — verify the installed schedule, command, and log path.
+- Do NOT wait for the trigger to fire. Instead, run `run_scheduled_refresh.sh` once with the scheduler's environment to confirm it works without prompting. This is a real refresh and writes catalog files.
 
 ## Step 5: Record and Report
 
@@ -70,14 +71,13 @@ Append a note to `references/discovery-log.md` under a `## Schedule` section:
 
 Report to the user:
 - Schedule installed + next run time.
-- How to check status (`schtasks /Query /TN CollectionSkillRefresh`).
-- How to remove.
-- Reminder: GitHub token must stay valid; if `gh auth` expires, refresh will fail silently (logged in discovery-log).
+- How to check status and remove the trigger on the chosen OS.
+- Reminder: if neither `GITHUB_TOKEN` nor `gh auth token` supplies a token, the runner reports an error and exits with status 2 before discovery writes a log entry.
 </process>
 
 <success_criteria>
 - A non-interactive refresh script exists and runs cleanly when invoked manually.
-- An OS-level trigger (Task Scheduler / cron) is installed and shows a correct next-run time.
+- An OS-level trigger (Task Scheduler / cron) is installed and its schedule is verified.
 - The schedule is documented in `discovery-log.md` with removal instructions.
-- A one-shot dry run completed without prompting for input.
+- A one-shot refresh completed without prompting for input.
 </success_criteria>

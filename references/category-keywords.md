@@ -3,8 +3,9 @@
 This file drives `scripts/discover_repos.py`. Each category has:
 - `search_queries` — strings passed to GitHub Search API (`/search/repositories?q=...`).
 - `topics` — GitHub topics to also match (`topic:foo`).
-- `must_have_any_in_desc` — fallback regex; if a repo matches keywords but lacks these in description, lower its score.
-- `exclude` — substring filters to drop false positives.
+- `exclude` — case-insensitive substring filters against the repo name and description.
+
+The script parses only the **Search queries**, **Topics**, and **Exclude** lists. Other notes are for human readers.
 
 Tune these freely — they directly control discovery quality. After editing, run `discover-catalog.md` to see the effect.
 
